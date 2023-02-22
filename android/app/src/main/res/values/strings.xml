@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">echessapp</string>
+    <string name="facebook_app_id">2214311662101561</string>
+    <string name="fb_login_protocol_scheme">fb2214311662101561</string>
+    <string name="facebook_client_token">23e76a5a02a689ccb7c62839e398cb23</string>
+</resources>

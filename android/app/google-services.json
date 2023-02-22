@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "766724149176",
+    "project_id": "cheearn-38f69",
+    "storage_bucket": "cheearn-38f69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766724149176:android:ceed7095ca25fe2dac094d",
+        "android_client_info": {
+          "package_name": "com.example.echessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766724149176-nfav3snb1ur5j2bihs6ne8divjp01p12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFjkpvRFasj_KS0NqdQQDSlO0E6030LDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766724149176-nfav3snb1ur5j2bihs6ne8divjp01p12.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766724149176-lpn67msj1kdanjttonpdh7fvv2kg96aq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.echessapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766724149176:android:90a2d6b8624c209dac094d",
+        "android_client_info": {
+          "package_name": "com.example.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766724149176-nfav3snb1ur5j2bihs6ne8divjp01p12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFjkpvRFasj_KS0NqdQQDSlO0E6030LDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766724149176-nfav3snb1ur5j2bihs6ne8divjp01p12.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766724149176-lpn67msj1kdanjttonpdh7fvv2kg96aq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.echessapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
