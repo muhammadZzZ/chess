@@ -20,7 +20,8 @@ class CourseList extends StatelessWidget {
    Future<void>? getcourses(Reference ref)async {
     
     listofcourses = await ref.listAll();
-    for(int i = 0;i < listofcourses.prefixes.length;i++){
+    for(int i = 0;i < listofcourses.prefixes.length;i++) // for returning course names
+    {
        chap = await storage(listofcourses.prefixes[i]);
        chapnumbers.add(chap);
       
@@ -63,7 +64,8 @@ class CourseList extends StatelessWidget {
                     shadowColor: const Color.fromARGB(255, 255, 255, 255),
                     child: InkWell(
                       onTap: () async{
-                         final datapathdetail = await storage(instdatapath);
+                        try{
+                           final datapathdetail = await storage(instdatapath);
                          final foldername = datapathdetail.prefixes[index].name;
                          final folders = datapathdetail.prefixes[index];
                          final chapnamedetail = await storage(folders);
@@ -73,6 +75,12 @@ class CourseList extends StatelessWidget {
                                 builder: (context) =>  ChapterList(coursepath: foldername,chapname: chapnames,),
                             ),
                         );
+                        }catch(e){
+
+
+
+                        }
+                        
                       },
                       child: Container(
                         padding: const EdgeInsets.all(15),

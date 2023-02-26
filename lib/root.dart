@@ -16,7 +16,7 @@ class Root extends StatelessWidget {
       theme: ThemeData(
         
       ),
-      home:   CourseList(),
+      home:   HomePage(),
       routes: {
         '/loginpage/':(context) => const LoginPage(),
         '/homepage/':(context) =>  HomePage(),
