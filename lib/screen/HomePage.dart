@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:echessapp/screen/CourseList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body:currentIndex == 0 ?  HomePageWidget() :
+      body:currentIndex == 0 ?  HomePageWidget() : currentIndex == 1 ? CourseList() :
       Container(child: Center(child: Text("Osama Hatam"),),),
 
 
@@ -192,7 +193,7 @@ class HomePageWidget extends StatelessWidget {
 
 List<IconData> ListOfIcon =[
   Icons.home_rounded,
-  Icons.settings_rounded,
+  Icons.article_sharp,
   Icons.book_rounded,
   Icons.person_rounded,
 ];
