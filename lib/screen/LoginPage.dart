@@ -53,13 +53,13 @@ class LoginPage extends StatelessWidget {
                   child: Text("Please sign in to use Echess",style: TextStyle(fontSize: 20),),
                 ),
               ),
-              const SizedBox(height:70 ,),
+              const SizedBox(height:40 ,),
               //Google Login Button
               const LoginButton(),
               const SizedBox(height: 25,),
               FacebookButton(),
               const SizedBox(height: 25,),
-              
+           
              
                
             ],
@@ -128,7 +128,7 @@ class FacebookButton extends StatelessWidget {
 
                  final authentications authf = authentications(); //fb authentication
                  await authf.fbauth();
-                 navigator?.pushNamedAndRemoveUntil('/homepage', ModalRoute.withName('/'));
+                  Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
 
           }catch(e){
               showDialog<void>(
@@ -202,7 +202,7 @@ class LoginButton extends StatelessWidget {
 
                authentications authg = authentications(); //google authentication
                await authg.gauth();
-               navigator?.pushNamedAndRemoveUntil('/homepage', ModalRoute.withName('/'));
+               Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
 
             }catch(e){
                     showDialog<void>(

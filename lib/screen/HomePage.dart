@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   //final  cu = FirebaseAuth.instance.currentUser!;
+   final  cu = FirebaseAuth.instance.currentUser!;
   var currentIndex=0;
 
   var titleOfScreen="Home Screen";
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: null,
-            icon: ClipOval(child: Image.asset("assets/icons/pro.jpeg")),
+            icon: ClipOval(child: Image.network(cu.photoURL!)),
           )
         ],
       ),

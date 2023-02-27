@@ -126,7 +126,7 @@ class CourseList extends StatelessWidget {
              );
            
           }
-           return const Scaffold();
+           return const Scaffold(body: Center(child: CircularProgressIndicator()),); //TODO: the loading screen while the courses loading
          },
        );
     
