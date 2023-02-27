@@ -8,7 +8,7 @@ import 'screen/LoginPage.dart';
 
 class Root extends StatelessWidget {
   const Root({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,10 +16,10 @@ class Root extends StatelessWidget {
       theme: ThemeData(
         
       ),
-      home:   HomePage(),
+      home:   const LoginPage(),
       routes: {
         '/loginpage/':(context) => const LoginPage(),
-        '/homepage/':(context) =>  HomePage(),
+        '/homepage':(context) =>  HomePage(),
         
       }
       

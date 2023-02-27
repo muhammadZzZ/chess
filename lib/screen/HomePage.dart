@@ -23,15 +23,16 @@ class _HomePageState extends State<HomePage> {
   var currentIndex=0;
 
   var titleOfScreen="Home Screen";
-
+  
   @override
   Widget build(BuildContext context) {
   
-   
+   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [],); //TODO: used to hide android status and navigation bar
+
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(titleOfScreen,style: TextStyle(color: Colors.black),),
+        title: Text(titleOfScreen,style: const TextStyle(color: Colors.black),),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,

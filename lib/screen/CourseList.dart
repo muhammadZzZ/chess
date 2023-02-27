@@ -43,7 +43,7 @@ class CourseList extends StatelessWidget {
             children: [
                 Container(
                   padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /6.3 ,left: 30),
-                  color: Colors.blue,
+                  color: Colors.greenAccent,
                   height: MediaQuery. of(context). size. height /3.3,
                   width: double.infinity,
                   child: const Text("All Courses",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold),),
