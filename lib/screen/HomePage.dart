@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -75,11 +77,11 @@ class _HomePageState extends State<HomePage> {
                               height: 135,
                               width: 135,
                               alignment: Alignment.topCenter,
-                              child: const CircleAvatar(
+                              child:  CircleAvatar(
                                 radius: 90,
-                                backgroundImage: AssetImage(
-                                  'assets/images/pro.jpg',
-                                ),
+                                backgroundImage: NetworkImage(
+                                  cu.photoURL!,
+                                )
                               ),
                             ),
                             Positioned(
@@ -146,7 +148,15 @@ class _HomePageState extends State<HomePage> {
                         ProfileMenuWidgets(
                             title: "Logout",
                             icon: LineAwesomeIcons.alternate_sign_out,
-                            Onpress: () {},
+                            Onpress: () async{
+                              await FirebaseAuth.instance.signOut(); //TODO: logout from google
+                              if(isgoogle) {
+                                await GoogleSignIn().signOut();
+                              } else {
+                                await FacebookAuth.instance.logOut(); //TODO: logout from facebook
+                              }
+                               Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); //TODO: return to login screen
+                            },
                             endIcon: false,
                             textColor: Colors.red,
                             IconColor: Colors.red),
