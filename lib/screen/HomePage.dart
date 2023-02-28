@@ -109,14 +109,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Space(spaceH: 20),
                         Text(
-                          userName,
-                          style: TextStyle(
+                          cu.displayName!, //TODO: returning the name
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         Space(spaceH: 5),
                         Text(
-                          userEmail,
-                          style: TextStyle(fontSize: 16),
+                          cu.email!, //TODO: returning the email
+                          style: const TextStyle(fontSize: 16),
                         ),
                         Space(spaceH: 30),
                         const Divider(),
