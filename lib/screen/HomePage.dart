@@ -6,9 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../Utils/constrant.dart';
+import '../Widgets/repeated_widgets.dart';
+import 'ProfileScreens/Profile_edite.dart';
 import 'authentication.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,41 +24,142 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   final  cu = FirebaseAuth.instance.currentUser!;
-  var currentIndex=0;
 
+  final  cu = FirebaseAuth.instance.currentUser!;
+  var currentIndex=0;
   var titleOfScreen="Home Screen";
   
   @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
   Widget build(BuildContext context) {
-  
-   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [],); //TODO: used to hide android status and navigation bar
-
-    
+   //TODO: used to hide android status and navigation bar
+   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [],);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(titleOfScreen,style: const TextStyle(color: Colors.black),),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            
-          },
-          icon: Icon(MdiIcons.menu,color: Colors.black,)
-        ),
-        actions: [
-          IconButton(
-            onPressed: null,
-            icon: ClipOval(child: Image.network(cu.photoURL!)),
-          )
-        ],
+    appBar: AppBar(
+      title: Text(titleOfScreen,style: const TextStyle(color: Colors.black),),
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      leading: IconButton(
+        onPressed: () {
+          
+        },
+        icon: Icon(MdiIcons.menu,color: Colors.black,)
       ),
-      body:currentIndex == 0 ?  HomePageWidget() : currentIndex == 1 ? CourseList() :
-      Container(child: Center(child: Text("Osama Hatam"),),),
+      actions: [
+        IconButton(
+          onPressed: null,
+          icon: ClipOval(
+            //child: Image.asset("assets/images/chessbackground.png")),
+          child: ClipOval(child: Image.network(cu.photoURL!)),
+         )
+        )
+      ],
+    ),
+      body:currentIndex == 0 ?  HomePageWidget() : 
+      currentIndex == 1 ? CourseList() :
+      currentIndex == 2 ?Container(
+                  //TODO:Creating Profile Screen
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      children: [
+                        Space(spaceH: 10),
+                        //TODO:create a profile circle
+                        Stack(
+                          children: [
+                            Container(
+                              height: 135,
+                              width: 135,
+                              alignment: Alignment.topCenter,
+                              child: const CircleAvatar(
+                                radius: 90,
+                                backgroundImage: AssetImage(
+                                  'assets/images/pro.jpg',
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: GestureDetector(
+                                //Navigate to the edite profile screen 
+                                onTap: () => Get..to(()=> ProfileEdite()),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: PrimaryColor,
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  child: const Icon(
+                                    LineAwesomeIcons.alternate_pencil,
+                                    color: Colors.black,
+                                    size: 18,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Space(spaceH: 20),
+                        Text(
+                          userName,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        Space(spaceH: 5),
+                        Text(
+                          userEmail,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Space(spaceH: 30),
+                        const Divider(),
+                        Space(spaceH: 10),
+                        //MENU
+                        //TODO: creating MENU
+                        ProfileMenuWidgets(
+                          title: "Edite Profile",
+                          icon: LineAwesomeIcons.user_edit,
+                          Onpress: () => Get..to(()=> ProfileEdite()),
+                        ),
+                        Space(spaceH: 10),
+                        ProfileMenuWidgets(
+                          title: "Change Theme",
+                          icon: LineAwesomeIcons.moon,
+                          Onpress: () {},
+                        ),
+                        Space(spaceH: 10),
+                        ProfileMenuWidgets(
+                          title: "About us",
+                          icon: LineAwesomeIcons.info,
+                          Onpress: () {},
+                        ),
+                        Space(spaceH: 10),
+                        const Divider(
+                          color: Colors.grey,
+                        ),
+                        Space(spaceH: 10),
+                        ProfileMenuWidgets(
+                            title: "Logout",
+                            icon: LineAwesomeIcons.alternate_sign_out,
+                            Onpress: () {},
+                            endIcon: false,
+                            textColor: Colors.red,
+                            IconColor: Colors.red),
+                      ],
+                    ),
+                  ),
+                )
+              : Container(
+                  child: Text("Hello"),
+                ),
 
 
-      //Custom Navigation Bar for scrolling pages 
+      //TODO:Custom Navigation Bar for scrolling pages 
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(20),
         height: gWidth*.155,
