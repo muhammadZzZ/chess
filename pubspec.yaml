@@ -54,6 +54,8 @@ dependencies:
   path: ^1.7.0
   flutterfire_ui: ^0.3.2
   form_field_validator: ^1.1.0
+  dropdown_button2: ^1.9.4
+  line_awesome_flutter: ^2.0.0
   
 
 dependency_overrides:
