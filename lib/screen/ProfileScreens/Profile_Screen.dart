@@ -1,4 +1,3 @@
-import 'package:echessapp/screen/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -81,12 +80,14 @@ class ProfilePage extends StatelessWidget {
                                 ],
                               ),
                               Space(spaceH: 20),
+                              //TODO:return the ser name 
                               Text(
                                 userName,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                               Space(spaceH: 5),
+                              //TODO:return the user email
                               Text(
                                 userEmail,
                                 style: TextStyle(fontSize: 16),
