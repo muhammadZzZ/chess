@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echessapp/screen/CourseList.dart';
+import 'package:echessapp/screen/ProfileScreens/Profile_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,23 +47,33 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
+        splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
         onPressed: () {
           
         },
-        icon: Icon(MdiIcons.menu,color: Colors.black,)
+        icon: Icon(LineAwesomeIcons.bell,color: Colors.black,)
       ),
       actions: [
         IconButton(
-          onPressed: null,
-          icon: ClipOval(
-            //child: Image.asset("assets/images/chessbackground.png")),
-          child: ClipOval(child: Image.network(cu.photoURL!)),
-         )
-        )
+          iconSize: 40,
+          splashColor: PrimaryColor.withOpacity(.5),
+          splashRadius: 25,
+          onPressed: () => Get..to(()=> ProfilePage()),
+          //onPressed: ()  => Get..to(()=> const ProfileScreen()),
+          icon: const CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage(
+              'assets/images/pro.jpeg',
+               ),
+             ),
+        ),
+        SizedBox(width: 10,)
+        //)
       ],
     ),
       body:currentIndex == 0 ?  HomePageWidget() : 
       currentIndex == 1 ? CourseList() :
+
       currentIndex == 2 ?Container(
                   //TODO:Creating Profile Screen
                   child: SingleChildScrollView(
@@ -163,8 +174,10 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                )
-              : Container(
+                ):
+
+      currentIndex == 2 ?Container():
+               Container(
                   child: Text("Hello"),
                 ),
 
@@ -239,6 +252,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+
 class HomePageWidget extends StatelessWidget {
   const HomePageWidget({
     Key? key,
@@ -305,7 +319,6 @@ class HomePageWidget extends StatelessWidget {
     //end
   }
 }
-
 
 
 List<IconData> ListOfIcon =[
