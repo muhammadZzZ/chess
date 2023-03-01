@@ -6,13 +6,14 @@ import '../Utils/constrant.dart';
 
 //the sizedBos widgets 
 class Space extends StatelessWidget {
-  Space({super.key, required this.spaceH,this.spaceW});
-  double spaceH;
+  Space({super.key, this.spaceH,this.spaceW});
+  double? spaceH;
   double? spaceW;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: spaceH,
+      width: spaceW,
     );
   }
 }
