@@ -58,6 +58,7 @@ dependencies:
   line_awesome_flutter: ^2.0.0
   image_picker: ^0.8.6+4
   shared_preferences: ^2.0.18
+  shimmer: ^2.0.0
   
 
 dependency_overrides:

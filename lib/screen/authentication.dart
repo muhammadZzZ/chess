@@ -1,6 +1,7 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:echessapp/Utils/constrant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -30,7 +31,14 @@ class authentications{
                     'profilepicture':fuser.photoURL
                 });
                 }
+                usersinfo = {
+                'name': fuser.displayName!,
+                'email': fuser.email!,
+                'pictureurl': fuser.photoURL!
+
+              };
               } 
+              
              return rresult;
   }
 
@@ -53,6 +61,12 @@ class authentications{
                     
                 });
                 }
+                 usersinfo = {
+                'name': googleuser.displayName!,
+                'email': googleuser.email!,
+                'pictureurl': googleuser.photoURL!
+
+              };
               }
               
     return result;

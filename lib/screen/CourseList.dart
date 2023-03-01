@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 
 
@@ -126,7 +127,71 @@ class CourseList extends StatelessWidget {
              );
            
           }
-           return const Scaffold(body: Center(child: CircularProgressIndicator()),); //TODO: the loading screen while the courses loading
+           return Scaffold( //TODO: the loading screen while the courses loading
+          body:  Stack(
+              children: [
+                  Container(
+                    padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /6.3 ,left: 30),
+                    color: Color.fromARGB(255, 219, 218, 218),
+                    height: MediaQuery. of(context). size. height /3.3,
+                    width: double.infinity,
+                    
+                  ),
+                  Shimmer.fromColors(  //TODO: this used for loading animation
+            highlightColor: Colors.white,
+            baseColor: Color.fromARGB(255, 197, 196, 196),
+            child:
+                  Container(
+                    padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /4.0),
+                    child: ListView.builder(
+                      padding: const EdgeInsets.only(top: 0),
+                      itemCount: 6,
+                      itemBuilder: (BuildContext context ,int index) {
+                        
+                        return Container(
+                                        
+                                        padding:const EdgeInsets.symmetric(horizontal: 13,vertical: 5),
+                                        child: Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+                      shadowColor: const Color.fromARGB(255, 255, 255, 255),
+                      child: 
+                         Container(
+                          padding: const EdgeInsets.all(15),
+                           decoration: BoxDecoration( color: Color.fromARGB(255, 186, 185, 185),
+                           borderRadius: BorderRadius.circular(8.0),
+                           ),
+                          height: 75,
+                          width: 50,
+                          child: Row(
+                            children: [
+                              const CircleAvatar(
+                                  backgroundColor: Colors.grey,
+                              ),
+                              const SizedBox(width: 15,),
+                            
+                              Flexible(flex: 3,child: Container(),),
+                              
+                            ],
+                          ),
+                        ),
+                      
+                                        ),
+                        
+                            
+                            
+                            );
+                      },
+                            
+                            ),
+                  ),
+                  ),
+              ]
+               
+            ),
+          
+           
+             ); 
          },
        );
     

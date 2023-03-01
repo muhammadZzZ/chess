@@ -59,10 +59,10 @@ class _HomePageState extends State<HomePage> {
           splashRadius: 25,
           onPressed: () => Get..to(()=> ProfilePage()),
           //onPressed: ()  => Get..to(()=> const ProfileScreen()),
-          icon: const CircleAvatar(
+          icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage(
-              'assets/images/pro.jpeg',
+            backgroundImage: NetworkImage(
+              usersinfo['pictureurl']!
                ),
              ),
         ),
@@ -72,110 +72,6 @@ class _HomePageState extends State<HomePage> {
     ),
       body:currentIndex == 0 ?  HomePageWidget() : 
       currentIndex == 1 ? CourseList() :
-
-      currentIndex == 2 ?Container(
-                  //TODO:Creating Profile Screen
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      children: [
-                        Space(spaceH: 10),
-                        //TODO:create a profile circle
-                        Stack(
-                          children: [
-                            Container(
-                              height: 135,
-                              width: 135,
-                              alignment: Alignment.topCenter,
-                              child:  CircleAvatar(
-                                radius: 90,
-                                backgroundImage: NetworkImage(
-                                  cu.photoURL!,
-                                )
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: GestureDetector(
-                                //Navigate to the edite profile screen 
-                                onTap: () => Get..to(()=> ProfileEdite()),
-                                child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    color: PrimaryColor,
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                  child: const Icon(
-                                    LineAwesomeIcons.alternate_pencil,
-                                    color: Colors.black,
-                                    size: 18,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Space(spaceH: 20),
-                        Text(
-                          cu.displayName!, //TODO: returning the name
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        Space(spaceH: 5),
-                        Text(
-                          cu.email!, //TODO: returning the email
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        Space(spaceH: 30),
-                        const Divider(),
-                        Space(spaceH: 10),
-                        //MENU
-                        //TODO: creating MENU
-                        ProfileMenuWidgets(
-                          title: "Edite Profile",
-                          icon: LineAwesomeIcons.user_edit,
-                          Onpress: () => Get..to(()=> ProfileEdite()),
-                        ),
-                        Space(spaceH: 10),
-                        ProfileMenuWidgets(
-                          title: "Change Theme",
-                          icon: LineAwesomeIcons.moon,
-                          Onpress: () {},
-                        ),
-                        Space(spaceH: 10),
-                        ProfileMenuWidgets(
-                          title: "About us",
-                          icon: LineAwesomeIcons.info,
-                          Onpress: () {},
-                        ),
-                        Space(spaceH: 10),
-                        const Divider(
-                          color: Colors.grey,
-                        ),
-                        Space(spaceH: 10),
-                        ProfileMenuWidgets(
-                            title: "Logout",
-                            icon: LineAwesomeIcons.alternate_sign_out,
-                            Onpress: () async{
-                              await FirebaseAuth.instance.signOut(); //TODO: logout from google
-                              if(isgoogle) {
-                                await GoogleSignIn().signOut();
-                              } else {
-                                await FacebookAuth.instance.logOut(); //TODO: logout from facebook
-                              }
-                               Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); //TODO: return to login screen
-                            },
-                            endIcon: false,
-                            textColor: Colors.red,
-                            IconColor: Colors.red),
-                      ],
-                    ),
-                  ),
-                ):
-
-      currentIndex == 2 ?Container():
                Container(
                   child: Text("Hello"),
                 ),
