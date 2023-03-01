@@ -56,6 +56,7 @@ dependencies:
   form_field_validator: ^1.1.0
   dropdown_button2: ^1.9.4
   line_awesome_flutter: ^2.0.0
+  image_picker: ^0.8.6+4
   shared_preferences: ^2.0.18
   
 
@@ -89,7 +90,7 @@ flutter:
     - assets/icons/google.png
     - assets/icons/facebook.png
     - assets/icons/apple.png
-    - assets/icons/pro.jpeg
+    - assets/images/pro.jpeg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
