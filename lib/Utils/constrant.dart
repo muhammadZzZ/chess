@@ -6,7 +6,10 @@ final gWidth = Get.width;
 final gHeight = Get.height;
 
 //the Colors of the application
-final PrimaryColor = Colors.greenAccent;
+
+final PrimaryColor =Color.fromRGBO(118, 150, 86, 1) ;//rgb(118,150,86)
+final SecondaryColor= Color.fromRGBO(238, 238, 210, 1);//rgb(238,238,210)
+final DarkThemeColor = Color.fromRGBO(49, 46, 43, 1);//rgb(49,46,43)
 
 //text
 String userName ="Osama Hatam";

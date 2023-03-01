@@ -97,8 +97,8 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       alignment: Alignment.topCenter,
                       child: CircleAvatar(
                         radius: 90,
-                        backgroundImage: NetworkImage(
-                          imagepath,
+                        backgroundImage: AssetImage(
+                          "assets/images/pro.jprg",
                         ),
                       ),
                     ),

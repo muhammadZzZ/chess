@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -15,6 +16,9 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../Utils/constrant.dart';
 import '../Widgets/repeated_widgets.dart';
+import '../models/puzzles/chessPuzzle.dart';
+import 'Chess_play_screen.dart';
+import 'Level_screen.dart';
 import 'ProfileScreens/Profile_edite.dart';
 import 'authentication.dart';
 
@@ -26,6 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
 
   final  cu = FirebaseAuth.instance.currentUser!;
   var currentIndex=0;
@@ -46,11 +51,15 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
-        splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
+        iconSize: 30,
+        splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
         onPressed: () {
           
         },
-        icon: Icon(LineAwesomeIcons.bell,color: Colors.black,)
+        icon: Icon(
+          LineAwesomeIcons.bell,
+          color: PrimaryColor,
+          )
       ),
       actions: [
         IconButton(
@@ -59,6 +68,7 @@ class _HomePageState extends State<HomePage> {
           splashRadius: 25,
           onPressed: () => Get..to(()=> ProfilePage()),
           //onPressed: ()  => Get..to(()=> const ProfileScreen()),
+          
           icon:  CircleAvatar(
             radius: 30,
             backgroundImage: NetworkImage(
@@ -72,6 +82,8 @@ class _HomePageState extends State<HomePage> {
     ),
       body:currentIndex == 0 ?  HomePageWidget() : 
       currentIndex == 1 ? CourseList() :
+      currentIndex == 2 ?ChessPlayScreen():
+      currentIndex == 3 ? LevelScreen():
                Container(
                   child: Text("Hello"),
                 ),
@@ -79,7 +91,7 @@ class _HomePageState extends State<HomePage> {
 
       //TODO:Custom Navigation Bar for scrolling pages 
       bottomNavigationBar: Container(
-        margin: EdgeInsets.all(20),
+        margin: EdgeInsets.only(bottom: 20,left: 20,right: 20),
         height: gWidth*.155,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -121,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       height: index == currentIndex ? gWidth*0.12 : 0,
                       width: index == currentIndex ? gWidth*0.2125 : 0,
                       decoration: BoxDecoration(
-                        color: index == currentIndex ? Colors.greenAccent.withOpacity(.2) : Colors.transparent, 
+                        color: index == currentIndex ? PrimaryColor.withOpacity(.2) : Colors.transparent, 
                         borderRadius: BorderRadius.circular(20),
                       ),
                       ),
@@ -135,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                   child: Icon(
                     ListOfIcon[index],
                     size: gWidth*.076,
-                    color: index == currentIndex ? Colors.greenAccent : Colors.black26,
+                    color: index == currentIndex ? PrimaryColor : Colors.black26,
                   ),
                 )
               ],
@@ -149,7 +161,7 @@ class _HomePageState extends State<HomePage> {
 
 
 class HomePageWidget extends StatelessWidget {
-  const HomePageWidget({
+   HomePageWidget({
     Key? key,
   }) : super(key: key);
 
@@ -177,9 +189,15 @@ class HomePageWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: PrimaryColor,
+                    blurRadius: 6,
+                    offset: Offset(0,3)
+                    ),],
                 borderRadius: BorderRadius.circular(8.0),
                 image: DecorationImage(
-                  image: NetworkImage("https://images.pexels.com/photos/814133/pexels-photo-814133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                  image: AssetImage("assets/images/chess01.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -187,9 +205,15 @@ class HomePageWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: PrimaryColor,
+                    blurRadius: 6,
+                    offset: Offset(0,3)
+                    ),],
                 borderRadius: BorderRadius.circular(8.0),
                 image: DecorationImage(
-                  image: NetworkImage("https://images.pexels.com/photos/112854/pexels-photo-112854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                  image:AssetImage("assets/images/chess02.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -197,9 +221,15 @@ class HomePageWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: PrimaryColor,
+                    blurRadius: 6,
+                    offset: Offset(0,3)
+                    ),],
                 borderRadius: BorderRadius.circular(8.0),
                 image: DecorationImage(
-                  image: NetworkImage("https://images.pexels.com/photos/51930/chess-game-chessboard-glass-51930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",),
+                  image: AssetImage("assets/images/chess03.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -213,21 +243,33 @@ class HomePageWidget extends StatelessWidget {
     );
     //end
   }
+
+
+
+
 }
 
 
 List<IconData> ListOfIcon =[
-  Icons.home_rounded,
-  Icons.article_sharp,
-  Icons.book_rounded,
-  Icons.person_rounded,
+  LineAwesomeIcons.home,
+  LineAwesomeIcons.book,
+  LineAwesomeIcons.chess_queen,
+  LineAwesomeIcons.puzzle_piece,
 ];
 
 List<String> ListOfTitleScreen=[
   "Home Screen",
   "Course Screen",
-  "Profile Screen",
-  "Setting Screen",
+  "Games",
+  "Puzzles",
 ];
 
+
+class Place {
+  Place([this.title = '', this.description = '', this.image='',     this.value=0.0]);
+  String title;
+  String description;
+  String image;
+  double value;
+}
 

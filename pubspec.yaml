@@ -57,6 +57,10 @@ dependencies:
   dropdown_button2: ^1.9.4
   line_awesome_flutter: ^2.0.0
   image_picker: ^0.8.6+4
+  flutter_stateless_chessboard: ^0.0.6
+  simple_chess_board: ^0.4.0
+ 
+  
   shared_preferences: ^2.0.18
   shimmer: ^2.0.0
   
@@ -91,7 +95,8 @@ flutter:
     - assets/icons/google.png
     - assets/icons/facebook.png
     - assets/icons/apple.png
-    - assets/images/pro.jpeg
+    - assets/images/
+    - assets/gif/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
