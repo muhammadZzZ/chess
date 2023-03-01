@@ -28,15 +28,20 @@ class authentications{
                   await ffstore.collection('users').doc(fuser.uid).set({
                     'username':fuser.displayName,
                     'uid':fuser.uid,
-                    'profilepicture':fuser.photoURL
+                    'email':fuser.email,
+                    'pictureurl':fuser.photoURL
                 });
                 }
-                usersinfo = {
-                'name': fuser.displayName!,
+                await ffstore.collection('users').doc(fuser.uid).get().then((value) {
+                  usersinfo = value.data()!;
+                  return ;
+                });
+                /*usersinfo = {
+                'username': fuser.displayName!,
                 'email': fuser.email!,
                 'pictureurl': fuser.photoURL!
 
-              };
+              };*/
               } 
               
              return rresult;
@@ -57,16 +62,21 @@ class authentications{
                   await ffstore.collection('users').doc(googleuser.uid).set({
                     'username':googleuser.displayName,
                     'uid':googleuser.uid,
-                    'profilepicture':googleuser.photoURL,
+                    'email':googleuser.email,
+                    'pictureurl':googleuser.photoURL,
                     
                 });
                 }
-                 usersinfo = {
-                'name': googleuser.displayName!,
+                await ffstore.collection('users').doc(googleuser.uid).get().then((value) {
+                  usersinfo = value.data()!;
+                  return ;
+                });
+                 /*usersinfo = {
+                'username': googleuser.displayName!,
                 'email': googleuser.email!,
                 'pictureurl': googleuser.photoURL!
 
-              };
+              };*/
               }
               
     return result;

@@ -231,10 +231,3 @@ List<String> ListOfTitleScreen=[
 ];
 
 
-class Place {
-  Place([this.title = '', this.description = '', this.image='',     this.value=0.0]);
-  String title;
-  String description;
-  String image;
-  double value;
-}

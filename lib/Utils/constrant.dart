@@ -41,4 +41,4 @@ final List<String> Sex =[
 
 bool isgoogle = false; // TODO: to logout completely from either google or facebook this is global variable
 
-Map<String,String> usersinfo = {};
+Map<String,dynamic> usersinfo = {};

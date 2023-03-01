@@ -85,7 +85,7 @@ class ProfilePage extends StatelessWidget {
                               Space(spaceH: 20),
                               //TODO:return the ser name 
                               Text(
-                                usersinfo['name']!,
+                                usersinfo['username']!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
@@ -101,9 +101,9 @@ class ProfilePage extends StatelessWidget {
                               //MENU
                               //TODO: creating MENU
                               ProfileMenuWidgets(
-                                title: "Edite Profile",
+                                title: "Edit Profile",
                                 icon: LineAwesomeIcons.user_edit,
-                                Onpress: () => Get..to(()=> ProfileEdite()),
+                                Onpress: () => Get..off(()=> ProfileEdite()),
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
