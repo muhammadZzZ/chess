@@ -205,19 +205,19 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         city = _city.text;
                         sex = _sex.text;
                       
-                        await firestoreinit.collection('users').doc(currentuser.uid).update({
+                        await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
                                 'username':username,
                                 'email':email,
                                 'city': city,
                                 'gender':sex
                 });
-                        await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) {
+                        await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) { //TODO: get user data
                           usersinfo = value.data()!;
                           return ;
                         });
                         
                        
-                        Get..off(()=> ProfilePage());
+                        Get..off(()=> ProfilePage()); //push replacement
                       },
                       child: const Text(
                         "Update",

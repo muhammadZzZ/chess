@@ -1,5 +1,6 @@
 
 
+import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/screen/ChapterList.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class CourseList extends StatelessWidget {
             children: [
                 Container(
                   padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /6.3 ,left: 30),
-                  color: Colors.greenAccent,
+                  color: PrimaryColor,
                   height: MediaQuery. of(context). size. height /3.3,
                   width: double.infinity,
                   child: const Text("All Courses",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold),),
