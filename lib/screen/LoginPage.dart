@@ -13,6 +13,8 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'HomePage.dart';
+
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -190,6 +192,7 @@ class LoginButton extends StatelessWidget {
   const LoginButton({
     Key? key,
   }) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -202,8 +205,9 @@ class LoginButton extends StatelessWidget {
 
                authentications authg = authentications(); //google authentication
                await authg.gauth();
+               isgoogle = true;
                Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
-
+                
             }catch(e){
                     showDialog<void>(
                           context: context,

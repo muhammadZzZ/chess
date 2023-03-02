@@ -8,8 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../Utils/constrant.dart';
@@ -30,7 +32,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
 
-  //final  cu = FirebaseAuth.instance.currentUser!;
+  final  cu = FirebaseAuth.instance.currentUser!;
   var currentIndex=0;
   var titleOfScreen="Home Screen";
   
@@ -66,10 +68,11 @@ class _HomePageState extends State<HomePage> {
           splashRadius: 25,
           onPressed: () => Get..to(()=> ProfilePage()),
           //onPressed: ()  => Get..to(()=> const ProfileScreen()),
-          icon: CircleAvatar(
+          
+          icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage(
-              'assets/images/pro.jpeg',
+            backgroundImage: NetworkImage(
+              usersinfo['pictureurl']!
                ),
              ),
         ),
@@ -79,8 +82,11 @@ class _HomePageState extends State<HomePage> {
     ),
       body:currentIndex == 0 ?  HomePageWidget() : 
       currentIndex == 1 ? CourseList() :
-      currentIndex == 2 ?ChessPlayScreen()
-      : LevelScreen(),
+      currentIndex == 2 ?ChessPlayScreen():
+      currentIndex == 3 ? LevelScreen():
+               Container(
+                  child: Text("Hello"),
+                ),
 
 
       //TODO:Custom Navigation Bar for scrolling pages 
@@ -266,3 +272,4 @@ class Place {
   String image;
   double value;
 }
+

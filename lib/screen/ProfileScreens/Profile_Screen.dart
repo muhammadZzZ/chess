@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../Utils/constrant.dart';
 import '../../Widgets/repeated_widgets.dart';
@@ -49,10 +52,10 @@ class ProfilePage extends StatelessWidget {
                                     height: 135,
                                     width: 135,
                                     alignment: Alignment.topCenter,
-                                    child: const CircleAvatar(
+                                    child:  CircleAvatar(
                                       radius: 90,
-                                      backgroundImage: AssetImage(
-                                        'assets/images/pro.jpeg',
+                                      backgroundImage: NetworkImage(
+                                        usersinfo['pictureurl']!,
                                       ),
                                     ),
                                   ),
@@ -82,14 +85,14 @@ class ProfilePage extends StatelessWidget {
                               Space(spaceH: 20),
                               //TODO:return the ser name 
                               Text(
-                                userName,
+                                usersinfo['username']!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                               Space(spaceH: 5),
                               //TODO:return the user email
                               Text(
-                                userEmail,
+                                usersinfo['email']!,
                                 style: TextStyle(fontSize: 16),
                               ),
                               Space(spaceH: 30),
@@ -98,9 +101,9 @@ class ProfilePage extends StatelessWidget {
                               //MENU
                               //TODO: creating MENU
                               ProfileMenuWidgets(
-                                title: "Edite Profile",
+                                title: "Edit Profile",
                                 icon: LineAwesomeIcons.user_edit,
-                                Onpress: () => Get..to(()=> ProfileEdite()),
+                                Onpress: () => Get..off(()=> ProfileEdite()),
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
@@ -122,7 +125,17 @@ class ProfilePage extends StatelessWidget {
                               ProfileMenuWidgets(
                                   title: "Logout",
                                   icon: LineAwesomeIcons.alternate_sign_out,
-                                  Onpress: () {},
+                                  Onpress: () async{
+                                    await FirebaseAuth.instance.signOut(); //TODO: logout from google
+                              if(isgoogle) {
+                                await GoogleSignIn().signOut();
+                                usersinfo = {};
+                              } else {
+                                await FacebookAuth.instance.logOut(); //TODO: logout from facebook
+                                usersinfo = {};
+                              }
+                               Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); //TODO: return to login screen
+                                  },
                                   endIcon: false,
                                   textColor: Colors.red,
                                   IconColor: Colors.red

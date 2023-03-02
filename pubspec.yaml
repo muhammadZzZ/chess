@@ -61,6 +61,8 @@ dependencies:
   simple_chess_board: ^0.4.0
  
   
+  shared_preferences: ^2.0.18
+  shimmer: ^2.0.0
   
 
 dependency_overrides:
@@ -93,7 +95,7 @@ flutter:
     - assets/icons/google.png
     - assets/icons/facebook.png
     - assets/icons/apple.png
-    - assets/images/
+    - assets/images/pro.jpeg
     - assets/gif/
     
 

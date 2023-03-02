@@ -1,10 +1,12 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:echessapp/Utils/constrant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class authentications{
@@ -26,10 +28,22 @@ class authentications{
                   await ffstore.collection('users').doc(fuser.uid).set({
                     'username':fuser.displayName,
                     'uid':fuser.uid,
-                    'profilepicture':fuser.photoURL
+                    'email':fuser.email,
+                    'pictureurl':fuser.photoURL
                 });
                 }
+                await ffstore.collection('users').doc(fuser.uid).get().then((value) {
+                  usersinfo = value.data()!;
+                  return ;
+                });
+                /*usersinfo = {
+                'username': fuser.displayName!,
+                'email': fuser.email!,
+                'pictureurl': fuser.photoURL!
+
+              };*/
               } 
+              
              return rresult;
   }
 
@@ -48,11 +62,23 @@ class authentications{
                   await ffstore.collection('users').doc(googleuser.uid).set({
                     'username':googleuser.displayName,
                     'uid':googleuser.uid,
-                    'profilepicture':googleuser.photoURL,
+                    'email':googleuser.email,
+                    'pictureurl':googleuser.photoURL,
                     
                 });
                 }
+                await ffstore.collection('users').doc(googleuser.uid).get().then((value) {
+                  usersinfo = value.data()!;
+                  return ;
+                });
+                 /*usersinfo = {
+                'username': googleuser.displayName!,
+                'email': googleuser.email!,
+                'pictureurl': googleuser.photoURL!
+
+              };*/
               }
+              
     return result;
   }
 

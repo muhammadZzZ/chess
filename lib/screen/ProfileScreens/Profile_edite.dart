@@ -1,3 +1,8 @@
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:echessapp/screen/authentication.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,16 +23,35 @@ class _ProfileEditeState extends State<ProfileEdite> {
   String imagepath="";
   final picker =ImagePicker(); 
 
-  final TextEditingController _username= TextEditingController();
-  final TextEditingController _email= TextEditingController();
-  final TextEditingController _city= TextEditingController();
-  final TextEditingController _sex= TextEditingController();
+  late final TextEditingController _username;
+  late final TextEditingController _email;
+  late final TextEditingController _city;
+  late final TextEditingController _sex;
 
+  final  currentuser = FirebaseAuth.instance.currentUser!;
+  final FirebaseFirestore firestoreinit = authentications().ffstore;
 
   String username="User name";
   String email="Email";
   String city="City";
   String sex="Gender";
+@override
+  void initState() {
+    _username = TextEditingController();
+    _email = TextEditingController();
+    _city = TextEditingController();
+    _sex = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+   _username.dispose();
+   _email.dispose();
+   _city.dispose();
+   _sex.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +97,8 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       alignment: Alignment.topCenter,
                       child: CircleAvatar(
                         radius: 90,
-                        backgroundImage: AssetImage(
-                          "assets/images/pro.jprg",
+                        backgroundImage: NetworkImage(
+                          usersinfo['pictureurl']
                         ),
                       ),
                     ),
@@ -117,7 +141,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _username,
                         decoration: InputDecoration(
-                          label: Text(username), 
+                          label: const Text("User name"), 
                           prefixIcon: Icon((LineAwesomeIcons.user),color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -129,7 +153,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.emailAddress,
                         controller: _email,
                         decoration: InputDecoration(
-                          label: Text(email), 
+                          label: const Text("Email"), 
                           prefixIcon: Icon(LineAwesomeIcons.envelope,color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -141,7 +165,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _city,
                         decoration: InputDecoration(
-                          label: Text(city), 
+                          label: Text("City"), 
                           prefixIcon: Icon(LineAwesomeIcons.city,color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -153,7 +177,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _sex,
                         decoration: InputDecoration(
-                          label: Text(sex), 
+                          label: const Text("Gender"), 
                           prefixIcon: Icon(LineAwesomeIcons.venus_mars,color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -174,7 +198,27 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         side: BorderSide.none,
                         shape: const StadiumBorder()
                       ),
-                      onPressed: () => Get..to(()=> ProfilePage()),
+                      onPressed: () async{
+                        
+                        username = _username.text;
+                        email = _email.text;
+                        city = _city.text;
+                        sex = _sex.text;
+                      
+                        await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
+                                'username':username,
+                                'email':email,
+                                'city': city,
+                                'gender':sex
+                });
+                        await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) { //TODO: get user data
+                          usersinfo = value.data()!;
+                          return ;
+                        });
+                        
+                       
+                        Get..off(()=> ProfilePage()); //push replacement
+                      },
                       child: const Text(
                         "Update",
                         style: TextStyle(
