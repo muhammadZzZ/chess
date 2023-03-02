@@ -1,12 +1,16 @@
 
 
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echessapp/screen/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../Utils/constrant.dart';
 import '../../Widgets/repeated_widgets.dart';
 import 'Profile_Screen.dart';
@@ -20,8 +24,11 @@ class ProfileEdite extends StatefulWidget {
 
 class _ProfileEditeState extends State<ProfileEdite> {
 
-  String imagepath="";
+   var PickedFile;
+  late File imagefile;
+  String imageurl = "";
   final picker =ImagePicker(); 
+  bool isgranted = false;
 
   late final TextEditingController _username;
   late final TextEditingController _email;
@@ -29,6 +36,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
   late final TextEditingController _sex;
 
   final  currentuser = FirebaseAuth.instance.currentUser!;
+  final store = FirebaseStorage.instance.ref();
   final FirebaseFirestore firestoreinit = authentications().ffstore;
 
   String username="User name";
@@ -66,7 +74,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
               children: [
                 IconButton(
                   splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
-                  onPressed: ()=> Get..back(),
+                  onPressed: ()=> Get..off(()=> ProfilePage()),
                   icon: Icon(
                     LineAwesomeIcons.arrow_left
                   ),
@@ -97,9 +105,9 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       alignment: Alignment.topCenter,
                       child: CircleAvatar(
                         radius: 90,
-                        backgroundImage: NetworkImage(
-                          usersinfo['pictureurl']
-                        ),
+                        backgroundImage: PickedFile != null ? FileImage(
+                              File(PickedFile.path)
+                        ) : null
                       ),
                     ),
                     Positioned(
@@ -108,12 +116,10 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       child: GestureDetector(
                         //TODO: update the profile iamge 
                         onTap: () async{
-                          final PickedFile =await picker.pickImage(source: ImageSource.gallery);
-                          if(PickedFile != null){
+                             PickedFile =await picker.pickImage(source: ImageSource.gallery); //TODO: pick image from storage
                             setState(() {
-                              imagepath=PickedFile.path;
+                              PickedFile = PickedFile;
                             });
-                          }
                         },
                         child: Container(
                           height: 30,
@@ -204,12 +210,27 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         email = _email.text;
                         city = _city.text;
                         sex = _sex.text;
+                           
+                        if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
+                            setState(() {
+                              imagefile=File(PickedFile.path);
+                            });
+                             var imageupload = await store.child('userimages/${PickedFile.name}')
+                                 .putFile(imagefile); //TODO: put a file to userimage folder in firestore storage
+                                 
+                             var downloadUrl = await imageupload.ref.getDownloadURL(); //TODO: download the url
+                                 setState(() {
+                                   imageurl = downloadUrl;
+                                   });
+                          }
+                      
                       
                         await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
                                 'username':username,
                                 'email':email,
                                 'city': city,
-                                'gender':sex
+                                'gender':sex,
+                                'pictureurl':imageurl
                 });
                         await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) { //TODO: get user data
                           usersinfo = value.data()!;

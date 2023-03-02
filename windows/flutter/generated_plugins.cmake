@@ -3,7 +3,9 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  bitsdojo_window_windows
   desktop_webview_auth
+  permission_handler_windows
   syncfusion_pdfviewer_windows
   url_launcher_windows
 )

@@ -64,7 +64,7 @@ class ProfilePage extends StatelessWidget {
                                     right: 0,
                                     child: GestureDetector(
                                       //Navigate to the edite profile screen 
-                                      onTap: () => Get..to(()=> ProfileEdite()),
+                                      onTap: () => Get..off(()=> ProfileEdite()),
                                       child: Container(
                                         height: 30,
                                         width: 30,
