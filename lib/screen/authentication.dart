@@ -36,12 +36,7 @@ class authentications{
                   usersinfo = value.data()!;
                   return ;
                 });
-                /*usersinfo = {
-                'username': fuser.displayName!,
-                'email': fuser.email!,
-                'pictureurl': fuser.photoURL!
-
-              };*/
+            
               } 
               
              return rresult;
@@ -71,12 +66,7 @@ class authentications{
                   usersinfo = value.data()!;
                   return ;
                 });
-                 /*usersinfo = {
-                'username': googleuser.displayName!,
-                'email': googleuser.email!,
-                'pictureurl': googleuser.photoURL!
-
-              };*/
+                 
               }
               
     return result;
