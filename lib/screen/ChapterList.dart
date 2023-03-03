@@ -9,6 +9,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:get/get.dart';
 
+import '../Utils/constrant.dart';
+
 
 class ChapterList extends StatelessWidget {
     ChapterList({super.key,required this.coursepath,required this.chapname});
@@ -76,7 +78,7 @@ class ChapterList extends StatelessWidget {
                         final Uint8List? pdfdata = await datapathdetail.items[index].getData(databytes);  //getting the data for pdf as bits
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) =>  PDFview(pdfdatabits: pdfdata), //passing pdfdata to pdfview page
+                              builder: (context) =>  PDFview(pdfdatabits: pdfdata, headername: '',), //passing pdfdata to pdfview page
                           ),
                       );
                         } catch (e) {
@@ -123,7 +125,4 @@ class ChapterList extends StatelessWidget {
     
   }
 }
-   Future<ListResult> storage(final _datapath)async {         
-         ListResult listchapter = await _datapath.listAll();
-         return listchapter;      
-   }
+  

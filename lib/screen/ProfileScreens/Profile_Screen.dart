@@ -109,7 +109,11 @@ class ProfilePage extends StatelessWidget {
                               ProfileMenuWidgets(
                                 title: "Change Theme",
                                 icon: LineAwesomeIcons.moon,
-                                Onpress: () {},
+                                Onpress: () {
+
+                                   Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+                                   
+                                },
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(

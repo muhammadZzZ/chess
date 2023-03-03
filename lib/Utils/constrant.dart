@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,3 +46,18 @@ final List<String> Sex =[
 bool isgoogle = false; // TODO: to logout completely from either google or facebook this is global variable
 
 Map<String,dynamic> usersinfo = {};
+
+final List<String> courseimagess = [
+  "https://firebasestorage.googleapis.com/v0/b/cheearn-38f69.appspot.com/o/courseimages%2FHow%20the%20chess%20pieces%20move%20Step%20two%20image.jpeg?alt=media&token=adfcafa1-24be-499b-a36b-ad24d2169fcd",
+  "https://firebasestorage.googleapis.com/v0/b/cheearn-38f69.appspot.com/o/courseimages%2FHow%20to%20install%20a%20chessboard%20step%20one%20image.jpeg?alt=media&token=e3fb878e-f2dc-4f13-9caa-e84e1f4bfe8e",
+  "https://firebasestorage.googleapis.com/v0/b/cheearn-38f69.appspot.com/o/courseimages%2FLearning%20the%20rules%20of%20chess%20step%20three%20image.jpeg?alt=media&token=63e25640-3740-4aa2-bd00-0b4cd5d74167",
+  
+] ;
+
+const databytes = 1024 * 1024 * 1024; //how many megabytes for memory
+
+ Future<ListResult> storage(final _datapath)async {         
+         ListResult listchapter = await _datapath.listAll();
+         return listchapter;      
+}
+

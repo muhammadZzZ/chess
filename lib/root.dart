@@ -14,7 +14,7 @@ class Root extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.light(
         
       ),
       home:    LoginPage(),

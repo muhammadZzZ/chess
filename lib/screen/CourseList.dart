@@ -1,41 +1,59 @@
 
 
+
+
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/screen/ChapterList.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
+
+import 'PDFView.dart';
 
 
 
 class CourseList extends StatelessWidget {
    CourseList({super.key});
   
-  final instdatapath = FirebaseStorage.instance.ref().child("courses/");
+  final instdatapath = FirebaseStorage.instance.ref();
   late ListResult listofcourses ;
+  late ListResult listofimages;
   late List<ListResult> chapnumbers= []; 
   late ListResult chap;
-
+  late String img;
+  late List<String> imglist;
+  
    Future<void>? getcourses(Reference ref)async {
     
     listofcourses = await ref.listAll();
-    for(int i = 0;i < listofcourses.prefixes.length;i++) // for returning course names
+    
+    listofimages = await storage(instdatapath.child("courseimages"));
+   // for(int i = 0;i < listofcourses.items.length;i++)
+   // {
+      // img = await listofimages.items[i].getDownloadURL();
+      // print(i);
+      // imglist[i] = img;
+      
+  //  }
+    
+    /*for(int i = 0;i < listofcourses.prefixes.length;i++) // for returning course names
     {
        chap = await storage(listofcourses.prefixes[i]);
        chapnumbers.add(chap);
       
-    }
+    }*/
     
   }
 
   @override
   Widget build(BuildContext context) {
-    
+    final datapath = instdatapath.child("courses");
     return  
-       FutureBuilder(future: getcourses(instdatapath),
+       FutureBuilder(future: getcourses(datapath),
          builder:(context, snapshot) {
          
           if(snapshot.connectionState == ConnectionState.done){
@@ -54,7 +72,7 @@ class CourseList extends StatelessWidget {
                   padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /4.0),
                   child: ListView.builder(
                     padding: const EdgeInsets.only(top: 0),
-                    itemCount: listofcourses.prefixes.length,
+                    itemCount: listofcourses.items.length,
                     itemBuilder: (BuildContext context ,int index) {
                       
                       return Container(
@@ -67,6 +85,14 @@ class CourseList extends StatelessWidget {
                     child: InkWell(
                       onTap: () async{
                         try{
+                           final datapathdetail = await storage(datapath);
+                        final Uint8List? pdfdata = await datapathdetail.items[index].getData(databytes);  //getting the data for pdf as bits
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) =>  PDFview(pdfdatabits: pdfdata, headername: listofcourses.items[index].name.substring(0,listofcourses.items[index].name.length - 4,)), //passing pdfdata to pdfview page
+                          ),
+                      );
+                          /*
                            final datapathdetail = await storage(instdatapath);
                          final foldername = datapathdetail.prefixes[index].name;
                          final folders = datapathdetail.prefixes[index];
@@ -76,7 +102,7 @@ class CourseList extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) =>  ChapterList(coursepath: foldername,chapname: chapnames,),
                             ),
-                        );
+                        );*/
                         }catch(e){
 
 
@@ -93,19 +119,26 @@ class CourseList extends StatelessWidget {
                         width: 50,
                         child: Row(
                           children: [
-                            const CircleAvatar(
-                                backgroundColor: Color.fromARGB(255, 231, 227, 227),
+                             CircleAvatar(
+                                backgroundColor: const Color.fromARGB(255, 231, 227, 227),
+                                backgroundImage: NetworkImage(
+                                  courseimagess[index % 3]
+                                 // imglist[index]
+                                ),
                             ),
                             const SizedBox(width: 15,),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children:  [
-                                Text(listofcourses.prefixes[index].name,style: const TextStyle(fontSize: 14,
-                                fontWeight: FontWeight.bold),),
-                                const SizedBox(height: 10,),
-                                 Text("${chapnumbers[index].items.length} chapters",style: TextStyle(fontSize: 10),)
-                              ],
-                            ),
+                            
+                              
+                              
+                                Expanded(flex: 15,
+                                  child: Text(listofcourses.items[index].name.substring(0,listofcourses.items[index].name.length - 4),style: const TextStyle(fontSize: 14,
+                                    fontWeight: FontWeight.bold),),
+                                ),
+                               
+                                //const SizedBox(height: 10,),
+                                 //Text("${chapnumbers[index].items.length} chapters",style: TextStyle(fontSize: 10),)
+                              
+                           
                             Flexible(flex: 3,child: Container(),),
                             const Icon(Icons.arrow_forward_rounded),
                           ],

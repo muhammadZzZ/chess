@@ -8,15 +8,17 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PDFview extends StatelessWidget {
-   PDFview({super.key,required this.pdfdatabits});
+   PDFview({super.key,required this.pdfdatabits,required this.headername});
     
      Uint8List? pdfdatabits;
+     String headername;
     
   @override
   Widget build(BuildContext context) {
     
     return   Scaffold(
-      appBar: AppBar(leading: InkWell(
+      appBar: AppBar(title: Center(child: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text(headername)) ,),
+        leading: InkWell(
         onTap: () {
           Navigator.pop(context);
         },
