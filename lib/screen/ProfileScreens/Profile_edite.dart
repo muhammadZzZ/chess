@@ -31,7 +31,6 @@ class _ProfileEditeState extends State<ProfileEdite> {
   bool isgranted = false;
 
   late final TextEditingController _username;
-  late final TextEditingController _email;
   late final TextEditingController _city;
   late final TextEditingController _sex;
 
@@ -40,13 +39,11 @@ class _ProfileEditeState extends State<ProfileEdite> {
   final FirebaseFirestore firestoreinit = authentications().ffstore;
 
   String username="User name";
-  String email="Email";
   String city="City";
   String sex="Gender";
 @override
   void initState() {
     _username = TextEditingController();
-    _email = TextEditingController();
     _city = TextEditingController();
     _sex = TextEditingController();
     super.initState();
@@ -55,7 +52,6 @@ class _ProfileEditeState extends State<ProfileEdite> {
   @override
   void dispose() {
    _username.dispose();
-   _email.dispose();
    _city.dispose();
    _sex.dispose();
     super.dispose();
@@ -156,18 +152,6 @@ class _ProfileEditeState extends State<ProfileEdite> {
                        ),// TextFornField
                       Space(spaceH: 25,),
                      TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                        controller: _email,
-                        decoration: InputDecoration(
-                          label: const Text("Email"), 
-                          prefixIcon: Icon(LineAwesomeIcons.envelope,color: PrimaryColor,),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
-                          floatingLabelStyle: TextStyle(color: PrimaryColor),
-                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 2,color: PrimaryColor))
-                          ),
-                      ) ,// TextFormField
-                      Space(spaceH: 25,),
-                     TextFormField(
                       keyboardType: TextInputType.name,
                         controller: _city,
                         decoration: InputDecoration(
@@ -205,11 +189,14 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         shape: const StadiumBorder()
                       ),
                       onPressed: () async{
-                        
-                        username = _username.text;
-                        email = _email.text;
-                        city = _city.text;
-                        sex = _sex.text;
+                        _username.text != "" ?
+                        username = _username.text : username = usersinfo["username"];
+                        _city.text != "" ?
+                        city = _city.text: city = usersinfo["city"];
+                        _sex.text != "" ?
+                        sex = _sex.text:sex = usersinfo["gender"];
+
+
                            
                         if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
                             setState(() {
@@ -222,12 +209,13 @@ class _ProfileEditeState extends State<ProfileEdite> {
                                  setState(() {
                                    imageurl = downloadUrl;
                                    });
-                          }
+                          }else {
+                          imageurl = usersinfo["pictureurl"];
+                        }
                       
                       
                         await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
                                 'username':username,
-                                'email':email,
                                 'city': city,
                                 'gender':sex,
                                 'pictureurl':imageurl

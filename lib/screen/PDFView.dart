@@ -1,6 +1,7 @@
 
 import 'dart:typed_data';
 
+import 'package:echessapp/Utils/constrant.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,7 +18,8 @@ class PDFview extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return   Scaffold(
-      appBar: AppBar(title: Center(child: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text(headername)) ,),
+      appBar: AppBar(backgroundColor: PrimaryColor,
+        title: Center(child: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text(headername)) ,),
         leading: InkWell(
         onTap: () {
           Navigator.pop(context);

@@ -72,8 +72,9 @@ class _HomePageState extends State<HomePage> {
           
           icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage("assets/images/pro.jpeg"),//NetworkImage(
-              //usersinfo['pictureurl']!
+            backgroundImage: //AssetImage("assets/images/pro.jpeg"),
+            NetworkImage(
+              usersinfo['pictureurl']!)
                ),
              ),
         
@@ -238,7 +239,7 @@ class HomePageWidget extends StatelessWidget {
           ],    
           )
       ),
-      Image(image: AssetImage("assets/images/champion/carlsen1.jpeg"),)
+     // Image(image: AssetImage("assets/images/champion/carlsen2.jpg"),)
     ],
     )
   ,

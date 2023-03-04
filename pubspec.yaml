@@ -103,7 +103,8 @@ flutter:
     - assets/images/chess02.jpg
     - assets/images/chess03.jpg
     - assets/images/champion/
-    - assets/images/champiom/Tigran1.jpg
+    - assets/images/champion/Tigran1.jpg
+    - assets/images/champion/carlsen2.jpg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

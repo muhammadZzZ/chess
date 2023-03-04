@@ -29,7 +29,9 @@ class authentications{
                     'username':fuser.displayName,
                     'uid':fuser.uid,
                     'email':fuser.email,
-                    'pictureurl':fuser.photoURL
+                    'pictureurl':fuser.photoURL,
+                    'city': "",
+                    'gender':"",
                 });
                 }
                 await ffstore.collection('users').doc(fuser.uid).get().then((value) {
@@ -59,6 +61,8 @@ class authentications{
                     'uid':googleuser.uid,
                     'email':googleuser.email,
                     'pictureurl':googleuser.photoURL,
+                    'city': "",
+                    'gender':"",
                     
                 });
                 }
