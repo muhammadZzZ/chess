@@ -1,13 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart';
-import 'package:simple_chess_board/models/board_arrow.dart';
-import 'package:simple_chess_board/models/board_color.dart';
-import 'package:simple_chess_board/widgets/chessboard.dart';
 
 
 import '../Utils/constrant.dart';
-import 'chess.dart';
+import '../Puzzle/chess.dart';
 
 class PuzzleSolveScreen extends StatefulWidget {
   String puzzle;

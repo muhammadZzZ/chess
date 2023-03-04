@@ -32,20 +32,24 @@ class LevelScreen extends StatelessWidget {
                 return InkWell(
                   onTap: () => Get.to(()=>PuzzleSolveScreen(
                     isWhiteToMove: beginnerTactics[i].isWhiteToMove,
-                    puzzle: beginnerTactics[i].puzzle,rePuzzle: beginnerTactics[i].puzzle, puzzleNumber: i,solution: beginnerTactics[i].solution,)), 
+                    puzzle: beginnerTactics[i].puzzle,
+                    rePuzzle: beginnerTactics[i].puzzle, 
+                    puzzleNumber: i,
+                    solution: beginnerTactics[i].solution,
+                    )), 
                   child: Padding(
                           padding: const EdgeInsets.only(bottom: 5),
                           child: Container(
                             decoration: BoxDecoration(
                                 color: PrimaryColor,
-                                borderRadius: BorderRadius.all(
+                                borderRadius:const BorderRadius.all(
                                     Radius.circular(17.0))),
                             height: 50.0,
                             width: 50.0,
                             child: Center(
                                 child: Text(
                               (1 + i).toString(),
-                              style: TextStyle(
+                              style:const  TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),

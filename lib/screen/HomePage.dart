@@ -14,11 +14,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
 import '../Widgets/repeated_widgets.dart';
 import '../models/puzzles/chessPuzzle.dart';
 import 'Chess_play_screen.dart';
-import 'Level_screen.dart';
+import '../Puzzle/Level_screen.dart';
 import 'ProfileScreens/Profile_edite.dart';
 import 'authentication.dart';
 
@@ -32,7 +33,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
 
-  final  cu = FirebaseAuth.instance.currentUser!;
+  //final  cu = FirebaseAuth.instance.currentUser!;
   var currentIndex=0;
   var titleOfScreen="Home Screen";
   
@@ -71,18 +72,18 @@ class _HomePageState extends State<HomePage> {
           
           icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: NetworkImage(
-              usersinfo['pictureurl']!
+            backgroundImage: AssetImage("assets/images/pro.jpeg"),//NetworkImage(
+              //usersinfo['pictureurl']!
                ),
              ),
-        ),
+        
         SizedBox(width: 10,)
         //)
       ],
     ),
       body:currentIndex == 0 ?  HomePageWidget() : 
       currentIndex == 1 ? CourseList() :
-      currentIndex == 2 ?ChessPlayScreen():
+      currentIndex == 2 ?ChampionScreen():
       currentIndex == 3 ? LevelScreen():
                Container(
                   child: Text("Hello"),
@@ -237,6 +238,7 @@ class HomePageWidget extends StatelessWidget {
           ],    
           )
       ),
+      Image(image: AssetImage("assets/images/champion/carlsen1.jpeg"),)
     ],
     )
   ,
