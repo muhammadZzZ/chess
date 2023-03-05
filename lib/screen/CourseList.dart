@@ -27,20 +27,6 @@ class CourseList extends StatelessWidget {
     listofcourses = await ref.listAll();
     
     listofimages = await storage(instdatapath.child("courseimages"));
-   // for(int i = 0;i < listofcourses.items.length;i++)
-   // {
-      // img = await listofimages.items[i].getDownloadURL();
-      // print(i);
-      // imglist[i] = img;
-      
-  //  }
-    
-    /*for(int i = 0;i < listofcourses.prefixes.length;i++) // for returning course names
-    {
-       chap = await storage(listofcourses.prefixes[i]);
-       chapnumbers.add(chap);
-      
-    }*/
     
   }
 
@@ -87,19 +73,9 @@ class CourseList extends StatelessWidget {
                               builder: (context) =>  PDFview(pdfdatabits: pdfdata, headername: listofcourses.items[index].name.substring(0,listofcourses.items[index].name.length - 4,)), //passing pdfdata to pdfview page
                           ),
                       );
-                          /*
-                           final datapathdetail = await storage(instdatapath);
-                         final foldername = datapathdetail.prefixes[index].name;
-                         final folders = datapathdetail.prefixes[index];
-                         final chapnamedetail = await storage(folders);
-                         final chapnames = chapnamedetail.items;
-                        Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) =>  ChapterList(coursepath: foldername,chapname: chapnames,),
-                            ),
-                        );*/
+                         
                         }catch(e){
-
+                          
 
 
                         }
@@ -107,7 +83,7 @@ class CourseList extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.all(15),
-                         decoration: BoxDecoration( color: Colors.white,
+                         decoration: BoxDecoration( //color: Colors.white,
                          borderRadius: BorderRadius.circular(8.0),
                          ),
                         height: 75,
@@ -130,8 +106,7 @@ class CourseList extends StatelessWidget {
                                     fontWeight: FontWeight.bold),),
                                 ),
                                
-                                //const SizedBox(height: 10,),
-                                 //Text("${chapnumbers[index].items.length} chapters",style: TextStyle(fontSize: 10),)
+                                
                               
                            
                             Flexible(flex: 3,child: Container(),),

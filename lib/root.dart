@@ -1,3 +1,5 @@
+import 'package:echessapp/Utils/constrant.dart';
+import 'package:echessapp/models/theme/ThemeManage.dart';
 import 'package:echessapp/screen/HomePage.dart';
 import 'package:echessapp/screen/courselist.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -6,16 +8,43 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'screen/LoginPage.dart';
 
-class Root extends StatelessWidget {
+class Root extends StatefulWidget {
   const Root({super.key});
+
+  @override
+  State<Root> createState() => _RootState();
+}
+
+thememanage tm = thememanage();
+
+class _RootState extends State<Root> {
+
+  @override
+  void dispose() {
+    tm.removeListener(themeListener);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    tm.addListener(themeListener);
+    super.initState();
+  }
+  themeListener(){
+    if (mounted) {
+      setState(() {
+        
+      });
+    }
+  }
   
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(
-        
-      ),
+      theme: light,
+      darkTheme: dark,
+      themeMode: tm.thememod,
       home:    LoginPage(),
       initialRoute: '/',
       routes: {

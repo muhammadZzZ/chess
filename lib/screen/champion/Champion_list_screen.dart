@@ -45,7 +45,7 @@ class ChampionScreen extends StatelessWidget {
                       child: Card(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                         elevation: 15,
-                        color: Colors.white,
+                        //color: Colors.white,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [

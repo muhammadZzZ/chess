@@ -47,9 +47,9 @@ class _HomePageState extends State<HomePage> {
    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [],);
     return Scaffold(
     appBar: AppBar(
-      title: Text(titleOfScreen,style: const TextStyle(color: Colors.black),),
+      title: Text(titleOfScreen,),
       centerTitle: true,
-      backgroundColor: Colors.transparent,
+      //backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
         iconSize: 30,
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
         margin: EdgeInsets.only(bottom: 20,left: 20,right: 20),
         height: gWidth*.155,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(.15),
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                   child: Icon(
                     ListOfIcon[index],
                     size: gWidth*.076,
-                    color: index == currentIndex ? PrimaryColor : Colors.black26,
+                    color: index == currentIndex ? PrimaryColor : null,
                   ),
                 )
               ],
@@ -263,7 +263,7 @@ List<IconData> ListOfIcon =[
 List<String> ListOfTitleScreen=[
   "Home Screen",
   "Course Screen",
-  "Games",
+  "Champions",
   "Puzzles",
 ];
 

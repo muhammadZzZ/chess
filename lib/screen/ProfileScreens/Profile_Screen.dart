@@ -1,3 +1,4 @@
+import 'package:echessapp/root.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -7,9 +8,18 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../Utils/constrant.dart';
 import '../../Widgets/repeated_widgets.dart';
 import 'Profile_edite.dart';
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends StatefulWidget {
+   ProfilePage({super.key});
 
+
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+ 
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,11 +117,21 @@ class ProfilePage extends StatelessWidget {
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
+                                endIcon: false,
                                 title: "Change Theme",
-                                icon: LineAwesomeIcons.moon,
+                                icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
                                 Onpress: () {
 
-                                   Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+                                    
+                                      if (tm.thememod == ThemeMode.light) {
+                                     tm.toggleTheme(true);
+                                   }else {
+                                     tm.toggleTheme(false);
+                                   }
+                                    setState(() {
+                                      
+                                    });
+                                   
                                    
                                 },
                               ),

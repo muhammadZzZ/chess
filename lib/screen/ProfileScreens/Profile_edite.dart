@@ -197,8 +197,8 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         sex = _sex.text:sex = usersinfo["gender"];
 
 
-                           
-                        if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
+                           try {
+                              if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
                             setState(() {
                               imagefile=File(PickedFile.path);
                             });
@@ -212,9 +212,13 @@ class _ProfileEditeState extends State<ProfileEdite> {
                           }else {
                           imageurl = usersinfo["pictureurl"];
                         }
+                           } catch (e) {
+                             
+                           }
+                       
                       
-                      
-                        await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
+                        try {
+                          await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
                                 'username':username,
                                 'city': city,
                                 'gender':sex,
@@ -224,6 +228,10 @@ class _ProfileEditeState extends State<ProfileEdite> {
                           usersinfo = value.data()!;
                           return ;
                         });
+                        } catch (e) {
+                          
+                        }
+                        
                         
                        
                         Get..off(()=> ProfilePage()); //push replacement

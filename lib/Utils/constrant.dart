@@ -61,3 +61,20 @@ const databytes = 1024 * 1024 * 1024; //how many megabytes for memory
          return listchapter;      
 }
 
+bool isdarkmode = false;
+
+
+//themes
+ThemeData light = ThemeData(
+  iconTheme: IconThemeData(color: Colors.black26),
+  brightness: Brightness.light,
+  appBarTheme: AppBarTheme(backgroundColor: Colors.white,titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20))
+);
+
+ThemeData dark = ThemeData(
+  iconTheme: IconThemeData(color: Colors.white24),
+  brightness: Brightness.dark,
+  appBarTheme: AppBarTheme(backgroundColor: DarkThemeColor,titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20))
+  
+);
+
