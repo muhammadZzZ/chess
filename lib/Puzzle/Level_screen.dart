@@ -18,8 +18,9 @@ class LevelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top:20,left: 20,right: 20,bottom: 10),
+      padding: EdgeInsets.only(bottom: 10),
             child: GridView.builder(
+              padding: EdgeInsets.only(top:20,left: 20,right: 25,bottom: 10),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: gWidth > 650 ? 5 : 4,
                 crossAxisSpacing: 10.0,
@@ -36,23 +37,37 @@ class LevelScreen extends StatelessWidget {
                     rePuzzle: beginnerTactics[i].puzzle, 
                     puzzleNumber: i,
                     solution: beginnerTactics[i].solution,
+                    description: beginnerTactics[i].description,
                     )), 
                   child: Padding(
                           padding: const EdgeInsets.only(bottom: 5),
                           child: Container(
+                            //margin: EdgeInsets.all(6),
                             decoration: BoxDecoration(
-                                color: PrimaryColor,
+                                color: Colors.white,
+                                border: Border.all(color: PrimaryColor,width: 2),
                                 borderRadius:const BorderRadius.all(
-                                    Radius.circular(17.0))),
+                                    Radius.circular(17.0)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(.5),
+                                        blurRadius: 10,
+                                        //spreadRadius: 2,
+                                        offset: Offset(5,5)
+                                      ),
+                                    ],
+                                    
+                                    ),
                             height: 50.0,
                             width: 50.0,
                             child: Center(
                                 child: Text(
                               (1 + i).toString(),
-                              style:const  TextStyle(
-                                  color: Colors.white,
+                              style:  TextStyle(
+                                  color: PrimaryColor,
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  ),
                             )),
                           ),
                         )

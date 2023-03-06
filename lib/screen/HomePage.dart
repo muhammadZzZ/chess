@@ -16,12 +16,8 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
-import '../Widgets/repeated_widgets.dart';
-import '../models/puzzles/chessPuzzle.dart';
-import 'Chess_play_screen.dart';
+
 import '../Puzzle/Level_screen.dart';
-import 'ProfileScreens/Profile_edite.dart';
-import 'authentication.dart';
 
 class HomePage extends StatefulWidget {
    HomePage({super.key});
@@ -72,11 +68,13 @@ class _HomePageState extends State<HomePage> {
           
           icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: //AssetImage("assets/images/pro.jpeg"),
-            NetworkImage(
-              usersinfo['pictureurl']!)
-               ),
+            backgroundImage: AssetImage("assets/images/pro.jpeg"),
+            //NetworkImage(
+              //usersinfo['pictureurl']!)
+               //),
              ),
+          ),
+    
         
         SizedBox(width: 10,)
         //)
