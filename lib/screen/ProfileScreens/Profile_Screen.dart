@@ -83,9 +83,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                           color: PrimaryColor,
                                           borderRadius: BorderRadius.circular(100),
                                         ),
-                                        child: const Icon(
+                                        child:  Icon(
                                           LineAwesomeIcons.alternate_pencil,
-                                          color: Colors.black,
+                                          color: Theme.of(context).hintColor,
                                           size: 18,
                                         ),
                                       ),
