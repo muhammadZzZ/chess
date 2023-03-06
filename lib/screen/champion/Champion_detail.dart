@@ -113,7 +113,7 @@ class _DetailChampionState extends State<DetailChampion> {
                           ),
                           ),
                           Space(spaceH: 10,),
-                          Divider(color: Colors.grey,),
+                          const Divider(color: Colors.grey,),
                           Space(spaceH: 35,),
                           //description section
                           //start
@@ -121,7 +121,7 @@ class _DetailChampionState extends State<DetailChampion> {
                             alignment: Alignment.center,
                             child: Text(
                               "Who is ${widget.title}",
-                              style: TextStyle(
+                              style:const TextStyle(
                                 fontSize: 19,
                               ),
                             ),
