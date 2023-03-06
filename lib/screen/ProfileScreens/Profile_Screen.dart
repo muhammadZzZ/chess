@@ -5,6 +5,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Utils/constrant.dart';
 import '../../Widgets/repeated_widgets.dart';
 import 'Profile_edite.dart';
@@ -120,13 +121,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                 endIcon: false,
                                 title: "Change Theme",
                                 icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
-                                Onpress: () {
+                                Onpress: () async{
 
-                                    
+                                    SharedPreferences pref = await SharedPreferences.getInstance();
                                       if (tm.thememod == ThemeMode.light) {
                                      tm.toggleTheme(true);
+                                     pref.setBool("isdarkmode", true);
                                    }else {
                                      tm.toggleTheme(false);
+                                     pref.setBool("isdarkmode", false);
                                    }
                                     setState(() {
                                       
