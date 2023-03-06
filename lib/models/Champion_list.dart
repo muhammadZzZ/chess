@@ -5,6 +5,7 @@ class WorldChampion {
   final String text2;
   final String wct;
   final List? images;
+  final String link;
 
   WorldChampion({
     required this.nameChampion, 
@@ -13,11 +14,13 @@ class WorldChampion {
     required this.text2, 
     required this.wct, 
     required this.images,
+    required this.link,
     });
 
 
   
 }
+
 
 
 // List<WorldChampion> WorldChampionList =[

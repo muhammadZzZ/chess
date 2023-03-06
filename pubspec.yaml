@@ -59,6 +59,7 @@ dependencies:
   image_picker: ^0.8.6+4
   flutter_stateless_chessboard: ^0.0.6
   simple_chess_board: ^0.4.0
+  quickalert: ^1.0.1
  
   
   shared_preferences: ^2.0.18
@@ -103,8 +104,9 @@ flutter:
     - assets/images/chess02.jpg
     - assets/images/chess03.jpg
     - assets/images/champion/
-    - assets/images/champion/Tigran1.jpg
-    - assets/images/champion/carlsen2.jpg
+    - assets/images/chess/
+    - assets/images/finalEdite/
+ 
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
