@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:echessapp/Widgets/repeated_widgets.dart';
 import 'package:echessapp/screen/CourseList.dart';
 import 'package:echessapp/screen/ProfileScreens/Profile_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,6 +15,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import 'champion/Champion_detail.dart';
 import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
 
@@ -80,7 +82,230 @@ class _HomePageState extends State<HomePage> {
         //)
       ],
     ),
-      body:currentIndex == 0 ?  HomePageWidget() : 
+      body:currentIndex == 0 ?  Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 20,),
+              //TODO:CARUOSEL SLIDER SECTION 
+              //START
+              Container(
+          child: CarouselSlider(
+            options: CarouselOptions(
+              height: 180.0,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              aspectRatio: 16 / 9,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              viewportFraction: 0.8,
+            ),
+            items: [
+              Container(
+                margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: PrimaryColor,
+                      blurRadius: 6,
+                      offset: Offset(0,3)
+                      ),],
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/chess01.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: PrimaryColor,
+                      blurRadius: 6,
+                      offset: Offset(0,3)
+                      ),],
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: DecorationImage(
+                    image:AssetImage("assets/images/chess02.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: PrimaryColor,
+                      blurRadius: 6,
+                      offset: Offset(0,3)
+                      ),],
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/chess03.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],    
+            ),
+              ),
+              //eEND OF THE CARUOSAL WIDGETS
+              Space(spaceH: 15,),
+              //THE BODY OF HOME PAGE SCREEN
+              //TODO: CHAMPION LIST
+              Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Championes",style: TextStyle(fontSize: 22,),),
+                  GestureDetector(
+                    onTap: () {
+                     setState(() {
+                       currentIndex=2;
+                     });
+                    },
+                    child:const Text(
+                      "see more",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                         ),
+                        ),
+                      ),
+                    ],
+                  ),
+                 ),
+                 Divider(thickness: 1.2,indent: 13,endIndent: 100,height: 0),
+                 Space(spaceH: 15,),
+                 Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                           height: gHeight/6,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              cacheExtent: 500,
+                              shrinkWrap: true,
+                              physics: AlwaysScrollableScrollPhysics(),
+                             itemCount: 9,
+                             itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.to(()=> DetailChampion(
+                                    title: WorldChampionList[index].nameChampion,
+                                    image: WorldChampionList[index].images![1],
+                                    wct: WorldChampionList[index].wct,
+                                    description: WorldChampionList[index].decription,
+                                    text1: WorldChampionList[index].text1,
+                                    text2: WorldChampionList[index].text2,
+                                    link: WorldChampionList[index].link,
+                                    ));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 15,right: 15,bottom: 20),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Center(
+                                            child: CircleAvatar(
+                                              radius: 40,
+                                              backgroundColor: PrimaryColor.withOpacity(.7),
+                                              child: CircleAvatar(
+                                                radius: 35,
+                                               backgroundImage:AssetImage(WorldChampionList[index].images![0],),
+                                                ),
+                                            ),
+                                          ),
+                                          Space(spaceW: 5,),
+                                        ],
+                                      ),
+                                      Space(spaceH: 5,),
+                                      Text(WorldChampionList[index].nameChampion,style: TextStyle(fontSize: 12),)
+                                    ],
+                                  ),
+                                ),
+                              );
+                             },
+                             ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  //END OF CHAMPION SECTION
+                  Space(spaceH: 10,),
+                  //START OF COURSE SECTION
+                  Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:const [
+                   Text("Courses",style: TextStyle(fontSize: 22,),),
+                    ],
+                  ),
+                 ),
+                 const Divider(thickness: 1.2,indent: 13,endIndent: 100,height: 0),
+                 Space(spaceH: 15,),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  //color: Colors.grey,
+                  width: gWidth,
+                  height: gHeight/8,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() { currentIndex=1;});
+                    },
+                    child: Card(
+                      clipBehavior: Clip.hardEdge,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15),side: BorderSide(color: PrimaryColor,width: 1.4)),
+                      child: Column(
+                         children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage("assets/images/chess/chess.jpg",),
+                                fit: BoxFit.cover,
+                                height: gHeight/8.75,
+                                width: 125,
+                                ),
+                                Space(spaceW: 10,),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Begin learning",style: TextStyle(fontSize: 20),),
+                                    Space(spaceH: 5,),
+                                    Text("Start Learning the course",style: TextStyle(fontSize: 12,color: Colors.grey[600]),),
+                                  ],
+                                ),
+                                Space(spaceW: 40,),
+                                IconButton(
+                                  onPressed: () {
+                                    setState(() {currentIndex=1;});
+                                  }, 
+                                  icon: Icon(LineAwesomeIcons.arrow_right,size: 28,)
+                                  )
+                            ],
+                          ),
+                         ],
+                      ),
+                    ),
+                  ),
+                 ),
+                 
+                 ],
+            ),
+        ),
+      ) : 
       currentIndex == 1 ? CourseList() :
       currentIndex == 2 ?ChampionScreen():
       currentIndex == 3 ? LevelScreen():
@@ -89,7 +314,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
 
-      //TODO:Custom Navigation Bar for scrolling pages 
+      //TODO: CUSTOM NAVIGATION BAR FOR SCROLLING PAGES 
       bottomNavigationBar: Container(
         margin: EdgeInsets.only(bottom: 20,left: 20,right: 20),
         height: gWidth*.155,
@@ -111,7 +336,7 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context, index) => InkWell(
             //index = [0,1,2,3]
             onTap: () {
-              //Changing the variable
+              //UPDATING THE VARIABLES
               setState(() {
                 currentIndex = index;
                 titleOfScreen=ListOfTitleScreen[index];
@@ -122,8 +347,8 @@ class _HomePageState extends State<HomePage> {
             splashColor: Colors.transparent,
             child: Stack(
               children: [
-                //for adding(green for now) color to the Selected item
-                //start
+                //FOR ADDING COLOR FOR THE SELECTED ICON IN NAVIGATION BAR
+                //START
                 SizedBox(
                   width: gWidth*.2125,
                   child: Center(
@@ -139,7 +364,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                   ),
                 ),
-                //end
+                //END
                 
                 Container(
                   width: gWidth*.2125,
@@ -157,97 +382,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-
-class HomePageWidget extends StatelessWidget {
-   HomePageWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-    children: [
-      SizedBox(height: 20,),
-      //TODO:Carousel Slider Scetion 
-      //Start
-      Container(
-        child: CarouselSlider(
-          options: CarouselOptions(
-            height: 180.0,
-            enlargeCenterPage: true,
-            autoPlay: true,
-            aspectRatio: 16 / 9,
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enableInfiniteScroll: true,
-            autoPlayAnimationDuration: Duration(milliseconds: 800),
-            viewportFraction: 0.8,
-          ),
-          items: [
-            Container(
-              margin: EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: PrimaryColor,
-                    blurRadius: 6,
-                    offset: Offset(0,3)
-                    ),],
-                borderRadius: BorderRadius.circular(8.0),
-                image: DecorationImage(
-                  image: AssetImage("assets/images/chess01.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: PrimaryColor,
-                    blurRadius: 6,
-                    offset: Offset(0,3)
-                    ),],
-                borderRadius: BorderRadius.circular(8.0),
-                image: DecorationImage(
-                  image:AssetImage("assets/images/chess02.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: PrimaryColor,
-                    blurRadius: 6,
-                    offset: Offset(0,3)
-                    ),],
-                borderRadius: BorderRadius.circular(8.0),
-                image: DecorationImage(
-                  image: AssetImage("assets/images/chess03.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ],    
-          )
-      ),
-     // Image(image: AssetImage("assets/images/champion/carlsen2.jpg"),)
-    ],
-    )
-  ,
-    );
-    //end
-  }
-
-
-
-
 }
 
 

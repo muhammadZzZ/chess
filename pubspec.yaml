@@ -66,6 +66,7 @@ dependencies:
   shimmer: ^2.0.0
   permission_handler: ^10.2.0
   fast_flutter_driver: ^3.0.0+1
+  youtube_player_flutter: ^8.1.0
   
 
 dependency_overrides:
@@ -99,13 +100,13 @@ flutter:
     - assets/icons/facebook.png
     - assets/icons/apple.png
     - assets/images/pro.jpeg
-    - assets/gif/
     - assets/images/chess01.jpg
     - assets/images/chess02.jpg
     - assets/images/chess03.jpg
     - assets/images/champion/
     - assets/images/chess/
     - assets/images/finalEdite/
+    - assets/images/homePageImages/
  
     
 

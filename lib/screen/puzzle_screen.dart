@@ -392,7 +392,11 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
      confirmBtnColor: Colors.white,
      confirmBtnTextStyle: TextStyle(color:DialogColor),
      onConfirmBtnTap: () {
-       Navigator.pop(context);
+      setState(() {
+        widget.puzzle = widget.rePuzzle;
+        Get.back();
+      });
+       //Navigator.pop(context);
      },
      //barrierColor: PrimaryColor
       );
@@ -419,6 +423,7 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
           setState(() {
             widget.puzzle = widget.rePuzzle;
             turn = 0;
+            
             Navigator.pop(context);
           });
         },
@@ -426,6 +431,7 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
 
 }    
 }
+
 
 //   showDialogWrong({sORw, title, description}) {
 //     showDialog(
