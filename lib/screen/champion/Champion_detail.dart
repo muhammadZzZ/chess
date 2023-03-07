@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 
@@ -34,14 +35,22 @@ class DetailChampion extends StatefulWidget {
 
 
 class _DetailChampionState extends State<DetailChampion> { 
+//   late YoutubePlayerController _controller;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    //final videoID = YoutubePlayer.convertUrlToId(videoURL);
-   
-  }
+// @override
+//   void initState() {
+//      _controller = YoutubePlayerController(
+//       initialVideoId:widget.link,
+//       flags: YoutubePlayerFlags(
+//           mute: false,
+//           autoPlay: true,
+//           disableDragSeek: true,
+//           loop: false,
+//           enableCaption: false),
+//     );
+
+//     super.initState();
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +122,7 @@ class _DetailChampionState extends State<DetailChampion> {
                           ),
                           ),
                           Space(spaceH: 10,),
-                          Divider(color: Colors.grey,),
+                          const Divider(color: Colors.grey,),
                           Space(spaceH: 35,),
                           //description section
                           //start
@@ -121,7 +130,7 @@ class _DetailChampionState extends State<DetailChampion> {
                             alignment: Alignment.center,
                             child: Text(
                               "Who is ${widget.title}",
-                              style: TextStyle(
+                              style:const TextStyle(
                                 fontSize: 19,
                               ),
                             ),
@@ -215,26 +224,30 @@ class _DetailChampionState extends State<DetailChampion> {
                             Space(spaceH: 30,),
                             //best game 
                             //start
-                          //   Align(
-                          //   alignment: Alignment.center,
-                          //   child: Text(
-                          //     "One of the games ${widget.title}",
-                          //     style: TextStyle(
-                          //       fontSize: 19,
-                          //     ),
-                          //   ),
-                          // ),
-                          // Space(spaceH: 10,),
-                          // Container(
-                          //   alignment: Alignment.centerLeft,
-                          //        height: 1.3,width: gWidth*.7,
-                          //        decoration: BoxDecoration(
-                          //          borderRadius: BorderRadius.circular(25),
-                          //          color: PrimaryColor
-                          //        ),
-                          //      ),
-                          //      Space(spaceH: 10,),
-                          
+                            Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "One of the games ${widget.title}",
+                              style: TextStyle(
+                                fontSize: 19,
+                              ),
+                            ),
+                          ),
+                          Space(spaceH: 10,),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                                 height: 1.3,width: gWidth*.7,
+                                 decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.circular(25),
+                                   color: PrimaryColor
+                                 ),
+                               ),
+                               Space(spaceH: 10,),
+                          // YoutubePlayer(
+                          //   controller: _controller,
+                          //   showVideoProgressIndicator: true,
+                          //   onReady: () => debugPrint("Done"),
+                          //   )
                        ],
                      ),
                    ),

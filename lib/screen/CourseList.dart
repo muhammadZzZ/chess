@@ -36,10 +36,8 @@ class CourseList extends StatelessWidget {
     return  
        FutureBuilder(future: getcourses(datapath),
          builder:(context, snapshot) {
-         
           if(snapshot.connectionState == ConnectionState.done){
-            
-                return Scaffold(
+          return Scaffold(
           body: Stack(
             children: [
                 Container(
