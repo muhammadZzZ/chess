@@ -15,7 +15,7 @@ class authentications{
   Future<bool> fbauth()  async{
     bool rresult = false;
    
-              final LoginResult result = await FacebookAuth.instance.login(permissions: (['email', 'public_profile']));
+              final LoginResult result = await FacebookAuth.instance.login(permissions: (['email', 'public_profile',]));
               final ftoken = result.accessToken!.token;
               final AuthCredential Fcred = FacebookAuthProvider.credential(ftoken);
               final Fusercred = await inst.signInWithCredential(Fcred);

@@ -84,11 +84,11 @@ class _DetailChampionState extends State<DetailChampion> {
                child: Container(
                  height: gHeight,
                  clipBehavior: Clip.hardEdge,
-                 decoration:const  BoxDecoration(
-                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
+                 decoration:  BoxDecoration(
+                   borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),
                    topRight: Radius.circular(20),
                    ),
-                   color: Colors.white,
+                   color: Theme.of(context).cardColor,
                  ),
                  child: SingleChildScrollView(
                   controller: scrollController,

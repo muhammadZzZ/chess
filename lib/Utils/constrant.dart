@@ -76,7 +76,7 @@ ThemeData light = ThemeData(
 );
 
 ThemeData dark = ThemeData(
-  iconTheme: IconThemeData(color: Colors.white24),
+  iconTheme: IconThemeData(color: SecondaryColor.withOpacity(0.3)),
   brightness: Brightness.dark,
   appBarTheme: AppBarTheme(backgroundColor: DarkThemeColor,titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20))
   

@@ -123,9 +123,9 @@ class _ProfileEditeState extends State<ProfileEdite> {
                             color: PrimaryColor,
                             borderRadius: BorderRadius.circular(100),
                           ),
-                          child: const Icon(
+                          child:  Icon(
                             LineAwesomeIcons.camera,
-                            color: Colors.black,
+                            color: Theme.of(context).hintColor,
                             size: 18,
                           ),
                         ),
