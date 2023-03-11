@@ -365,18 +365,33 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
                child: Text("Hint",style: TextStyle(fontSize: 20),),
                onPressed: () {
                  setState(() {
-                   flag=true;
+                    QuickAlert.show(
+     context: context,
+     type: QuickAlertType.info,
+     text: widget.description,
+     title: "Hint",
+     confirmBtnColor: Colors.white,
+     confirmBtnTextStyle: TextStyle(color:DialogColor[1]),
+     onConfirmBtnTap: () {
+      setState(() {
+        widget.puzzle = widget.rePuzzle;
+        Get.back();
+      });
+       //Navigator.pop(context);
+     },
+     //barrierColor: PrimaryColor
+      );
                  });
                },
             ),
           ),
           Space(spaceH: 10,),
-          Container(
-            width: gWidth/1.4,
-            height: 75,
-            //color: Colors.red,
-            child:flag ? Text(widget.description,style: TextStyle(fontSize: 15),): Text(""),
-          ),
+          // Container(
+          //   width: gWidth/1.4,
+          //   height: 75,
+          //   //color: Colors.red,
+          //   child:flag ? Text(widget.description,style: TextStyle(fontSize: 15),): Text(""),
+          // ),
           
         ],
       ),
@@ -390,7 +405,7 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
      text: title,
      title: sORw,
      confirmBtnColor: Colors.white,
-     confirmBtnTextStyle: TextStyle(color:DialogColor),
+     confirmBtnTextStyle: TextStyle(color:DialogColor[0]),
      onConfirmBtnTap: () {
       setState(() {
         widget.puzzle = widget.rePuzzle;
@@ -419,6 +434,8 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
         type: QuickAlertType.error,
         title: sORw,
         text: "Try again ..",
+        confirmBtnColor: Colors.white,
+        confirmBtnTextStyle: TextStyle(color:DialogColor[1]),
         onConfirmBtnTap: () {
           setState(() {
             widget.puzzle = widget.rePuzzle;

@@ -14,7 +14,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import '../root.dart';
 import 'champion/Champion_detail.dart';
 import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
@@ -52,11 +53,21 @@ class _HomePageState extends State<HomePage> {
       leading: IconButton(
         iconSize: 30,
         splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
-        onPressed: () {
-          
+        onPressed: ()async {
+          SharedPreferences pref = await SharedPreferences.getInstance();
+                                      if (tm.thememod == ThemeMode.light) {
+                                     tm.toggleTheme(true);
+                                     pref.setBool("isdarkmode", true);
+                                   }else {
+                                     tm.toggleTheme(false);
+                                     pref.setBool("isdarkmode", false);
+                                   }
+                                    setState(() {
+                                      
+                                    });
         },
         icon: Icon(
-          LineAwesomeIcons.bell,
+          tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
           color: PrimaryColor,
           )
       ),
