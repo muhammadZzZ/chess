@@ -63,9 +63,9 @@ class _HomePageState extends State<HomePage> {
           
           icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: //AssetImage("assets/images/pro.jpeg"),
-            NetworkImage(
-              usersinfo['pictureurl']!)
+            backgroundImage: AssetImage("assets/images/pro.jpeg"),
+            // NetworkImage(
+            //   usersinfo['pictureurl']!)
                //),
              ),
           ),

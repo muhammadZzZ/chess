@@ -65,6 +65,9 @@ dependencies:
   fast_flutter_driver: ^3.0.0+1
   youtube_player_flutter: ^8.1.0
   simple_chess_board: ^0.4.0
+  wp_chessboard: ^0.0.3
+  chess_vectors_flutter: ^1.0.18
+  chess: ^0.7.0
   
 
 dependency_overrides:
