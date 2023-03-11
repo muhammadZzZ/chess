@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import 'package:echessapp/screen/puzzle_screen.dart';
 
 import '../Utils/constrant.dart';
-import '../models/puzzles/chessPuzzle.dart';
+import '../models/puzzles_Data_Model/chessPuzzle.dart';
 
 class LevelScreen extends StatelessWidget {
  

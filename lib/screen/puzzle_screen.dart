@@ -2,14 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import 'package:echessapp/Widgets/repeated_widgets.dart';
 
-import '../Puzzle/chess.dart';
+import '../Puzzle_Screens/chess.dart';
 import '../Utils/constrant.dart';
 
 class PuzzleSolveScreen extends StatefulWidget {

@@ -1,18 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
 import 'package:echessapp/screen/CourseList.dart';
 import 'package:echessapp/screen/ProfileScreens/Profile_Screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../root.dart';
@@ -20,7 +12,7 @@ import 'champion/Champion_detail.dart';
 import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
 
-import '../Puzzle/Level_screen.dart';
+import '../Puzzle_Screens/Level_screen.dart';
 
 class HomePage extends StatefulWidget {
    HomePage({super.key});

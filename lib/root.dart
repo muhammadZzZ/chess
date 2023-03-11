@@ -1,7 +1,7 @@
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
+import 'package:echessapp/screen/Chess_play_screen.dart';
 import 'package:echessapp/screen/HomePage.dart';
-import 'package:echessapp/screen/courselist.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -45,11 +45,12 @@ class _RootState extends State<Root> {
       theme: light,
       darkTheme: dark,
       themeMode: tm.thememod,
-      home:    HomePage(),
+      home:   const ChessPlayScreen(),
       initialRoute: '/',
       routes: {
         '/loginpage':(context) => const LoginPage(),
         '/homepage':(context) =>  HomePage(),
+        '/ChessPlayScreen':(context) => const ChessPlayScreen(),
         
       }
       
