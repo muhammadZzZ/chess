@@ -35,7 +35,7 @@ class _RootState extends State<Root> {
     super.initState();
   }
 
-  //TODO: listener to listen if the page theme changed
+  // LISTENER TO LISTEN TO CHANGES HAPPEN TO THE DAMN PAGE
   themeListener(){
     if (mounted) {
       setState(() {

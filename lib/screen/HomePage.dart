@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../root.dart';
 import 'Chess_play_screen.dart';
 import 'champion/Champion_detail.dart';
 import 'champion/Champion_list_screen.dart';
@@ -44,11 +46,21 @@ class _HomePageState extends State<HomePage> {
       leading: IconButton(
         iconSize: 30,
         splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
-        onPressed: () {
-          
+        onPressed: () async{
+           SharedPreferences pref = await SharedPreferences.getInstance();
+                                      if (tm.thememod == ThemeMode.light) {
+                                     tm.toggleTheme(true);
+                                     pref.setBool("isdarkmode", true);
+                                   }else {
+                                     tm.toggleTheme(false);
+                                     pref.setBool("isdarkmode", false);
+                                   }
+                                    setState(() {
+                                      
+                                    });
         },
         icon: Icon(
-          LineAwesomeIcons.bell,
+          tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
           color: PrimaryColor,
           )
       ),
@@ -62,9 +74,9 @@ class _HomePageState extends State<HomePage> {
           
           icon:  CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage("assets/images/pro.jpeg"),
-            // NetworkImage(
-            //   usersinfo['pictureurl']!)
+            backgroundImage: 
+             NetworkImage(
+               usersinfo['pictureurl']!)
                //),
              ),
           ),
