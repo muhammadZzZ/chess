@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import 'Chess_play_screen.dart';
 import 'champion/Champion_detail.dart';
-import '../root.dart';
 import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
 
 import '../Puzzle_Screens/Level_screen.dart';
+import 'chess_play_option.dart';
 
 class HomePage extends StatefulWidget {
    HomePage({super.key});
@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ) : 
       currentIndex == 1 ? CourseList() :
-      currentIndex == 2 ?ChampionScreen():
+      currentIndex == 2 ?ChessOptionScreen():
       currentIndex == 3 ? LevelScreen():
                Container(
                   child: Text("Hello"),

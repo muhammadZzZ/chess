@@ -45,12 +45,12 @@ class _RootState extends State<Root> {
       theme: light,
       darkTheme: dark,
       themeMode: tm.thememod,
-      home:    ChessPlayScreen(),
+      home:    HomePage(),
       initialRoute: '/',
       routes: {
-        '/loginpage':(context) => const LoginPage(),
+        '/loginpage':(context) =>  LoginPage(),
         '/homepage':(context) =>  HomePage(),
-        '/ChessPlayScreen':(context) => const ChessPlayScreen(),
+        //'/ChessPlayScreen':(context) =>  ChessPlayScreen(),
         
       }
       

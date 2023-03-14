@@ -3,10 +3,14 @@ import 'package:chess_vectors_flutter/chess_vectors_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:wp_chessboard/wp_chessboard.dart';
 import '../Utils/constrant.dart';
+import '../Utils/constrant.dart';
+import '../Utils/constrant.dart';
 
 class ChessPlayScreen extends StatefulWidget {
-  const ChessPlayScreen({
+  bool isWhite;
+   ChessPlayScreen({
     super.key,
+    required this.isWhite,
   });
 
   @override
@@ -18,6 +22,21 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
   Chess.Chess chess = Chess.Chess();
   List<List<int>>? lastMove;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    if(widget.isWhite == true){
+    chess = Chess.Chess.fromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    update();
+    }else{
+    chess = Chess.Chess.fromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1");
+    orienatation = BoardOrientation.black;
+    update();
+    }
+
+    super.initState();
+  }
+
   // not working on drop
   Widget squareBuilder(SquareInfo info) {
     Color fieldColor = (info.index + info.rank) % 2 == 0 ? PrimaryColor : SecondaryColor;
@@ -25,9 +44,9 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
 
     if (lastMove != null ) {
       if (lastMove!.first.first == info.rank && lastMove!.first.last == info.file) {
-        //overlayColor = Colors.white.withOpacity(0.4);
+        overlayColor =DragableColor.withOpacity(0.5);
       } else if (lastMove!.last.first == info.rank && lastMove!.last.last == info.file) {
-        //overlayColor = Colors.blueAccent.shade400.withOpacity(0.87);
+        overlayColor = DragableColor.withOpacity(0.7);
       }
     }
 
@@ -101,19 +120,10 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
 
     update();
   }
-  void setDefaultFen() {
-    setState(() {
-      chess = Chess.Chess.fromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
-    });
-    update();
-  }
 
-  void setRandomFen() {
-    setState(() {
-      chess = Chess.Chess.fromFEN("3bK3/4B1P1/3p2N1/1rp3P1/2p2p2/p3n3/P5k1/6q1 w - - 0 1");
-    });
-    update();
-  }
+
+  
+
 
   void update({bool animated = true}) {
     controller.setFen(chess.fen, animation: animated);
@@ -136,6 +146,7 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
   void removeArrows() {
     controller.setArrows([]);
   }
+
 
   BoardOrientation orienatation = BoardOrientation.white;
   void toggleArrows() {
@@ -179,10 +190,10 @@ return Scaffold(
                       onEmptyFieldTap: onEmptyFieldTap,
                       turnTopPlayerPieces: false,
                       ghostOnDrag: true,
-                      dropIndicator: DropIndicatorArgs(
-                        size: gWidth / 4,
-                        color: Colors.white.withOpacity(0.24)
-                      ),
+                      // dropIndicator: DropIndicatorArgs(
+                      //   size: gWidth / 4,
+                      //   color: Colors.white.withOpacity(0.24)
+                      // ),
                       pieceMap: PieceMap(
                         K: (size) => WhiteKing(size: size),
                         Q: (size) => WhiteQueen(size: size),
@@ -200,11 +211,12 @@ return Scaffold(
                     ),
                   ),
                 ),
-                const SizedBox(height: 24),
-                TextButton(
-                  onPressed: setDefaultFen,
-                  child: const Text("Set default Fen"),
-                ),
+                
+                // const SizedBox(height: 24),
+                // TextButton(
+                //   onPressed: setDefaultFen,
+                //   child: const Text("Set default Fen"),
+                // ),
                 // TextButton(
                 //   onPressed: setRandomFen,
                 //   child: const Text("Set random Fen"),
@@ -217,10 +229,10 @@ return Scaffold(
                 //   onPressed: removeArrows,
                 //   child: const Text("Remove Arrows"),
                 // ),
-                TextButton(
-                  onPressed: toggleArrows,
-                  child: const Text("Change Orientation"),
-                )
+                // TextButton(
+                //   onPressed: toggleArrows,
+                //   child: const Text("Change Orientation"),
+                // )
               ],
             ),
         );

@@ -365,17 +365,17 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
                onPressed: () {
                  setState(() {
                     QuickAlert.show(
-     context: context,
-     type: QuickAlertType.info,
-     text: widget.description,
-     title: "Hint",
-     confirmBtnColor: Colors.white,
-     confirmBtnTextStyle: TextStyle(color:DialogColor[1]),
-     onConfirmBtnTap: () {
-      setState(() {
-        widget.puzzle = widget.rePuzzle;
-        Get.back();
-      });
+                     context: context,
+                     type: QuickAlertType.info,
+                     text: widget.description,
+                     title: "Hint",
+                     confirmBtnColor: Colors.white,
+                     confirmBtnTextStyle: TextStyle(color:DialogColor[1]),
+                     onConfirmBtnTap: () {
+                      setState(() {
+                        widget.puzzle = widget.rePuzzle;
+                        Get.back();
+                      });
        //Navigator.pop(context);
      },
      //barrierColor: PrimaryColor
