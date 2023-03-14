@@ -58,15 +58,16 @@ dependencies:
   line_awesome_flutter: ^2.0.0
   image_picker: ^0.8.6+4
   flutter_stateless_chessboard: ^0.0.6
-  simple_chess_board: ^0.4.0
-  quickalert: ^1.0.1
- 
-  
+  quickalert: ^1.0.1 
   shared_preferences: ^2.0.18
   shimmer: ^2.0.0
   permission_handler: ^10.2.0
   fast_flutter_driver: ^3.0.0+1
   youtube_player_flutter: ^8.1.0
+  simple_chess_board: ^0.4.0
+  wp_chessboard: ^0.0.3
+  chess_vectors_flutter: ^1.0.18
+  chess: ^0.7.0
   flutter_secure_storage: ^8.0.0
   connectivity_plus: ^3.0.3
   

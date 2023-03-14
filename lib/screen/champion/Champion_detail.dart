@@ -5,7 +5,6 @@ import 'package:get/route_manager.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 

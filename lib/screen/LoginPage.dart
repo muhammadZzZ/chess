@@ -1,10 +1,8 @@
-import 'dart:convert';
+
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:echessapp/Utils/constrant.dart';
-import 'package:echessapp/screen/authentication.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:echessapp/Firebase/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
