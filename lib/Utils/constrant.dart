@@ -1,5 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
 //
@@ -57,6 +58,13 @@ final List<String> courseimagess = [
 
 const databytes = 1024 * 1024 * 1024; //how many megabytes for memory
 
+Future<ListResult> getcourses(Reference ref)async {
+    
+    ListResult listofcourses = await ref.listAll();
+    return listofcourses;
+    
+  }
+
  Future<ListResult> storage(final _datapath)async {         
          ListResult listchapter = await _datapath.listAll();
          return listchapter;      
@@ -78,4 +86,8 @@ ThemeData dark = ThemeData(
   appBarTheme: AppBarTheme(backgroundColor: DarkThemeColor,titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20))
   
 );
+
+String? tolken;
+
+FlutterSecureStorage fssinst = const FlutterSecureStorage();
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
 import 'package:echessapp/screen/HomePage.dart';
@@ -18,7 +20,8 @@ class Root extends StatefulWidget {
 thememanage tm = thememanage();
 
 class _RootState extends State<Root> {
-
+  Widget page = const LoginPage();
+  
   @override
   void dispose() {
     tm.removeListener(themeListener);
@@ -28,11 +31,26 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     tm.addListener(themeListener);
+    isloggedin();
     super.initState();
   }
+
+  //TODO: listener to listen if the page theme changed
   themeListener(){
     if (mounted) {
       setState(() {
+        
+      });
+    }
+  }
+
+  void isloggedin() async{
+    tolken = await fssinst.read(key: "token");
+    if (tolken != null) {
+      String? conv = await fssinst.read(key: "userdata");
+      usersinfo = json.decode(conv!);
+      setState(() {
+        page = HomePage();
         
       });
     }
@@ -45,7 +63,7 @@ class _RootState extends State<Root> {
       theme: light,
       darkTheme: dark,
       themeMode: tm.thememod,
-      home:    LoginPage(),
+      home:    page,
       initialRoute: '/',
       routes: {
         '/loginpage':(context) => const LoginPage(),
@@ -56,9 +74,3 @@ class _RootState extends State<Root> {
     );
   }
 }
-Future<ListResult> getcourses(Reference ref)async {
-    
-    ListResult listofcourses = await ref.listAll();
-    return listofcourses;
-    
-  }

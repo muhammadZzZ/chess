@@ -154,6 +154,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   icon: LineAwesomeIcons.alternate_sign_out,
                                   Onpress: () async{
                                     await FirebaseAuth.instance.signOut(); //TODO: logout from google
+                                    SharedPreferences shpref = await SharedPreferences.getInstance();
+                                    isgoogle = shpref.getBool("isgoogle") ?? false;
                               if(isgoogle) {
                                 await GoogleSignIn().signOut();
                                 usersinfo = {};
@@ -161,6 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 await FacebookAuth.instance.logOut(); //TODO: logout from facebook
                                 usersinfo = {};
                               }
+                              fssinst.deleteAll();
                                Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); //TODO: return to login screen
                                   },
                                   endIcon: false,

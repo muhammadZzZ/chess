@@ -1,5 +1,6 @@
 
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,6 +12,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../Utils/constrant.dart';
 import '../../Widgets/repeated_widgets.dart';
 import 'Profile_Screen.dart';
@@ -188,53 +191,83 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         side: BorderSide.none,
                         shape: const StadiumBorder()
                       ),
-                      onPressed: () async{
-                        _username.text != "" ?
-                        username = _username.text : username = usersinfo["username"];
-                        _city.text != "" ?
-                        city = _city.text: city = usersinfo["city"];
-                        _sex.text != "" ?
-                        sex = _sex.text:sex = usersinfo["gender"];
+                      onPressed: () {
+                        
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.confirm,
+                          text: 'Do you want to logout',
+                          confirmBtnText: 'Yes',
+                          cancelBtnText: 'No',
+                          onConfirmBtnTap: () async {
+                              _username.text != "" ?
+                              username = _username.text : username = usersinfo["username"];
+                              _city.text != "" ?
+                              city = _city.text: city = usersinfo["city"];
+                              _sex.text != "" ?
+                              sex = _sex.text:sex = usersinfo["gender"];
 
 
-                           try {
-                              if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
-                            setState(() {
-                              imagefile=File(PickedFile.path);
-                            });
-                             var imageupload = await store.child('userimages/${PickedFile.name}')
-                                 .putFile(imagefile); //TODO: put a file to userimage folder in firestore storage
+                              try {
+                                  if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
+                                    setState(() {
+                                      imagefile=File(PickedFile.path);
+                                    });
+                                  var imageupload = await store.child('userimages/${PickedFile.name}')
+                                    .putFile(imagefile); //TODO: put a file to userimage folder in firestore storage
                                  
-                             var downloadUrl = await imageupload.ref.getDownloadURL(); //TODO: download the url
-                                 setState(() {
-                                   imageurl = downloadUrl;
-                                   });
-                          }else {
-                          imageurl = usersinfo["pictureurl"];
-                        }
-                           } catch (e) {
-                             
-                           }
+                                  var downloadUrl = await imageupload.ref.getDownloadURL(); //TODO: download the url
+                                    setState(() {
+                                      imageurl = downloadUrl;
+                                    });
+                                  }else {
+                                      imageurl = usersinfo["pictureurl"];
+                                  }
+                                } catch (e) {
+                                    QuickAlert.show(
+                                      context: context,
+                                      type: QuickAlertType.error,
+                                      title: 'error',
+                                      text: "picture couldn't upload, please try again...",
+                                      confirmBtnColor: Colors.white,
+                                      confirmBtnTextStyle: TextStyle(color: Colors.black)
+                                    );
+          
+                                }
                        
                       
-                        try {
-                          await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
-                                'username':username,
-                                'city': city,
-                                'gender':sex,
-                                'pictureurl':imageurl
-                });
-                        await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) { //TODO: get user data
-                          usersinfo = value.data()!;
-                          return ;
-                        });
-                        } catch (e) {
-                          
-                        }
+                                try {
+                                    await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
+                                      'username':username,
+                                      'city': city,
+                                      'gender':sex,
+                                      'pictureurl':imageurl
+                                    });
+                                await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) { //TODO: get user data
+                                    usersinfo = value.data()!;
+                                 return ;
+                                });
+                                final conv = json.encode(usersinfo);
+                                  await fssinst.write(key: "userdata", value: conv);
+                                  } catch (e) {
+                                      QuickAlert.show(
+                                      context: context,
+                                      type: QuickAlertType.error,
+                                      title: 'Oops..',
+                                      text: "something happened! please try again...",
+                                      confirmBtnColor: Colors.white,
+                                      confirmBtnTextStyle: TextStyle(color: Colors.black)
+                                    );
+                                  }
                         
                         
                        
-                        Get..off(()=> ProfilePage()); //push replacement
+                                Get..off(()=> ProfilePage()); //push replacement
+                          },
+                          confirmBtnColor: PrimaryColor,
+                          );
+                          
+                       
                       },
                       child: const Text(
                         "Update",

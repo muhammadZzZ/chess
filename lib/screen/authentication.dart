@@ -1,5 +1,7 @@
 
 
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,7 +40,9 @@ class authentications{
                   usersinfo = value.data()!;
                   return ;
                 });
-            
+                final conv = json.encode(usersinfo);
+                await fssinst.write(key: "token", value: Fusercred.credential!.token.toString());
+                await fssinst.write(key: "userdata", value: conv);
               } 
               
              return rresult;
@@ -70,7 +74,11 @@ class authentications{
                   usersinfo = value.data()!;
                   return ;
                 });
-                 
+                 final conv = json.encode(usersinfo);
+                await fssinst.write(key: "token", value: usercred.credential!.token.toString());
+                await fssinst.write(key: "userdata", value: conv);
+                
+                
               }
               
     return result;

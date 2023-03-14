@@ -43,8 +43,7 @@ class _HomePageState extends State<HomePage> {
     super.setState(fn);
   }
   Widget build(BuildContext context) {
-   //TODO: used to hide android status and navigation bar
-   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [],);
+   
     return Scaffold(
     appBar: AppBar(
       title: Text(titleOfScreen,),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/screen/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +13,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'HomePage.dart';
 
@@ -130,33 +134,20 @@ class FacebookButton extends StatelessWidget {
 
                  final authentications authf = authentications(); //fb authentication
                  await authf.fbauth();
+                 print("111111111111111111111111111111111111");
+                 SharedPreferences shpref = await SharedPreferences.getInstance();
+               shpref.setBool("isgoogle", false);
                   Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
 
-          }catch(e){
-              showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('error accured'),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: const <Widget>[
-              Text('please try again later!'),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            child: const Text('ok'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
+          } catch(e){
+            QuickAlert.show(
+              context: context,
+              type: QuickAlertType.error,
+              title: 'error',
+              text: "Please try again....",
+              confirmBtnColor: Colors.white,
+              confirmBtnTextStyle: TextStyle(color: Colors.black)
+                );
           }
              
         },
@@ -205,34 +196,19 @@ class LoginButton extends StatelessWidget {
 
                authentications authg = authentications(); //google authentication
                await authg.gauth();
-               isgoogle = true;
+               SharedPreferences shpref = await SharedPreferences.getInstance();
+               shpref.setBool("isgoogle", true);
                Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
                 
-            }catch(e){
-                    showDialog<void>(
-                          context: context,
-                          barrierDismissible: false, 
-                          builder: (BuildContext context) {
-                          return AlertDialog(
-                          title: const Text('error accured'),
-                          content: SingleChildScrollView(
-                          child: ListBody(
-                          children: const <Widget>[
-                          Text('please try again later!'),
-                          ],
-                        ),
-                      ),
-                      actions: <Widget>[
-                              TextButton(
-                                child: const Text('ok'),
-                                  onPressed: () {
-                                        Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
+            } catch(e){
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.error,
+                      title: 'error',
+                      text: "Please try again....",
+                      confirmBtnColor: Colors.white,
+                      confirmBtnTextStyle: const TextStyle(color: Colors.black)
+                );
             }
            
         },
