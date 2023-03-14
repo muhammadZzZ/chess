@@ -86,6 +86,7 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
       hintMap.set(rank, file, (size) => MoveHint(
         size: size,
         onPressed: () => doMove(move),
+        color: Colors.grey.withOpacity(.8),
       ));
     }
     controller.setHints(hintMap);
@@ -162,6 +163,7 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
   @override
   Widget build(BuildContext context) {
 return Scaffold(
+  appBar: AppBar(),
         body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

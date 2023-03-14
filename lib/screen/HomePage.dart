@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                   GestureDetector(
                     onTap: () {
                      setState(() {
-                       currentIndex=2;
+                       Get.to(()=>ChampionScreen());
                      });
                     },
                     child:const Text(

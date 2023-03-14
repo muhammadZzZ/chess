@@ -11,94 +11,119 @@ class ChampionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.only(bottom: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-               height: gHeight,
-                child: ListView.builder(
-                  cacheExtent: 500,
-                  shrinkWrap: true,
-                  physics: AlwaysScrollableScrollPhysics(),
-                 itemCount: WorldChampionList.length,
-                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Get.to(()=> DetailChampion(
-                        title: WorldChampionList[index].nameChampion,
-                        image: WorldChampionList[index].images![1],
-                        wct: WorldChampionList[index].wct,
-                        description: WorldChampionList[index].decription,
-                        text1: WorldChampionList[index].text1,
-                        text2: WorldChampionList[index].text2,
-                        link: WorldChampionList[index].link,
-                        ));
-                    },
-                    child: Container(
-                      height: gHeight*.13,
-                      //margin: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(left: 15,right: 15,bottom: 20),
-                      child: Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                        elevation: 15,
-                        //color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Row(
-                              children: [
-                                Space(spaceW: 5,),
-                                Center(
-                                  child: CircleAvatar(
-                                    radius: 40,
-                                    backgroundColor: PrimaryColor.withOpacity(.7),
-                                    child: CircleAvatar(
-                                      radius: 35,
-                                      //margin: EdgeInsets.all(16),
-                                     backgroundImage:AssetImage(WorldChampionList[index].images![0],),
-                                                      ),
-                                  ),
-                                ),
-                                Space(spaceW: 15,),
-                                Text(
-                                  WorldChampionList[index].nameChampion,
-                                  style: TextStyle(
-                                    color: PrimaryColor,
-                                    fontSize: 16
-                                  ),
-                                  ),
-                                  Space(spaceW: 30,),
-                              ],
-                            ),
-                            IconButton(
-                              color: Colors.grey,
-                                onPressed: () {
-                                  Get.to(()=> DetailChampion(
-                                    title: WorldChampionList[index].nameChampion,
-                                    image: WorldChampionList[index].images![1],
-                                    wct: WorldChampionList[index].wct,
-                                    description: WorldChampionList[index].decription,
-                                    text1: WorldChampionList[index].text1,
-                                    text2: WorldChampionList[index].text2,
-                                    link: WorldChampionList[index].link,
-                                    ));
-                                }, 
-                                icon: Icon(LineAwesomeIcons.arrow_right))
-                          ],
-                        ),
-                    ),
-                    ),
-                  );
-                 },
-                 ),
-              ),
-              
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Champion's",
+          style: TextStyle(
+
           ),
         ),
-      );
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          iconSize: 25,
+          splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
+          onPressed: () => Get.back(),
+           icon: Icon(
+            LineAwesomeIcons.arrow_left,
+            color: PrimaryColor,
+           ),),
+
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+            padding: EdgeInsets.only(bottom: 10),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                   height: gHeight,
+                    child: ListView.builder(
+                      cacheExtent: 500,
+                      shrinkWrap: true,
+                      physics: AlwaysScrollableScrollPhysics(),
+                     itemCount: WorldChampionList.length,
+                     itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Get.to(()=> DetailChampion(
+                            title: WorldChampionList[index].nameChampion,
+                            image: WorldChampionList[index].images![1],
+                            wct: WorldChampionList[index].wct,
+                            description: WorldChampionList[index].decription,
+                            text1: WorldChampionList[index].text1,
+                            text2: WorldChampionList[index].text2,
+                            link: WorldChampionList[index].link,
+                            ));
+                        },
+                        child: Container(
+                          height: gHeight*.13,
+                          //margin: EdgeInsets.all(20),
+                          margin: EdgeInsets.only(left: 15,right: 15,bottom: 20),
+                          child: Card(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                            elevation: 15,
+                            //color: Colors.white,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Row(
+                                  children: [
+                                    Space(spaceW: 5,),
+                                    Center(
+                                      child: CircleAvatar(
+                                        radius: 40,
+                                        backgroundColor: PrimaryColor.withOpacity(.7),
+                                        child: CircleAvatar(
+                                          radius: 35,
+                                          //margin: EdgeInsets.all(16),
+                                         backgroundImage:AssetImage(WorldChampionList[index].images![0],),
+                                                          ),
+                                      ),
+                                    ),
+                                    Space(spaceW: 15,),
+                                    Text(
+                                      WorldChampionList[index].nameChampion,
+                                      style: TextStyle(
+                                        color: PrimaryColor,
+                                        fontSize: 16
+                                      ),
+                                      ),
+                                      Space(spaceW: 30,),
+                                  ],
+                                ),
+                                IconButton(
+                                  color: Colors.grey,
+                                    onPressed: () {
+                                      Get.to(()=> DetailChampion(
+                                        title: WorldChampionList[index].nameChampion,
+                                        image: WorldChampionList[index].images![1],
+                                        wct: WorldChampionList[index].wct,
+                                        description: WorldChampionList[index].decription,
+                                        text1: WorldChampionList[index].text1,
+                                        text2: WorldChampionList[index].text2,
+                                        link: WorldChampionList[index].link,
+                                        ));
+                                    }, 
+                                    icon: Icon(LineAwesomeIcons.arrow_right))
+                              ],
+                            ),
+                        ),
+                        ),
+                      );
+                     },
+                     ),
+                  ),
+                  
+                ],
+              ),
+            ),
+          ),
+      ),
+    );
   }
 }
 

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart';
 import 'package:get/get.dart';
@@ -43,10 +42,14 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: 
-          IconButton(
-            onPressed: ()=> Get.back(), 
-            icon: Icon(LineAwesomeIcons.arrow_left,color: PrimaryColor,size: 30,)),
+        leading:IconButton(
+          iconSize: 25,
+          splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
+          onPressed: () => Get.back(),
+           icon: Icon(
+            LineAwesomeIcons.arrow_left,
+            color: PrimaryColor,
+           ),),
       
       ),
       body: Column(
