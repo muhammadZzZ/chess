@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   //final  cu = FirebaseAuth.instance.currentUser!;
   var currentIndex=0;
-  var titleOfScreen="Home Screen";
+  var titleOfScreen='titleofhome';
   
   @override
   void setState(VoidCallback fn) {
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
    
     return Scaffold(
     appBar: AppBar(
-      title: Text(titleOfScreen,),
+      title: Text(titleOfScreen.tr),
       centerTitle: true,
       //backgroundColor: Colors.transparent,
       elevation: 0,
@@ -343,7 +343,7 @@ class _HomePageState extends State<HomePage> {
               //UPDATING THE VARIABLES
               setState(() {
                 currentIndex = index;
-                titleOfScreen=ListOfTitleScreen[index];
+                titleOfScreen=ListOfTitleScreen[index].tr;
                 HapticFeedback.lightImpact();
               });
             },
@@ -397,10 +397,10 @@ List<IconData> ListOfIcon =[
 ];
 
 List<String> ListOfTitleScreen=[
-  "Home Screen",
-  "Course Screen",
-  "Champions",
-  "Puzzles",
+  'titleofhome',
+  'titleofcourse',
+  'titleofplay',
+  'titleofpuzzle',
 ];
 
 

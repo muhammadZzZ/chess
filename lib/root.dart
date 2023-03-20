@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:echessapp/Utils/constrant.dart';
+import 'package:echessapp/languages.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
 import 'package:echessapp/screen/Chess_play_screen.dart';
 import 'package:echessapp/screen/HomePage.dart';
@@ -59,6 +60,9 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      locale: iskurdish ? Locale("ar","IQ") : Locale("en","US"),
+      fallbackLocale: Locale('en','US'),
+      translations: lang(),
       debugShowCheckedModeBanner: false,
       theme: light,
       darkTheme: dark,
