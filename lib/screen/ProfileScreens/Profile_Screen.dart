@@ -148,9 +148,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                   if (Get.locale.toString() == 'ar_IQ') {
                                     Get.updateLocale(Locale('en','US'));
                                     sh.setBool("iskurdish", false);
+                                    iskurdish = false;
                                   } else {
                                     Get.updateLocale(Locale('ar','IQ'));
                                     sh.setBool("iskurdish", true);
+                                    iskurdish = true;
                                   }
                                   
                                 },

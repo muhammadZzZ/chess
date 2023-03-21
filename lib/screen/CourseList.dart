@@ -32,7 +32,7 @@ class CourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final datapath = instdatapath.child("courses");
+    Reference datapath = iskurdish ? instdatapath.child("kurdishcourses"): instdatapath.child("courses");
     return  
        FutureBuilder(future: getcourses(datapath),
          builder:(context, snapshot) {
@@ -41,7 +41,7 @@ class CourseList extends StatelessWidget {
           body: Stack(
             children: [
                 Container(
-                  padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /6.3 ,left: 30),
+                  padding:  EdgeInsets.only(top: MediaQuery. of(context). size. height /6.3 ,left: 30,right: 30),
                   color: PrimaryColor,
                   height: MediaQuery. of(context). size. height /3.3,
                   width: double.infinity,
