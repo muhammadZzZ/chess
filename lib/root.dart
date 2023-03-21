@@ -56,14 +56,14 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      locale: iskurdish ? Locale("ar","IQ") : Locale("en","US"),
+      locale: iskurdish ? Locale("fa","IR") : Locale("en","US"),
       fallbackLocale: Locale('en','US'),
       translations: lang(),
       debugShowCheckedModeBanner: false,
       theme: light,
       darkTheme: dark,
       themeMode: tm.thememod,
-      home:    page,
+      home:    HomePage(),
       initialRoute: '/',
       routes: {
         '/loginpage':(context) =>  LoginPage(),

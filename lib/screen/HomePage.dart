@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar: AppBar(
-      title: Text(titleOfScreen),
+      title: Text(titleOfScreen.tr),
       centerTitle: true,
       //backgroundColor: Colors.transparent,
       elevation: 0,
@@ -172,16 +172,16 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Championes",style: TextStyle(fontSize: 22,),),
+                 Text("titleofchamp".tr,style: const TextStyle(fontSize: 22,),),
                   GestureDetector(
                     onTap: () {
                      setState(() {
-                       Get.off(()=>ChangeLan());
+                       Get.off(()=>const ChangeLan());
                      });
                     },
-                    child:const Text(
-                      "see more",
-                      style: TextStyle(
+                    child: Text(
+                      "seeMore".tr,
+                      style:const TextStyle(
                         fontSize: 12,
                         color: Colors.grey,
                          ),
@@ -259,8 +259,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:const [
-                   Text("Courses",style: TextStyle(fontSize: 22,),),
+                children: [
+                   Text("titleofcourse".tr,style: TextStyle(fontSize: 22,),),
                     ],
                   ),
                  ),
@@ -292,9 +292,9 @@ class _HomePageState extends State<HomePage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Begin learning",style: TextStyle(fontSize: 20),),
+                                    Text("BeginLearning".tr,style: TextStyle(fontSize: 20),),
                                     Space(spaceH: 5,),
-                                    Text("Start Learning the course",style: TextStyle(fontSize: 12,color: Colors.grey[600]),),
+                                    Text("StartLear".tr,style: TextStyle(fontSize: 12,color: Colors.grey[600]),),
                                   ],
                                 ),
                                 Space(spaceW: 40,),
@@ -302,7 +302,10 @@ class _HomePageState extends State<HomePage> {
                                   onPressed: () {
                                     setState(() {currentIndex=1;});
                                   }, 
-                                  icon: Icon(LineAwesomeIcons.arrow_right,size: 28,)
+                                  icon: Icon(
+                                    LineAwesomeIcons.arrow_right,
+                                    size: 28,
+                                    )
                                   )
                             ],
                           ),
@@ -317,7 +320,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ) : 
       currentIndex == 1 ? CourseList() :
-      currentIndex == 2 ?ChessOptionScreen():
+      currentIndex == 2 ? const ChampionScreen():
       currentIndex == 3 ? LevelScreen():
                Container(
                   child: Text("Hello"),
@@ -349,7 +352,7 @@ class _HomePageState extends State<HomePage> {
               //UPDATING THE VARIABLES
               setState(() {
                 currentIndex = index;
-                titleOfScreen=ListOfTitleScreen[index].tr;
+                titleOfScreen=ListOfTitleScreen[index];
                 HapticFeedback.lightImpact();
               });
             },
@@ -404,10 +407,10 @@ List<IconData> ListOfIcon =[
 
 //LIST OF TITLE PAGE FOR SCREENS
 List ListOfTitleScreen=[
-  "Home Page",
-  "Course Page",//coursePage
-  "Champion Page",//champ
-  "Puzzle Page",//puzzle
+  "titleofhome",
+  "titleofcourse",//coursePage
+  "titleofchamp",//champ
+  "titleofpuzzle",//puzzle
 ];
 
 

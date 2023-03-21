@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Space(spaceW: 70,),
               Text(
-                "Profile Screen",
+                "ProfileTitle".tr,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400
@@ -65,11 +65,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                     alignment: Alignment.topCenter,
                                     child:  CircleAvatar(
                                       radius: 90,
-                                      backgroundImage: NetworkImage(
-                                        usersinfo['pictureurl']!,
+                                      backgroundImage: AssetImage("assets/images/pro.jpeg")
+                                      //NetworkImage(usersinfo['pictureurl']!,
                                       ),
                                     ),
-                                  ),
+                                  
                                   Positioned(
                                     bottom: 0,
                                     right: 0,
@@ -96,14 +96,16 @@ class _ProfilePageState extends State<ProfilePage> {
                               Space(spaceH: 20),
                               //TODO:return the ser name 
                               Text(
-                                usersinfo['username']!,
+                                'test',
+                                //usersinfo['username']!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                               Space(spaceH: 5),
                               //TODO:return the user email
                               Text(
-                                usersinfo['email']!,
+                                'test',
+                                //usersinfo['email']!,
                                 style: TextStyle(fontSize: 16),
                               ),
                               Space(spaceH: 30),
@@ -112,14 +114,14 @@ class _ProfilePageState extends State<ProfilePage> {
                               //MENU
                               //TODO: creating MENU
                               ProfileMenuWidgets(
-                                title: "Edit Profile",
+                                title: "EditPro".tr,
                                 icon: LineAwesomeIcons.user_edit,
                                 Onpress: () => Get..off(()=> ProfileEdite()),
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
                                 endIcon: false,
-                                title: "Change Theme",
+                                title: "theme".tr,
                                 icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
                                 Onpress: () async{
 
@@ -141,7 +143,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
                                 endIcon: false,
-                                title: "change language",
+                                title: "lan".tr,
                                 icon: LineAwesomeIcons.language,
                                 Onpress: () async{
                                   SharedPreferences sh = await SharedPreferences.getInstance();
@@ -161,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
-                                  title: "Logout",
+                                  title: "logout".tr,
                                   icon: LineAwesomeIcons.alternate_sign_out,
                                   Onpress: () async{
                                     await FirebaseAuth.instance.signOut(); //TODO: logout from google
