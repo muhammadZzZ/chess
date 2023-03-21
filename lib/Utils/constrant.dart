@@ -75,6 +75,7 @@ Future<ListResult> getcourses(Reference ref)async {
 }
 
 bool isdarkmode = false;
+bool iskurdish = false;
 
 
 //themes
@@ -95,7 +96,6 @@ String? tolken;
 
 FlutterSecureStorage fssinst = const FlutterSecureStorage();
 
-
-
+Locale loc = Locale("en","US");
 
 

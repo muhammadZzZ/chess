@@ -21,5 +21,7 @@ void main() async{
   isdarkmode = prefinst.getBool("isdarkmode") ?? false;
   tm.toggleTheme(isdarkmode);
 
+  iskurdish = prefinst.getBool("iskurdish") ?? false ;
+  
   runApp(const Root());
 }
