@@ -140,9 +140,20 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               Space(spaceH: 10),
                               ProfileMenuWidgets(
-                                title: "About us",
-                                icon: LineAwesomeIcons.info,
-                                Onpress: () {},
+                                endIcon: false,
+                                title: "change language",
+                                icon: LineAwesomeIcons.language,
+                                Onpress: () async{
+                                  SharedPreferences sh = await SharedPreferences.getInstance();
+                                  if (Get.locale.toString() == 'ar_IQ') {
+                                    Get.updateLocale(Locale('en','US'));
+                                    sh.setBool("iskurdish", false);
+                                  } else {
+                                    Get.updateLocale(Locale('ar','IQ'));
+                                    sh.setBool("iskurdish", true);
+                                  }
+                                  
+                                },
                               ),
                               Space(spaceH: 10),
                               const Divider(
