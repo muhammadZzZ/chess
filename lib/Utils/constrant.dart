@@ -49,7 +49,7 @@ final List<String> Sex =[
   "Female",
 ];
 
-bool isgoogle = false; // TODO: to logout completely from either google or facebook this is global variable
+bool isgoogle = false; // TODO: TO LOGOUT COMPLETY FROM EITHER GOOGLE OR FACEBOOK, THIS IS GLOBAL VARIABLE 
 
 Map<String,dynamic> usersinfo = {};
 
@@ -94,4 +94,8 @@ ThemeData dark = ThemeData(
 String? tolken;
 
 FlutterSecureStorage fssinst = const FlutterSecureStorage();
+
+
+
+
 

@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
+import 'package:echessapp/changeLan.dart';
+import 'package:echessapp/models/Title_List_Name.dart';
 import 'package:echessapp/screen/CourseList.dart';
 import 'package:echessapp/screen/ProfileScreens/Profile_Screen.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +10,12 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../root.dart';
-import 'Chess_play_screen.dart';
 import 'champion/Champion_detail.dart';
 import 'champion/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
-
 import '../Puzzle_Screens/Level_screen.dart';
 import 'chess_play_option.dart';
+
 
 class HomePage extends StatefulWidget {
    HomePage({super.key});
@@ -35,11 +36,16 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement setState
     super.setState(fn);
   }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   Widget build(BuildContext context) {
-   
     return Scaffold(
     appBar: AppBar(
-      title: Text(titleOfScreen,),
+      title: Text(titleOfScreen),
       centerTitle: true,
       //backgroundColor: Colors.transparent,
       elevation: 0,
@@ -48,16 +54,16 @@ class _HomePageState extends State<HomePage> {
         splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
         onPressed: () async{
            SharedPreferences pref = await SharedPreferences.getInstance();
-                                      if (tm.thememod == ThemeMode.light) {
-                                     tm.toggleTheme(true);
-                                     pref.setBool("isdarkmode", true);
-                                   }else {
-                                     tm.toggleTheme(false);
-                                     pref.setBool("isdarkmode", false);
-                                   }
-                                    setState(() {
-                                      
-                                    });
+             if (tm.thememod == ThemeMode.light) {
+                tm.toggleTheme(true);
+                pref.setBool("isdarkmode", true);
+              }else {
+                tm.toggleTheme(false);
+                pref.setBool("isdarkmode", false);
+              }
+               setState(() {
+                
+               });
         },
         icon: Icon(
           tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
@@ -75,8 +81,8 @@ class _HomePageState extends State<HomePage> {
           icon:  CircleAvatar(
             radius: 30,
             backgroundImage: 
-             NetworkImage(
-               usersinfo['pictureurl']!)
+            AssetImage("assets/images/pro.jpeg")
+             //NetworkImage(usersinfo['pictureurl']!)
                //),
              ),
           ),
@@ -170,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                   GestureDetector(
                     onTap: () {
                      setState(() {
-                       Get.to(()=>ChampionScreen());
+                       Get.off(()=>ChangeLan());
                      });
                     },
                     child:const Text(
@@ -241,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                              },
                              ),
                           ),
-
+                          
                         ],
                       ),
                     ),
@@ -388,7 +394,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
+//LIST OF ICONS FOR NAVIGATION BAR
 List<IconData> ListOfIcon =[
   LineAwesomeIcons.home,
   LineAwesomeIcons.book,
@@ -396,14 +402,18 @@ List<IconData> ListOfIcon =[
   LineAwesomeIcons.puzzle_piece,
 ];
 
-List<String> ListOfTitleScreen=[
-  "Home Screen",
-  "Course Screen",
-  "Champions",
-  "Puzzles",
+//LIST OF TITLE PAGE FOR SCREENS
+List ListOfTitleScreen=[
+  "Home Page",
+  "Course Page",//coursePage
+  "Champion Page",//champ
+  "Puzzle Page",//puzzle
 ];
 
 
+
+
+//
 class Place {
   Place([this.title = '', this.description = '', this.image='',     this.value=0.0]);
   String title;

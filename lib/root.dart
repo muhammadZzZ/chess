@@ -1,14 +1,11 @@
 import 'dart:convert';
-
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
-import 'package:echessapp/screen/Chess_play_screen.dart';
 import 'package:echessapp/screen/HomePage.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-
 import 'screen/LoginPage.dart';
+
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -39,7 +36,6 @@ class _RootState extends State<Root> {
   themeListener(){
     if (mounted) {
       setState(() {
-        
       });
     }
   }
