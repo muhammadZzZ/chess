@@ -125,6 +125,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
                                 Onpress: () async{
 
+                                    // CHECK THE CURRENT THEME MODE AND SWITCH IT AS THE BUTTON PRESSED
+                                    //START            
                                     SharedPreferences pref = await SharedPreferences.getInstance();
                                       if (tm.thememod == ThemeMode.light) {
                                      tm.toggleTheme(true);
@@ -137,7 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       
                                     });
                                    
-                                   
+                                   //END
                                 },
                               ),
                               Space(spaceH: 10),
@@ -146,6 +148,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 title: "lan".tr,
                                 icon: LineAwesomeIcons.language,
                                 Onpress: () async{
+
+                                  // CHECK THE CURRENT LANGUAGE AND SWITCH IT AS THE BUTTON PRESSED
+                                  //START 
                                   SharedPreferences sh = await SharedPreferences.getInstance();
                                   if (Get.locale.toString() == 'ar_IQ') {
                                     Get.updateLocale(Locale('en','US'));
@@ -156,7 +161,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     sh.setBool("iskurdish", true);
                                     iskurdish = true;
                                   }
-                                  
+                                  //END
+
                                 },
                               ),
                               Space(spaceH: 10),
@@ -168,9 +174,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                   title: "logout".tr,
                                   icon: LineAwesomeIcons.alternate_sign_out,
                                   Onpress: () async{
-                                    await FirebaseAuth.instance.signOut(); //TODO: logout from google
+
+                                    // LOGOUT FROM FIREBASE
+                                    await FirebaseAuth.instance.signOut(); 
                                     SharedPreferences shpref = await SharedPreferences.getInstance();
+                                    
+                                    // CHECK IF THE USER LOGGED IN WITH GOOGLE
                                     isgoogle = shpref.getBool("isgoogle") ?? false;
+
+                              // IF THE USER LOGGED IN WITH GOOGLE THEN IT WILL LOG OUT FROM GOOGLE AND DELETE USER INFO IN DEVICE OTHERWISE THEN IT MUST BE FACEBOOK WHICH IT WILL DO THE SAME
+                              //START     
                               if(isgoogle) {
                                 await GoogleSignIn().signOut();
                                 usersinfo = {};
@@ -179,6 +192,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 usersinfo = {};
                               }
                               fssinst.deleteAll();
+                              //END
+
+                               // GO TO LOGIN PAGE
                                Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); //TODO: return to login screen
                                   },
                                   endIcon: false,

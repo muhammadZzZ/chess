@@ -26,7 +26,9 @@ class PDFview extends StatelessWidget {
           Navigator.pop(context);
         },
         child: Icon(Icons.arrow_back_rounded)),),
-        body: SfPdfViewer.memory(pdfdatabits!,scrollDirection: PdfScrollDirection.horizontal,pageLayoutMode: PdfPageLayoutMode.single,),
+        body:
+        // SHOWING THE PDF FROM MEMORY USING UNIT8LIST
+         SfPdfViewer.memory(pdfdatabits!,scrollDirection: PdfScrollDirection.horizontal,pageLayoutMode: PdfPageLayoutMode.single,),
 
       
     );

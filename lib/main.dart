@@ -9,18 +9,21 @@ import 'root.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+
+  // INITIALIZING FIREBASE
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // used to hide android status and navigation bar
+  // USED TO HIDE NAVIGATION BAR AND STATUS BAR ON THE ANDROID
    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [],);
 
-  // creating an instance of sharedpreferences to store variables inside an apps directory
+  // CREATING AN INSTANCE OF SHAREDPREFERENCES TO STORE VARIABLES INSIDE AN APP DIRECTORY
   SharedPreferences prefinst = await SharedPreferences.getInstance();
 
-  // we check if the mode is dark by returning the value we stored into a local variable
+  // WE CHECK IF THE MODE IS DARK BY RETURNING THE VALUE WE STORED INTO A LOCAL VARIABLE
   isdarkmode = prefinst.getBool("isdarkmode") ?? false;
   tm.toggleTheme(isdarkmode);
 
+  // WE CHECK IF THE LANGUAGE IS KURDISH SELECTED
   iskurdish = prefinst.getBool("iskurdish") ?? false ;
   
   runApp(const Root());

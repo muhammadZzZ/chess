@@ -26,8 +26,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-
-  //final  cu = FirebaseAuth.instance.currentUser!;
   var currentIndex=0;
   var titleOfScreen='titleofhome';
   
@@ -47,7 +45,6 @@ class _HomePageState extends State<HomePage> {
     appBar: AppBar(
       title: Text(titleOfScreen.tr),
       centerTitle: true,
-      //backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
         iconSize: 30,
@@ -81,8 +78,8 @@ class _HomePageState extends State<HomePage> {
           icon:  CircleAvatar(
             radius: 30,
             backgroundImage: 
-            AssetImage("assets/images/pro.jpeg")
-             //NetworkImage(usersinfo['pictureurl']!)
+           
+             NetworkImage(usersinfo['pictureurl']!)
                //),
              ),
           ),
@@ -97,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const SizedBox(height: 20,),
-              //TODO:CARUOSEL SLIDER SECTION 
+              // CARUOSEL SLIDER SECTION 
               //START
               Container(
           child: CarouselSlider(
