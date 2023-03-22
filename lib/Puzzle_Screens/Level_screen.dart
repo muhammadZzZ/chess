@@ -42,7 +42,7 @@ class LevelScreen extends StatelessWidget {
                           child: Container(
                             //margin: EdgeInsets.all(6),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Theme.of(context).cardColor,
                                 border: Border.all(color: PrimaryColor,width: 2),
                                 borderRadius:const BorderRadius.all(
                                     Radius.circular(17.0)),
@@ -62,7 +62,7 @@ class LevelScreen extends StatelessWidget {
                                 child: Text(
                               (1 + i).toString(),
                               style:  TextStyle(
-                                  color: PrimaryColor,
+                                  color: isdarkmode ? Colors.white : PrimaryColor,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   ),
@@ -85,7 +85,7 @@ class LevelScreen extends StatelessWidget {
         ['e1', 'e8'],
       ],
       description:
-          'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+          'p1'.tr,
     ),
     
 
@@ -96,7 +96,7 @@ class LevelScreen extends StatelessWidget {
         ['g3', 'b8'],
       ],
       description:
-          'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+          'p2'.tr,
     ),
 
     ChessPuzzle(
@@ -111,7 +111,7 @@ class LevelScreen extends StatelessWidget {
         ['a8', 'd8'],
       ],
       description:
-          'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+          'p3'.tr,
     ),
 
     ChessPuzzle(
@@ -123,7 +123,7 @@ class LevelScreen extends StatelessWidget {
         ['d8', 'e8'],
       ],
       description:
-          'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+          'p4'.tr,
     ),
 
     ChessPuzzle(
@@ -135,7 +135,7 @@ class LevelScreen extends StatelessWidget {
         ['e1', 'e8'],
       ],
       description:
-          'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+          'p5'.tr,
     ),
 
     ChessPuzzle(
@@ -145,7 +145,7 @@ class LevelScreen extends StatelessWidget {
         ['f3', 'f7'],
       ],
       description:
-          "Napoleon's style checkmate. don't you ever lost with this Style, ok your queen and bishop are making a good team here They both aiming at the best square on this board",
+          "p6".tr,
     ),
 
     ChessPuzzle(
@@ -155,7 +155,7 @@ class LevelScreen extends StatelessWidget {
         ['h3', 'h7'],
       ],
       description:
-          'Your queen and bishop are making a good team here They both aiming at the weakest square on this board',
+          'p7'.tr,
     ),
 
     ChessPuzzle(
@@ -165,7 +165,7 @@ class LevelScreen extends StatelessWidget {
         ['c3', 'g7'],
       ],
       description:
-          'Your queen and bishop are making a good team here They both aiming at the weakest square on this board',
+          'p8'.tr,
     ),
 
     ChessPuzzle(
@@ -175,7 +175,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['h5', 'f6'],
       ],
-      description: 'Sometimes knights are killer',
+      description: 'p9'.tr,
     ),
 
     ChessPuzzle(
@@ -184,7 +184,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['b5', 'c7'],
       ],
-      description: 'Sometimes knights are killer',
+      description: 'p10'.tr,
     ),
 
     ////////////////////
@@ -198,7 +198,7 @@ class LevelScreen extends StatelessWidget {
         ['f6', 'e8'],
       ],
       description:
-          'knight fork means your knight attack two or more things at the same time and it is Stronger with check',
+          'p11'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -209,7 +209,7 @@ class LevelScreen extends StatelessWidget {
         ['c5', 'a6'],
       ],
       description:
-          'knight fork means your knight attack two or more things at the same time and it is Stronger with check',
+          'p12'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -220,7 +220,7 @@ class LevelScreen extends StatelessWidget {
         ['c7', 'e8'],
       ],
       description:
-          'knight fork means your knight attack two or more things at the same time and it is Stronger with check',
+          'p13'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -231,7 +231,7 @@ class LevelScreen extends StatelessWidget {
         ['c3', 'g7'],
       ],
       description:
-          'Skewer. it means is an attack upon two pieces in a line here even tho black has queen but lose the game because of the skewer',
+          'p14'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -241,7 +241,7 @@ class LevelScreen extends StatelessWidget {
         'Ke7',
         ['c4', 'g8'],
       ],
-      description: 'Skewer. it means is an attack upon two pieces in a line',
+      description: 'p15'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -252,7 +252,7 @@ class LevelScreen extends StatelessWidget {
         ['c1', 'c6'],
       ],
       description:
-          'Skewer. look two bishops are on the same line and no other piece defend them',
+          'p16'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -263,7 +263,7 @@ class LevelScreen extends StatelessWidget {
         ['d2', 'd4'],
       ],
       description:
-          'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no bishop? ans. simply we take blacks queen',
+          'p17'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -274,7 +274,7 @@ class LevelScreen extends StatelessWidget {
         ['f3', 'b7'],
       ],
       description:
-          'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no knight? ans. Simply we take blacks white squared bishop ',
+          'p18'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -285,7 +285,7 @@ class LevelScreen extends StatelessWidget {
         ['d1', 'd4'],
       ],
       description:
-          'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no white squared bishop? ans. simply we take blacks queen',
+          'p19'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -294,7 +294,7 @@ class LevelScreen extends StatelessWidget {
         ['b4', 'b5'],
       ],
       description:
-          'Discover Attack With Check. is an attack that is revealed when one piece moves out of the way of another with a check. Here look what will happen if you move pawn beside rook? ans. Simply we take blacks rook',
+          'p20'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -304,7 +304,7 @@ class LevelScreen extends StatelessWidget {
         ['d4', 'd5'],
       ],
       description:
-          'Double Attack. is an attack with one move you attack two or more pieces',
+          'p21'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -313,7 +313,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['b5', 'c7'],
       ],
-      description: 'double attack and also knight fork',
+      description: 'p22'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -322,7 +322,7 @@ class LevelScreen extends StatelessWidget {
         ['d5', 'e7'],
       ],
       description:
-          'There are family forks here in this puzzle it means with one piece you attack many things including the king, queen, rook',
+          'p23'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -330,7 +330,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['b3', 'd5'],
       ],
-      description: 'double attack with the bishop',
+      description: 'p24'.tr
     ),
     ChessPuzzle(
       isWhiteToMove: false,
@@ -340,7 +340,7 @@ class LevelScreen extends StatelessWidget {
         'Rxb7',
         ['e8', 'c6'],
       ],
-      description: 'double attack with the bishop',
+      description: 'p25'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -351,7 +351,7 @@ class LevelScreen extends StatelessWidget {
         ['d5', 'a5'],
       ],
       description:
-          'In chess one pawn is so important and make difference so here rook can double attack',
+          'p26'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -362,7 +362,7 @@ class LevelScreen extends StatelessWidget {
         ['d3', 'a6'],
       ],
       description:
-          "this one a little bit tough but it's a very useful position and it happens during games. it is about the double attack with the queen but this time threatening mate and rook",
+          "p27".tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -370,7 +370,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e4', 'e5'],
       ],
-      description: 'Double attack and also pawn forks ',
+      description: 'p28'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -380,7 +380,7 @@ class LevelScreen extends StatelessWidget {
         'Kd6',
         ['c6', 'a5'],
       ],
-      description: 'Knight forks',
+      description: 'p29'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -390,7 +390,7 @@ class LevelScreen extends StatelessWidget {
         'Qb6',
         ['d5', 'h5'],
       ],
-      description: 'Double attack with rook',
+      description: 'p30'.tr,
     ),
 
     ChessPuzzle(
@@ -402,7 +402,7 @@ class LevelScreen extends StatelessWidget {
         ['e4', 'f3'],
       ],
       description:
-          'Pin. here whites knight diagonally pinned to queen it means when white move his knight he loses his queen so we have to attack the knight in order to take advantage ',
+          'p31'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -413,7 +413,7 @@ class LevelScreen extends StatelessWidget {
         ['g5', 'f7'],
       ],
       description:
-          'No surprise white will win in only 2 moves thanks for a knight fork',
+          'p32'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: false,
@@ -424,7 +424,7 @@ class LevelScreen extends StatelessWidget {
         ['d4', 'b4'],
       ],
       description:
-          'Double attack with check look at this position whites bishop is undefended and there is an open diagonal to check',
+          'p33'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -434,7 +434,7 @@ class LevelScreen extends StatelessWidget {
         'Kb8',
         ['f5', 'g4'],
       ],
-      description: 'Skewer and double attack with a bishop',
+      description: 'p34'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: false,
@@ -442,7 +442,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e7', 'e5'],
       ],
-      description: 'pawn forks',
+      description: 'p35'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -450,7 +450,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e1', 'e5']
       ],
-      description: 'Skewer and double attack with rook',
+      description: 'p36'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -458,7 +458,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e3', 'c5']
       ],
-      description: 'Skewer and double attack with bishop',
+      description: 'p37'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -468,7 +468,7 @@ class LevelScreen extends StatelessWidget {
         'Kh8',
         ['b3', 'b2'],
       ],
-      description: 'Use your Queen to eliminate blacks, undefended knight',
+      description: 'p38'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -476,7 +476,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e3', 'f5'],
       ],
-      description: 'Knight forks',
+      description: 'p39'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -484,7 +484,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e3', 'e8'],
       ],
-      description: 'check and win something',
+      description: 'p40'.tr,
     ),
 
     ChessPuzzle(
@@ -494,7 +494,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['b5', 'b4'],
       ],
-      description: 'pawn forks',
+      description: 'p41'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: false,
@@ -505,7 +505,7 @@ class LevelScreen extends StatelessWidget {
         ['c6', 'b4'],
       ],
       description:
-          'Queen and the King are on the same diagonal and this is good news for you to take advantage of that pin',
+          'p42'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -516,7 +516,7 @@ class LevelScreen extends StatelessWidget {
         ['f2', 'f3'],
       ],
       description:
-          'Bishop and the King are on the same file which you can pin the bishop then attack him with pawn',
+          'p43'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -524,7 +524,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['a2', 'c2'],
       ],
-      description: 'Queen and the King are on the same file',
+      description: 'p44'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -532,7 +532,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['g2', 'h3'],
       ],
-      description: 'Pin knight to rook so you can get that knight',
+      description: 'p45'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -541,7 +541,7 @@ class LevelScreen extends StatelessWidget {
         ['g3', 'd6'],
       ],
       description:
-          'Pin the knight to the queen so black can not move the knight and then you can take that knight easily',
+          'p46'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -552,7 +552,7 @@ class LevelScreen extends StatelessWidget {
         ['h6', 'f6'],
       ],
       description:
-          'the knight is already pinned to the rook so we have to attack it',
+          'p47'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -561,7 +561,7 @@ class LevelScreen extends StatelessWidget {
         ['d4', 'g4'],
       ],
       description:
-          'This one is funny, pin a queen to the king and the knight can not take rook because the knight himself is pinned to the king this puzzle is great to show how strong a pin can be',
+          'p48'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -570,7 +570,7 @@ class LevelScreen extends StatelessWidget {
         ['a5', 'h5'],
       ],
       description:
-          'Checkmate in one, this one is even more funnier than the previous one because black has two pieces but none of them are alive',
+          'p49'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -579,7 +579,7 @@ class LevelScreen extends StatelessWidget {
         ['e4', 'f6'],
       ],
       description:
-          'Search for the Knight forks and take advantage of the pinned bishop',
+          'p50'.tr,
     ),
 
     ChessPuzzle(
@@ -589,7 +589,7 @@ class LevelScreen extends StatelessWidget {
         ['f1', 'c1'],
       ],
       description:
-          'This is also pin but a bit weird because you pin the knight to threatening checkmate',
+          'p51'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -599,7 +599,7 @@ class LevelScreen extends StatelessWidget {
         'Qd6',
         ['h6', 'g7'],
       ],
-      description: 'attack queen and suddenly you will be able to checkmate',
+      description: 'p52'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: false,
@@ -608,7 +608,7 @@ class LevelScreen extends StatelessWidget {
         ['c3', 'c2'],
       ],
       description:
-          "Discover check. a check on the opponent's king that is delivered by moving a piece out of the line ",
+          "p53".tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -619,7 +619,7 @@ class LevelScreen extends StatelessWidget {
         ['d1', 'g4'],
       ],
       description:
-          'your knight is pinned but thanks for the discover check that will save you and you can get a bishop. the first move is with the knight',
+          'p54'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -628,7 +628,7 @@ class LevelScreen extends StatelessWidget {
         ['d3', 'c4'],
       ],
       description:
-          "Discover check. a check on the opponent's king that is delivered by moving a piece out of the line",
+          "p55".tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -639,7 +639,7 @@ class LevelScreen extends StatelessWidget {
         ['b7', 'c7'],
       ],
       description:
-          'What will happen if you move your rook? and where you put that rook?',
+          'p56'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -648,7 +648,7 @@ class LevelScreen extends StatelessWidget {
         ['e5', 'd4'],
       ],
       description:
-          'what happens if you move your king ? and where you put your king?',
+          'p57'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -656,7 +656,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['e4', 'e5'],
       ],
-      description: 'Double attack and also discover attack by moving a pawn',
+      description: 'p58'.tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -667,7 +667,7 @@ class LevelScreen extends StatelessWidget {
         ['b1', 'b6'],
       ],
       description:
-          "What happens if you don't have a bishop in front of your rook?",
+          "p59".tr,
     ),
     ChessPuzzle(
       isWhiteToMove: true,
@@ -675,7 +675,7 @@ class LevelScreen extends StatelessWidget {
       solution: [
         ['f4', 'f5'],
       ],
-      description: 'Discover check by moving pawn',
+      description: 'p60'.tr,
     ),
   ];
 

@@ -15,7 +15,8 @@ final DarkThemeColor = Color.fromRGBO(49, 46, 43, 1);//rgb(49,46,43)
 final DragableColor = Color.fromRGBO(246, 246, 105, 1);//rgb(246,246,105)
 final List DialogColor = [
   Color.fromRGBO(18, 192, 105, 1),//rgb(18,192,105) GREEN
-  Color.fromRGBO(255, 200, 71, 1),// rgb(255,200,71) ERD
+  Color.fromRGBO(255, 200, 71, 1),// rgb(255,200,71) YELLOW rgb(223,2,56)
+  Color.fromRGBO(223, 2, 56, 1),// rgb(223,2,56) RED
   ];//
 
 //text
@@ -80,15 +81,17 @@ bool iskurdish = false;
 
 //themes
 ThemeData light = ThemeData(
+  primaryColor: Colors.black26,
   iconTheme: IconThemeData(color: Colors.black26),
   brightness: Brightness.light,
-  appBarTheme: AppBarTheme(backgroundColor: Colors.white,titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20))
+  appBarTheme: AppBarTheme(backgroundColor: Colors.transparent,titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20))
 );
 
 ThemeData dark = ThemeData(
+  primaryColor: Colors.black26,
   iconTheme: IconThemeData(color: SecondaryColor.withOpacity(0.3)),
   brightness: Brightness.dark,
-  appBarTheme: AppBarTheme(backgroundColor: DarkThemeColor,titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20))
+  appBarTheme: AppBarTheme(backgroundColor: Colors.transparent,titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20))
   
 );
 

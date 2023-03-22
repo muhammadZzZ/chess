@@ -67,8 +67,8 @@ class ProfileMenuWidgets extends StatelessWidget {
                 color: Colors.transparent.withOpacity(.05),
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: const Icon(
-                LineAwesomeIcons.angle_right,
+              child:  Icon(
+                iskurdish == true ? LineAwesomeIcons.angle_left : LineAwesomeIcons.angle_right,
                 color: Colors.grey,
                 size: 18,
               ),

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:echessapp/Utils/constrant.dart';
@@ -73,7 +74,7 @@ class _DetailChampionState extends State<DetailChampion> {
                 fit: BoxFit.fill,
               ),
             ),
-            ButtomArrow(),
+            buttomArrow(),
             DraggableScrollableSheet(
              initialChildSize: .55,
              minChildSize: .53,
@@ -128,7 +129,7 @@ class _DetailChampionState extends State<DetailChampion> {
                           Align(
                             alignment: Alignment.center,
                             child: Text(
-                              "Who is ${widget.title}",
+                              iskurdish ? "${widget.title} ${"WhoIs".tr}" : "${"WhoIs".tr} ${widget.title}",
                               style:const TextStyle(
                                 fontSize: 19,
                               ),
@@ -145,11 +146,11 @@ class _DetailChampionState extends State<DetailChampion> {
                                ),
                                Space(spaceH: 10,),
                           Container(
-                            margin: EdgeInsets.all(8),
+                            margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
                                 widget.description,
-                                style: TextStyle(
+                                style:const TextStyle(
                                   fontSize: 16
                                 ),
                                 ),
@@ -157,22 +158,22 @@ class _DetailChampionState extends State<DetailChampion> {
                             ),
                             //end of decrption section
                             Container(
-                            margin: EdgeInsets.all(8),
+                            margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
                                 widget.text1,
-                                style: TextStyle(
+                                style:const TextStyle(
                                   fontSize: 16
                                 ),
                                 ),
                             ),
                             ),
                             Container(
-                            margin: EdgeInsets.all(8),
+                            margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
                                 widget.text2,
-                                style: TextStyle(
+                                style:const TextStyle(
                                   fontSize: 16
                                 ),
                                 ),
@@ -184,15 +185,15 @@ class _DetailChampionState extends State<DetailChampion> {
                           Column(
                             children: [
                               Text(
-                                "How many times ${widget.title}",
-                                style: TextStyle(
+                                "${"HowManyTime".tr} ${widget.title}",
+                                style:const TextStyle(
                                 fontSize: 19,
                               ),
                               ),
                               Space(spaceH: 5,),
                               Text(
-                                "won the world chess champion",
-                                style: TextStyle(
+                                "wonWorldChess".tr,
+                                style:const TextStyle(
                                 fontSize: 19,
                               ),
                               ),
@@ -209,11 +210,11 @@ class _DetailChampionState extends State<DetailChampion> {
                                ),
                                Space(spaceH: 10,),
                             Container(
-                            margin: EdgeInsets.all(8),
+                            margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
                                 widget.wct,
-                                style: TextStyle(
+                                style:const TextStyle(
                                   fontSize: 16
                                 ),
                                 ),
@@ -223,30 +224,6 @@ class _DetailChampionState extends State<DetailChampion> {
                             Space(spaceH: 30,),
                             //best game 
                             //start
-                            Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "One of the games ${widget.title}",
-                              style: TextStyle(
-                                fontSize: 19,
-                              ),
-                            ),
-                          ),
-                          Space(spaceH: 10,),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                                 height: 1.3,width: gWidth*.7,
-                                 decoration: BoxDecoration(
-                                   borderRadius: BorderRadius.circular(25),
-                                   color: PrimaryColor
-                                 ),
-                               ),
-                               Space(spaceH: 10,),
-                          // YoutubePlayer(
-                          //   controller: _controller,
-                          //   showVideoProgressIndicator: true,
-                          //   onReady: () => debugPrint("Done"),
-                          //   )
                        ],
                      ),
                    ),
@@ -263,8 +240,8 @@ class _DetailChampionState extends State<DetailChampion> {
 }
 
 
-
-ButtomArrow() {
+//CUSTOM BACK ARROW 
+buttomArrow() {
   return Padding(
     padding: const EdgeInsets.all(20.0),
     child: InkWell(
@@ -282,8 +259,8 @@ ButtomArrow() {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
             ),
-            child:const Icon(
-              LineAwesomeIcons.arrow_left,
+            child: Icon(
+              iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
               color: Colors.white,
             ),
           ),

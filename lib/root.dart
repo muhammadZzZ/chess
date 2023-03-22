@@ -87,9 +87,9 @@ class _RootState extends State<Root> {
       home:    HomePage(),
       initialRoute: '/',
       routes: {
-        
-        '/loginpage':(context) => const LoginPage(),
+        '/loginpage':(context) =>const LoginPage(),
         '/homepage':(context) =>  HomePage(),
+        //'/ChessPlayScreen':(context) =>  ChessPlayScreen(),
         
       }
       

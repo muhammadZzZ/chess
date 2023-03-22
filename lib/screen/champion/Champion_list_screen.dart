@@ -88,7 +88,7 @@ class ChampionScreen extends StatelessWidget {
                                         link: WorldChampionList[index].link,
                                         ));
                                     }, 
-                                    icon: Icon(LineAwesomeIcons.arrow_right))
+                                    icon: Icon(iskurdish == true ? LineAwesomeIcons.arrow_left :LineAwesomeIcons.arrow_right,))
                               ],
                             ),
                         ),
@@ -132,7 +132,7 @@ List<WorldChampion> WorldChampionList =[
   //Wilhelm Steinitz
   WorldChampion(
     nameChampion:"WILnameChampion".tr,
-    decription:"WILdecription",
+    decription:"WILdecription".tr,
     text1:"WILtext1".tr,
     text2:"WILtext2".tr,
     wct : "WILwct".tr,
