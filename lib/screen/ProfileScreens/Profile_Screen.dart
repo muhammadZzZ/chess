@@ -10,7 +10,7 @@ import '../../Utils/constrant.dart';
 import '../../Widgets/repeated_widgets.dart';
 import 'Profile_edite.dart';
 class ProfilePage extends StatefulWidget {
-   ProfilePage({super.key});
+   const ProfilePage({super.key});
 
 
 
@@ -29,20 +29,20 @@ class _ProfilePageState extends State<ProfilePage> {
          children: [
           Container(
             height: gHeight*.1,
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding:const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
                 IconButton(
                   splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
                   onPressed: ()=> Get..back(),
                   icon: Icon(
-                    LineAwesomeIcons.arrow_left
+                    iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
                   ),
               ),
-              Space(spaceW: 70,),
+              Space(spaceW: 115,),
               Text(
                 "ProfileTitle".tr,
-                style: TextStyle(
+                style:const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400
                 ),
@@ -51,144 +51,145 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           ),
            Container(
-                        //TODO:Creating Profile Screen
-                        child: SingleChildScrollView(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Column(
-                            children: [
-                              //TODO:create a profile circle
-                              Stack(
-                                children: [
-                                  Container(
-                                    height: 135,
-                                    width: 135,
-                                    alignment: Alignment.topCenter,
-                                    child:  CircleAvatar(
-                                      radius: 90,
-                                      backgroundImage: AssetImage("assets/images/pro.jpeg")
-                                      //NetworkImage(usersinfo['pictureurl']!,
-                                      ),
-                                    ),
-                                  
-                                  Positioned(
-                                    bottom: 0,
-                                    right: 0,
-                                    child: GestureDetector(
-                                      //Navigate to the edite profile screen 
-                                      onTap: () => Get..off(()=> ProfileEdite()),
-                                      child: Container(
-                                        height: 30,
-                                        width: 30,
-                                        decoration: BoxDecoration(
-                                          color: PrimaryColor,
-                                          borderRadius: BorderRadius.circular(100),
-                                        ),
-                                        child:  Icon(
-                                          LineAwesomeIcons.alternate_pencil,
-                                          color: Theme.of(context).hintColor,
-                                          size: 18,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Space(spaceH: 20),
-                              //TODO:return the ser name 
-                              Text(
-                                'test',
-                                //usersinfo['username']!,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              Space(spaceH: 5),
-                              //TODO:return the user email
-                              Text(
-                                'test',
-                                //usersinfo['email']!,
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              Space(spaceH: 30),
-                              const Divider(),
-                              Space(spaceH: 10),
-                              //MENU
-                              //TODO: creating MENU
-                              ProfileMenuWidgets(
-                                title: "EditPro".tr,
-                                icon: LineAwesomeIcons.user_edit,
-                                Onpress: () => Get..off(()=> ProfileEdite()),
-                              ),
-                              Space(spaceH: 10),
-                              ProfileMenuWidgets(
-                                endIcon: false,
-                                title: "theme".tr,
-                                icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
-                                Onpress: () async{
-
-                                    SharedPreferences pref = await SharedPreferences.getInstance();
-                                      if (tm.thememod == ThemeMode.light) {
-                                     tm.toggleTheme(true);
-                                     pref.setBool("isdarkmode", true);
-                                   }else {
-                                     tm.toggleTheme(false);
-                                     pref.setBool("isdarkmode", false);
-                                   }
-                                    setState(() {
-                                      
-                                    });
-                                   
-                                   
-                                },
-                              ),
-                              Space(spaceH: 10),
-                              ProfileMenuWidgets(
-                                endIcon: false,
-                                title: "lan".tr,
-                                icon: LineAwesomeIcons.language,
-                                Onpress: () async{
-                                  SharedPreferences sh = await SharedPreferences.getInstance();
-                                  if (Get.locale.toString() == 'ar_IQ') {
-                                    Get.updateLocale(Locale('en','US'));
-                                    sh.setBool("iskurdish", false);
-                                    iskurdish = false;
-                                  } else {
-                                    Get.updateLocale(Locale('ar','IQ'));
-                                    sh.setBool("iskurdish", true);
-                                    iskurdish = true;
-                                  }
-                                  
-                                },
-                              ),
-                              Space(spaceH: 10),
-                              const Divider(
-                                color: Colors.grey,
-                              ),
-                              Space(spaceH: 10),
-                              ProfileMenuWidgets(
-                                  title: "logout".tr,
-                                  icon: LineAwesomeIcons.alternate_sign_out,
-                                  Onpress: () async{
-                                    await FirebaseAuth.instance.signOut(); //TODO: logout from google
-                                    SharedPreferences shpref = await SharedPreferences.getInstance();
-                                    isgoogle = shpref.getBool("isgoogle") ?? false;
-                              if(isgoogle) {
-                                await GoogleSignIn().signOut();
-                                usersinfo = {};
-                              } else {
-                                await FacebookAuth.instance.logOut(); //TODO: logout from facebook
-                                usersinfo = {};
-                              }
-                              fssinst.deleteAll();
-                               Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); //TODO: return to login screen
-                                  },
-                                  endIcon: false,
-                                  textColor: Colors.red,
-                                  IconColor: Colors.red
-                                  ),
-                            ],
+            //PROFILE PAGE
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  //PROFILE CIRCLE IMAGE
+                  Stack(
+                    children: [
+                      Container(
+                        height: 135,
+                        width: 135,
+                        alignment: Alignment.topCenter,
+                        child:const  CircleAvatar(
+                          radius: 90,
+                          backgroundImage: AssetImage("assets/images/pro.jpeg")
+                          //NetworkImage(usersinfo['pictureurl']!,
                           ),
                         ),
+                      
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: GestureDetector(
+                          // NAVIGATOR TO THE EDIT PROFILE PAGE
+                          onTap: () => Get..off(()=> ProfileEdite()),
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: PrimaryColor,
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child:  Icon(
+                              LineAwesomeIcons.alternate_pencil,
+                              color: Theme.of(context).hintColor,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Space(spaceH: 20),
+                  //RETURN USER SER NAME
+                  const Text(
+                    'test',
+                    //usersinfo['username']!,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Space(spaceH: 5),
+                  //RETURN USER EMAIL
+                  const Text(
+                    'test',
+                    //usersinfo['email']!,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Space(spaceH: 30),
+                  const Divider(),
+                  Space(spaceH: 10),
+
+                  //CREATING MENU
+                  //START
+                  ProfileMenuWidgets(
+                    title: "EditPro".tr,
+                    icon: LineAwesomeIcons.user_edit,
+                    Onpress: () => Get..off(()=> ProfileEdite()),
+                  ),
+                  Space(spaceH: 10),
+                  ProfileMenuWidgets(
+                    endIcon: false,
+                    title: "theme".tr,
+                    icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
+                    Onpress: () async{
+                        SharedPreferences pref = await SharedPreferences.getInstance();
+                          if (tm.thememod == ThemeMode.light) {
+                         tm.toggleTheme(true);
+                         pref.setBool("isdarkmode", true);
+                         isdarkmode=true;
+                       }else {
+                         tm.toggleTheme(false);
+                         pref.setBool("isdarkmode", false);
+                         isdarkmode=false;
+                       }
+                        setState(() {});
+                    },
+                  ),
+                  Space(spaceH: 10),
+                  ProfileMenuWidgets(
+                    endIcon: false,
+                    title: "lan".tr,
+                    icon: LineAwesomeIcons.language,
+                    Onpress: () async{
+                      SharedPreferences sh = await SharedPreferences.getInstance();
+                      if (Get.locale.toString() == 'fa_IR') {
+                        Get.updateLocale(const Locale('en','US'));
+                        sh.setBool("iskurdish", false);
+                        iskurdish = false;
+                      } else {
+                        Get.updateLocale(const Locale('fa','IR'));
+                        sh.setBool("iskurdish", true);
+                        iskurdish = true;
+                      }
+                      
+                    },
+                  ),
+                  Space(spaceH: 10),
+                  const Divider(
+                    color: Colors.grey,
+                  ),
+                  Space(spaceH: 10),
+                  ProfileMenuWidgets(
+                      title: "logout".tr,
+                      icon: LineAwesomeIcons.alternate_sign_out,
+                      Onpress: () async{
+                        //LOGOUT FROM GGOGLE
+                        await FirebaseAuth.instance.signOut(); 
+                        SharedPreferences shpref = await SharedPreferences.getInstance();
+                        isgoogle = shpref.getBool("isgoogle") ?? false;
+                  if(isgoogle) {
+                    await GoogleSignIn().signOut();
+                    usersinfo = {};
+                  } else {
+                    //LOGOUT FROM FACEBOOK
+                    await FacebookAuth.instance.logOut(); 
+                    usersinfo = {};
+                  }
+                  fssinst.deleteAll();
+                  //RETURN TO LOGIN PAGE
+                   Navigator.pushNamedAndRemoveUntil(context,'/loginpage', ModalRoute.withName('/')); 
+                      },
+                      endIcon: false,
+                      textColor: Colors.red,
+                      IconColor: Colors.red
                       ),
+                ],
+              ),
+            ),
+          ),
          ],
        ),
      ),

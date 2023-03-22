@@ -10,7 +10,7 @@ class lang extends Translations {
       'titleofhome':'Home',
       'titleofcourse':'Course',
       'titleofchamp':'Champions',
-      'titleofpuzzle':'Puzzle Screen',
+      'titleofpuzzle':'Puzzle',
       //ENDS
 
       //HOME PAGE TEXTS
@@ -27,6 +27,26 @@ class lang extends Translations {
       'theme':'Change Theme',
       'lan':'Change Language',
       'logout':'Logout',
+      //ENDS
+
+      //CHAMPION SCREEN
+      //START
+      'WhoIs':'Who is ',
+      'HowManyTime':'How many times',
+      'wonWorldChess':'won the world chess champion ?',
+      //ENDS
+
+      //PUZZLE SCREEN
+      //START
+      'Hint':'Hint',
+      'FindBestMove':'Find the best move for',
+      'white':'White',
+      'black':'Black',
+      'okay':'Okay',
+      'wrong':'Wrong',
+      'tryAgain':'Try Again ',
+      'success':'Success',
+      'wellDone':'Well Done',
       //ENDS
 
       //CHAMPION LIST DATA 
@@ -86,6 +106,70 @@ class lang extends Translations {
       'TRItext2':"Petrosian became the World Chess Champion in 1963, when he defeated Mikhail Botvinnik in a championship match held in Moscow. He successfully defended the title against Boris Spassky in 1966, but he lost it to Spassky in a rematch in 1969.After losing the title, Petrosian remained a top player for many years, and he continued to compete at the highest level until his death in 1984.",
       'TRIwct':'In total, Tigran Petrosian became the World Chess Champion only once, in 1963, when he defeated Mikhail Botvinnik. However, his impact on the game of chess and his status as one of the greatest defensive players of all time are widely recognized.',
       //ENDS
+
+      //PUZZLE HINT TEXT
+      //START
+      'p1':'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+      'p2':'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+      'p3':'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+      'p4':'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+      'p5':'Vulnerable first rank. it means blacks 8th rank is weak there is no defender there So blacks king is not safe',
+      'p6':"Napoleon's style checkmate. don't you ever lost with this Style, ok your queen and bishop are making a good team here They both aiming at the best square on this board",
+      'p7':'Your queen and bishop are making a good team here They both aiming at the weakest square on this board',
+      'p8':'Your queen and bishop are making a good team here They both aiming at the weakest square on this board',
+      'p9':'Sometimes knights are killer',
+      'p10':'Sometimes knights are killer',
+      'p11':'knight fork means your knight attack two or more things at the same time and it is Stronger with check',
+      'p12':'knight fork means your knight attack two or more things at the same time and it is Stronger with check',
+      'p13':'knight fork means your knight attack two or more things at the same time and it is Stronger with check',
+      'p14':'Skewer. it means is an attack upon two pieces in a line here even tho black has queen but lose the game because of the skewer',
+      'p15':'Skewer. it means is an attack upon two pieces in a line',
+      'p16':'Skewer. look two bishops are on the same line and no other piece defend them',
+      'p17':'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no knight? ans. Simply we take blacks white squared bishop',
+      'p18':'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no knight? ans. Simply we take blacks white squared bishop',
+      'p19':'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no knight? ans. Simply we take blacks white squared bishop',
+      'p20':'Discover Attack. is an attack that is revealed when one piece moves out of the way of another. Here look what if there is no knight? ans. Simply we take blacks white squared bishop',
+      'p21':'Double Attack. is an attack with one move you attack two or more pieces',
+      'p22':'double attack and also knight fork',
+      'p23':'There are family forks here in this puzzle it means with one piece you attack many things including the king, queen, rook',
+      'p24':'double attack with the bishop',
+      'p25':'double attack with the bishop',
+      'p26':'In chess one pawn is so important and make difference so here rook can double attack',
+      'p27':"this one a little bit tough but it's a very useful position and it happens during games. it is about the double attack with the queen but this time threatening mate and rook",
+      'p28':'Double attack and also pawn forks',
+      'p29':'Knight forks',
+      'p30':'Double attack with rook',
+      'p31':'Pin. here whites knight diagonally pinned to queen it means when white move his knight he loses his queen so we have to attack the knight in order to take advantage',
+      'p32':'No surprise white will win in only 2 moves thanks for a knight fork',
+      'p33':'Double attack with check look at this position whites bishop is undefended and there is an open diagonal to check',
+      'p34':'Skewer and double attack with a bishop',
+      'p35':'pwan forks',
+      'p36':'Skewer and double attack with rook',
+      'p37':'Skewer and double attack with bishop',
+      'p38':'Use your Queen to eliminate blacks, undefended knight',
+      'p39':'Knight forks',
+      'p40':'check and win something',
+      'p41':'pwan forks',
+      'p42':'Queen and the King are on the same diagonal and this is good news for you to take advantage of that pin',
+      'p43':'Bishop and the King are on the same file which you can pin the bishop then attack him with pawn',
+      'p44':'Queen and the King are on the same file',
+      'p45':'Pin knight to rook so you can get that knight',
+      'p46':'Pin the knight to the queen so black can not move the knight and then you can take that knight easily',
+      'p47':'the knight is already pinned to the rook so we have to attack it',
+      'p48':'This one is funny, pin a queen to the king and the knight can not take rook because the knight himself is pinned to the king this puzzle is great to show how strong a pin can be',
+      'p49':'Checkmate in one, this one is even more funnier than the previous one because black has two pieces but none of them are alive',
+      'p50':'Search for the Knight forks and take advantage of the pinned bishop',
+      'p51':'This is also pin but a bit weird because you pin the knight to threatening checkmate',
+      'p52':'attack queen and suddenly you will be able to checkmate',
+      'p53':"Discover check. a check on the opponent's king that is delivered by moving a piece out of the line ",
+      'p54':'your knight is pinned but thanks for the discover check that will save you and you can get a bishop. the first move is with the knight',
+      'p55':"Discover check. a check on the opponent's king that is delivered by moving a piece out of the line ",
+      'p56':'What will happen if you move your rook? and where you put that rook?',
+      'p57':'what happens if you move your king ? and where you put your king?',
+      'p58':'Double attack and also discover attack by moving a pawn',
+      'p59':"What happens if you don't have a bishop in front of your rook?",
+      'p60':'Discover check by moving pawn',
+      //ENDS                                                                                                                              
     },
     'fa_IR':{
       //TITLE PAGES NAME
@@ -112,9 +196,24 @@ class lang extends Translations {
       'logout':'دەرچوون',
       //ENDS
 
-      //-
+      //CHAMPION SCREEN
       //START
+      'WhoIs':'کێیە ',
+      'HowManyTime':'چەند جار ',
+      'wonWorldChess':'پاڵەوانی جیهانی شەترەنجی بەدەستهێنا ؟',
+      //ENDS
 
+      //PUZZLE SCREEN
+      //START
+      'Hint':'یارمەتی',
+      'FindBestMove':'باشترین جووڵە بۆ',
+      'white':'سپی',
+      'black':'ڕەش',
+      'okay':'باشە',
+      'wrong':'هەڵەیە',
+      'tryAgain':'دووبارە هەوڵبدەرەوە',
+      'success':'سەرکەوتی',
+      'wellDone':'ئافەرین',
       //ENDS
 
       //CHAMPION LIST DATA 
@@ -174,9 +273,74 @@ class lang extends Translations {
       'TRItext2':"پترۆسیان لە ساڵی ١٩٦٣بوو بە پاڵەوانی شەترەنجی جیهانی، کاتێک میخایل بۆتڤیننیکی بردەوە لە یارییەکی پاڵەوانێتیدا کە لە مۆسکۆ بەڕێوەچوو. لە ساڵی ١٩٦٦سەرکەوتوانە بەرگری لە نازناوەکەی کرد بەرامبەر بۆریس سپاسکی، بەڵام لە یارییەکی دووبارەدا لە ١٩٦٩بە سپاسکی دۆڕاند",
       'TRIwct':"لە کۆی گشتی تیگران پێترۆسیان تەنیا جارێک بوو بە پاڵەوانی شەترەنج لە ساڵی ١٩٦٣کە میخایل بۆتڤینیک بەزاند هەرچۆنێک بێت، کاریگەری ئەو لەسەر یاری شەترەنج و بارەکەی وەک یەکێک لە گەورەترین یاریزانی بەرگریکار لە هەموو کاتەکاندا بە فراوانی دەناسرێتەوە",
       //END
+
+      //PUZZLE HINT TEXT
+      //START
+      'p1':'پلەی یەکەمی لاوازە واتە رەشەکان پلەی هەشتەمن لاوازن هیچ بەرگریکارێک لەوێ نییە بۆیە پاشا ڕەشەکان سەلامەت نین',
+      'p2':'پلەی یەکەمی لاوازە واتە رەشەکان پلەی هەشتەمن لاوازن هیچ بەرگریکارێک لەوێ نییە بۆیە پاشا ڕەشەکان سەلامەت نین',
+      'p3':'پلەی یەکەمی لاوازە واتە رەشەکان پلەی هەشتەمن لاوازن هیچ بەرگریکارێک لەوێ نییە بۆیە پاشا ڕەشەکان سەلامەت نین',
+      'p4':'پلەی یەکەمی لاوازە واتە رەشەکان پلەی هەشتەمن لاوازن هیچ بەرگریکارێک لەوێ نییە بۆیە پاشا ڕەشەکان سەلامەت نین',
+      'p5':'پلەی یەکەمی لاوازە واتە رەشەکان پلەی هەشتەمن لاوازن هیچ بەرگریکارێک لەوێ نییە بۆیە پاشا ڕەشەکان سەلامەت نین',
+      'p6':'شێوازی کش-مات ی ناپلیۆن هەرگیز بەم ستایلە ون نەکەیت، باشە شاژنەکەت و فیل تیمێکی باش دروست دەکەن لێرەدا هەردووکیان ئامانجیان لە باشترین چوارگۆشەی سەر ئەم تەختەیە',
+      'p7':'شاژن و فیلەکەت لێرە تیمێکی باش دروست دەکەن هەردووکیان ئامانجیان لە لاوازترین چوارگۆشەی سەر ئەم تەختەیە',
+      'p8':'شاژن و فیلەکەت لێرە تیمێکی باش دروست دەکەن هەردووکیان ئامانجیان لە لاوازترین چوارگۆشەی سەر ئەم تەختەیە',
+      'p9':'هەندێک جار قەلاکان بکوژن',
+      'p10':'هەندێک جار قەلاکان بکوژن',
+      'p11':'فۆرکی قەلاکان مانای ئەوەیە کە قەلاکەت لە یەک کاتدا هێرش دەکاتە سەر دوو یان زیاتر و بە کش بەهێزترە',
+      'p12':'فۆرکی قەلاکان مانای ئەوەیە کە قەلاکەت لە یەک کاتدا هێرش دەکاتە سەر دوو یان زیاتر و بە کش بەهێزترە',
+      'p13':'فۆرکی قەلاکان مانای ئەوەیە کە قەلاکەت لە یەک کاتدا هێرش دەکاتە سەر دوو یان زیاتر و بە کش بەهێزترە',
+      'p14':'سکیور. مانای ئەوەیە کە هێرشکردنە سەر دوو پارچە لە هێڵێک لێرە تەنانەت  شاژنی ڕەش هەیە بەڵام یاریەکە لە دەست دەدات بەهۆی سکیور',
+      'p15':'سکیور. واتە هێرشکردنە سەر دوو پارچە لە هێڵێکدا',
+      'p16':'سکیور. سەیرکە دوو فیلە لەسەر یەک هێڵن و هیچ پارچەیەکی تر بەرگریان لێ ناکات',
+      'p17':'هێرشەکە بدۆزەوە .ئەوە هێرشێکە کە دەدۆزرێتەوە کاتێک یەک پارچە لە ڕێگای یەکێکی تر دوور کەوێتەوە. سەیر کە چی ئەگەر فیلی سپی چوارگۆشە نەبێت؟ وەڵام بە ئاسانی شاژنی ڕەشەکان دەبەین',
+      'p18':'هێرشەکە بدۆزەوە .ئەوە هێرشێکە کە دەدۆزرێتەوە کاتێک یەک پارچە لە ڕێگای یەکێکی تر دوور کەوێتەوە. سەیر کە چی ئەگەر فیلی سپی چوارگۆشە نەبێت؟ وەڵام بە ئاسانی شاژنی ڕەشەکان دەبەین',
+      'p19':'هێرشەکە بدۆزەوە .ئەوە هێرشێکە کە دەدۆزرێتەوە کاتێک یەک پارچە لە ڕێگای یەکێکی تر دوور کەوێتەوە. سەیر کە چی ئەگەر فیلی سپی چوارگۆشە نەبێت؟ وەڵام بە ئاسانی شاژنی ڕەشەکان دەبەین',
+      'p20':'هێرشەکە بدۆزەوە .ئەوە هێرشێکە کە دەدۆزرێتەوە کاتێک یەک پارچە لە ڕێگای یەکێکی تر دوور کەوێتەوە. سەیر کە چی ئەگەر فیلی سپی چوارگۆشە نەبێت؟ وەڵام بە ئاسانی شاژنی ڕەشەکان دەبەین',
+      'p21':'هێرشی دووانی هێرشێکە بە یەک جوڵەوە هێرش دەکاتە سەر دوو پارچە یان زیاتر',
+      'p22':'هێرشی دووانی و هەروەها فۆرکی ئەسپ',
+      'p23':'لەم مەتەڵیەدا فۆلکەی خێزانی هەیە واتە بە یەک پارچە هێرش دەکەیتە سەر زۆر شت لەوانە شاژن، پاشا ، قەلا',
+      'p24':'هێرشی دووانی لەگەڵ فیل',
+      'p25':'هێرشی دووانی لەگەڵ فیل',
+      'p26':'لە شەترەنجدا یەک سەرباز زۆر گرنگە و جیاوازی دروست دەکات، بۆیە قەلا لێرە دەتوانێت دووجار هێرش بکات',
+      'p27':'ئەمە کەمێک بارێکی قورسە بەڵام حاڵەتێکی زۆر بەسوودە و لە کاتی یاریەکاندا ڕوودەدات دەربارەی هێرشی دووانی لەگەل شاژن بەڵام ئەمجارە هەڕەشە لە مات و قەلا ئەو دەکات',
+      'p28':'هێرشی دووانی و هەروەها فۆرکەکانی سەرباز',
+      'p29':'چەنگاڵی ئەسپ  *چەنگاڵی ئەسپ واتا کش کردنی مەلیک و هێرش کردنە سەر ئالەتێکی تر لەهەمان کاتدا',
+      'p30':'هێرشی دووانی لەگەڵ قەلا',
+      'p31':'لێرەدا ئەسپی سپی بە شێوەی لاری لەسەر شاژنەکە جێگیرە، واتە کاتێک ئەسپی سپی شاژنەکەی لەدەست دەدات، بۆیە دەبێت هێرش بکەینە سەر ئەسپەکە بۆ ئەوەی سوودی لێوەربگرین',
+      'p32':'ئەوە جێگای سەرسوڕمان نابێت ئەگەر سپیەکان تەنها دوو جووڵەیان بردەوە بە سوپاس بۆ فۆرکی ئەسپەکە',
+      'p33':'هێرشی دووانی سەیری ئەم فیلە سپییە بکە کە پارێزراو نییە و هێڵی لاری کراوە هەیە بۆ کش',
+      'p34':'سکیور و هێرشی دووانی لەگەڵ فیل',
+      'p35':'چەنگاڵی سەرباز  *چەنگاڵی سەرباز واتا کش کردنی مەلیک و هێرش کردنە سەر ئالەتێکی تر لەهەمان کاتدا',
+      'p36':'سکیور و هێرشی دووانی لەگەڵ قەلا',
+      'p37':'سکیور و هێرشی دووانی لەگەڵ فیل',
+      'p38':'شاژنەکەت بەکاربهێنە بۆ نەهێشتنی ئەسپە ڕەشە نەپارێزراوەکە',
+      'p39':'چەنگاڵی ئەسپ  *چەنگاڵی ئەسپ واتا کش کردنی مەلیک و هێرش کردنە سەر ئالەتێکی تر لەهەمان کاتدا',
+      'p40':'کش بکە و ئالەتێک ببەوە',
+      'p41':'چەنگاڵی سەرباز  *چەنگاڵی سەرباز واتا کش کردنی مەلیک و هێرش کردنە سەر ئالەتێکی تر لەهەمان کاتدا',
+      'p42':'شاژن و پاشاش لەسەر یەک هێڵن و ئەمە مژدەیە بۆ تۆ بۆ ئەوەی سوود لەم پینە وەربگریت',
+      'p43':'فیل و پاشا لە هەمان فایلدان کە دەتوانیت فیلەکە دابمەزرێنیت و پاشان بە سەربازێک پەلاماری بدەیت',
+      'p44':'شاژن و پاشا لە هەمان فایلدان',
+      'p45':'ئەسپکە دابمەزرێنە لە قەلاکە بۆ ئەوەی بتوانیت ئەو ئەسپە بەدەست بهێنیت',
+      'p46':'ئەسپەکە دابمەزرێنە بۆ شاژن بۆ ئەوەی رەشەکان نەتوانن ئەسپەکە بجوڵێنن و دواتر دەتوانیت بە ئاسانی ئەم ئەسپە وەربگریت',
+      'p47':'ئەسپەکە لە ئێستاوە بە قەلاکە بەستراوە بۆیە ئێمە دەبێت هێرش بکەینە سەر',
+      'p48':'ئەمە پێکەنیناویە شاژنێک بۆ پاشا دابمەزرێنێت و ئەسپەکە ناتوانێت قەلاکە وەربگرێت چونکە سوارچاکەکە خۆی لکێنراوە بە پاشاوە ئەم مەتەڵە زۆر باشە بۆ ئەوەی نیشانی بدات کە پینەکە چەند بەهێزە',
+      'p49':'کش-مات لە یەک، ئەمەیان لە جاران خۆشترە چونکە دوو پارچەی ڕەش هەیە بەڵام هیچیان لە ژیاندا نین',
+      'p50':'فۆرکەی ئەسپەکە بدۆزەوە و سوود لە فیلە جێگیرکراوەکان وەرگرە',
+      'p51':'ئەمە هەروەها پینە بەڵام تۆزێک سەیرە چونکە تۆ ئەسپەکە ئەبەستیتەوە بە هەڕەشەیەکی  کش-مات',
+      'p52':'هێرش بکە سەر شاژن و لەناکاو تۆ دەتوانیت کش-مات بکەیت',
+      'p53':'کش بدۆزەوە. کشێک لەسەر پاشای ڕکابەرەکە کە گەیەنراوە بە گواستنەوەی پارچەیەک لە هێڵەکە',
+      'p54':'ئەسپکەت چەسپاوە بەڵام سوپاس بۆ دۆزینەوەی کشەکە تۆ ڕزگار دەکات و دەتوانی فیلەکە بەدەست بهێنیت. یەکەم جوڵە لەگەڵ ئەسپەکە',
+      'p55':'کش بدۆزەوە. کشێک لەسەر پاشای ڕکابەرەکە کە گەیەنراوە بە گواستنەوەی پارچەیەک لە هێڵەکە',
+      'p56':'چی روودەدات ئەگەر تۆ پاشای خۆت بجوڵێنی؟ وە ئەو پاشایە لە کوێ دادەنێی؟',
+      'p57':'چی روودەدات ئەگەر تۆ پاشای خۆت بجوڵێنی؟ وە ئەو پاشایە لە کوێ دادەنێی؟',
+      'p58':'هێرشی دووانی و هەروەها هێرشەکە دەدۆزێتەوە بە جوڵاندنی سەرباز',
+      'p59':'چی ڕوودەدات ئەگەر تۆ فیلت نەبێت لە بەرامبەر قەلاکەت؟',
+      'p60':'کش بدۆزەوە بە جوڵاندنی سەرباز',
+      //ENDS 
     },
     
 
   };
   
 }
+

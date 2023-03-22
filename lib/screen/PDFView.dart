@@ -20,7 +20,8 @@ class PDFview extends StatelessWidget {
     return   Scaffold(
       appBar: AppBar(backgroundColor: PrimaryColor,
       elevation: 0,
-        title: Center(child: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text(headername,style: TextStyle(color: Colors.white),)) ,),
+      centerTitle: true,
+        title: Text(iskurdish == false ? headername.substring(0,6) : headername.substring(0,10),style: TextStyle(color: Colors.white),),
         leading: InkWell(
         onTap: () {
           Navigator.pop(context);

@@ -57,9 +57,11 @@ class _HomePageState extends State<HomePage> {
              if (tm.thememod == ThemeMode.light) {
                 tm.toggleTheme(true);
                 pref.setBool("isdarkmode", true);
+                isdarkmode=true;
               }else {
                 tm.toggleTheme(false);
                 pref.setBool("isdarkmode", false);
+                isdarkmode=false;
               }
                setState(() {
                 
@@ -176,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                   GestureDetector(
                     onTap: () {
                      setState(() {
-                       Get.off(()=>const ChangeLan());
+                       currentIndex = 2;
                      });
                     },
                     child: Text(
@@ -302,8 +304,8 @@ class _HomePageState extends State<HomePage> {
                                   onPressed: () {
                                     setState(() {currentIndex=1;});
                                   }, 
-                                  icon: Icon(
-                                    LineAwesomeIcons.arrow_right,
+                                  icon:Icon(
+                                    iskurdish == true ? LineAwesomeIcons.arrow_left :LineAwesomeIcons.arrow_right,
                                     size: 28,
                                     )
                                   )

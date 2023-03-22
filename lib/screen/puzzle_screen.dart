@@ -44,18 +44,19 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
         elevation: 0,
         leading:IconButton(
           iconSize: 25,
-          splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
+          splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
           onPressed: () => Get.back(),
            icon: Icon(
-            LineAwesomeIcons.arrow_left,
-            color: PrimaryColor,
-           ),),
+            iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
+            ),
+           ),
       
       ),
       body: Column(
         children: [
           Space(spaceH: 50,),
-          Text(widget.isWhiteToMove ?? false ?  "Find the best move for White":"Find the best move for Black",style: TextStyle(fontSize: 25),),
+          Text(
+            widget.isWhiteToMove ?? false ?  '${"FindBestMove".tr} ${'white'.tr}':'${"FindBestMove".tr} ${'black'.tr}',style:const TextStyle(fontSize: 25),),
           Space(spaceH: 50,),
           Center(
             child:Container(
@@ -65,15 +66,12 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
                    BoxShadow(
                       color: Colors.black.withOpacity(.5),
                       blurRadius: 20,
-                      //spreadRadius: 2,
-                      //offset: Offset(5,5)
                     ),
                 ]
               ),
               child: Chessboard(
                fen: widget.puzzle,
                    onMove: (move) {
-                //debugPrint("${move.from} hh ${move.to}");
                   List<dynamic> solutions =widget.solution;
                   var nextFen = makeMove(widget.puzzle, {
                     'from': move.from,
@@ -91,263 +89,264 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
                        move.from == solutions[0][0]) {
                      // solved = true;
                      showDialogSuccess(
-                       sORw: 'success',
-                       title: 'Well Done',
+                       sORw: 'success'.tr,
+                       title: 'wellDone'.tr,
                        description:
                            'you made best move here may be there are some good moves as well but only best move considered',
                      ); 
                      } else {
                      if (nextFen != null) {
                        showDialogWrong(
-                         sORw: 'wrong',
+                         sORw: 'wrong'.tr,
                          title: 'Mistake',
                          description:
                              'may be your move is not bad  but only best move considered here ',
                        );
                      }
                    }
-                   // alert dialog to say success
+                //ALERT DIALOG TO SAY SUCCESS
+                //CHECK IF THE PUZZLE IS ONE MOVE TYPE 
                 }
                 if (solutions.length == 3) {
-                                        switch (turn) {
-                                          case 0:
-                                            if (move.to == solutions[0][1] &&
-                                                move.from == solutions[0][0]) {
-                                              var nextFenn = makeMoveBot(
-                                                  widget.puzzle, solutions[1]);
+                    switch (turn) {
+                      case 0:
+                        if (move.to == solutions[0][1] &&
+                            move.from == solutions[0][0]) {
+                          var nextFenn = makeMoveBot(
+                              widget.puzzle, solutions[1]);
             
-                                              if (nextFenn != null) {
-                                                setState(() {
-                                                  widget.puzzle = nextFenn;
+                          if (nextFenn != null) {
+                            setState(() {
+                              widget.puzzle = nextFenn;
             
-                                                  turn++;
-                                                });
-                                              }
-                                            } else {
-                                              if (nextFen != null) {
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
-                                          case 1:
-                                            if (move.to == solutions[2][1] &&
-                                                move.from == solutions[2][0]) {
-                                             
-                                              showDialogSuccess(
-                                                sORw: 'success',
-                                                title: 'Well Done',
-                                                description:
-                                                    'you made best move here may be there are some good moves as well but only best move considered',
-                                              );
-                                            
-                                            } else {
-                                              if (nextFen != null) {
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
+                              turn++;
+                            });
+                          }
+                        } else {
+                          if (nextFen != null) {
+                            showDialogWrong(
+                              sORw: 'wrong'.tr,
+                              title: 'Mistake',
+                              description:
+                                  'may be your move is not bad  but only best move considered here ',
+                            );
+                          }
+                        }
+                        break;
+                      case 1:
+                        if (move.to == solutions[2][1] &&
+                            move.from == solutions[2][0]) {
+                         
+                          showDialogSuccess(
+                            sORw: 'success'.tr,
+                            title: 'wellDone'.tr,
+                            description:
+                                'you made best move here may be there are some good moves as well but only best move considered',
+                          );
+                        
+                        } else {
+                          if (nextFen != null) {
+                            showDialogWrong(
+                              sORw: 'wrong'.tr,
+                              title: 'Mistake',
+                              description:
+                                  'may be your move is not bad  but only best move considered here ',
+                            );
+                          }
+                        }
+                        break;
             
-                                          default:
-                                        }
-                                      }
-            
-            
+                      default:
+                    }
+                  }
+                //CHECK IF THE PUZZLE IS TWO MOVE TYPE 
                 if (solutions.length == 5) {
-                                        switch (turn) {
-                                          case 0:
-                                            if (move.to == solutions[0][1] &&
-                                                move.from == solutions[0][0]) {
-                                              var nextFenn = makeMoveBot(
-                                                  widget.puzzle, solutions[1]);
+                 switch (turn) {
+                   case 0:
+                     if (move.to == solutions[0][1] &&
+                         move.from == solutions[0][0]) {
+                       var nextFenn = makeMoveBot(
+                           widget.puzzle, solutions[1]);
             
-                                              if (nextFenn != null) {
-                                                setState(() {
-                                                  widget.puzzle = nextFenn;
+                       if (nextFenn != null) {
+                         setState(() {
+                           widget.puzzle = nextFenn;
             
-                                                  turn++;
-                                                });
-                                              }
-                                            } else {
-                                              if (nextFen != null) {
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
+                           turn++;
+                         });
+                       }
+                     } else {
+                       if (nextFen != null) {
+                         showDialogWrong(
+                           sORw: 'wrong'.tr,
+                           title: 'Mistake',
+                           description:
+                               'may be your move is not bad  but only best move considered here ',
+                         );
+                       }
+                     }
+                     break;
             
-                                          case 1:
-                                            if (move.to == solutions[2][1] &&
-                                                move.from == solutions[2][0]) {
-                                              var nextFenn = makeMoveBot(
-                                                  widget.puzzle, solutions[3]);
+                   case 1:
+                     if (move.to == solutions[2][1] &&
+                         move.from == solutions[2][0]) {
+                       var nextFenn = makeMoveBot(
+                           widget.puzzle, solutions[3]);
             
-                                              if (nextFenn != null) {
-                                                setState(() {
-                                                  widget.puzzle = nextFenn;
+                       if (nextFenn != null) {
+                         setState(() {
+                           widget.puzzle = nextFenn;
             
-                                                  turn++;
-                                                });
-                                              }
-                                            } else {
-                                              if (nextFen != null) {
-                                            
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
-                                          case 2:
-                                            if (move.to == solutions[4][1] &&
-                                                move.from == solutions[4][0]) {
-                                              
-                                              showDialogSuccess(
-                                                sORw: 'success',
-                                                title: 'Well Done',
-                                                description:
-                                                    'you made best move here may be there are some good moves as well but only best move considered',
-                                              );
-                                              
-                                            } else {
-                                              if (nextFen != null) {
-                                          
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
+                           turn++;
+                         });
+                       }
+                     } else {
+                       if (nextFen != null) {
+                     
+                         showDialogWrong(
+                           sORw: 'wrong'.tr,
+                           title: 'Mistake',
+                           description:
+                               'may be your move is not bad  but only best move considered here ',
+                         );
+                       }
+                     }
+                     break;
+                   case 2:
+                     if (move.to == solutions[4][1] &&
+                         move.from == solutions[4][0]) {
+                       
+                       showDialogSuccess(
+                         sORw: 'success'.tr,
+                         title: 'wellDone',
+                         description:
+                             'you made best move here may be there are some good moves as well but only best move considered',
+                       );
+                       
+                     } else {
+                       if (nextFen != null) {
+                   
+                         showDialogWrong(
+                           sORw: 'wrong'.tr,
+                           title: 'Mistake',
+                           description:
+                               'may be your move is not bad  but only best move considered here ',
+                         );
+                       }
+                     }
+                     break;
             
-                                          default:
-                                        }
+                   default:
+                 }
                 }
+                //CHECK IF THE PUZZLE IS THREE MOVE TYPE 
                 if (solutions.length == 7) {
-                                        switch (turn) {
-                                          case 0:
-                                            if (move.to == solutions[0][1] &&
-                                                move.from == solutions[0][0]) {
-                                              var nextFenn = makeMoveBot(
-                                                  widget.puzzle, solutions[1]);
+                  switch (turn) {
+                    case 0:
+                      if (move.to == solutions[0][1] &&
+                          move.from == solutions[0][0]) {
+                        var nextFenn = makeMoveBot(
+                            widget.puzzle, solutions[1]);
             
-                                              if (nextFenn != null) {
-                                                setState(() {
-                                                  widget.puzzle = nextFenn;
+                        if (nextFenn != null) {
+                          setState(() {
+                            widget.puzzle = nextFenn;
             
-                                                  turn++;
-                                                });
-                                              }
-                                            } else {
-                                              if (nextFen != null) {
-                                               
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
+                            turn++;
+                          });
+                        }
+                      } else {
+                        if (nextFen != null) {
+                         
+                          showDialogWrong(
+                            sORw: 'wrong'.tr,
+                            title: 'Mistake',
+                            description:
+                                'may be your move is not bad  but only best move considered here ',
+                          );
+                        }
+                      }
+                      break;
             
-                                          case 1:
-                                            if (move.to == solutions[2][1] &&
-                                                move.from == solutions[2][0]) {
-                                              var nextFenn = makeMoveBot(
-                                                  widget.puzzle, solutions[3]);
+                    case 1:
+                      if (move.to == solutions[2][1] &&
+                          move.from == solutions[2][0]) {
+                        var nextFenn = makeMoveBot(
+                            widget.puzzle, solutions[3]);
             
-                                              if (nextFenn != null) {
-                                                setState(() {
-                                                  widget.puzzle = nextFenn;
+                        if (nextFenn != null) {
+                          setState(() {
+                            widget.puzzle = nextFenn;
             
-                                                  turn++;
-                                                });
-                                              }
-                                            } else {
-                                              if (nextFen != null) {
-                                               
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
-                                          case 2:
-                                            if (move.to == solutions[4][1] &&
-                                                move.from == solutions[4][0]) {
-                                              var nextFenn = makeMoveBot(
-                                                  widget.puzzle, solutions[5]);
+                            turn++;
+                          });
+                        }
+                      } else {
+                        if (nextFen != null) {
+                         
+                          showDialogWrong(
+                            sORw: 'wrong'.tr,
+                            title: 'Mistake',
+                            description:
+                                'may be your move is not bad  but only best move considered here ',
+                          );
+                        }
+                      }
+                      break;
+                    case 2:
+                      if (move.to == solutions[4][1] &&
+                          move.from == solutions[4][0]) {
+                        var nextFenn = makeMoveBot(
+                            widget.puzzle, solutions[5]);
             
-                                              if (nextFenn != null) {
-                                                setState(() {
-                                                  widget.puzzle = nextFenn;
+                        if (nextFenn != null) {
+                          setState(() {
+                            widget.puzzle = nextFenn;
             
-                                                  turn++;
-                                                });
-                                              }
-                                            } else {
-                                              if (nextFen != null) {
-                                                
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
-                                          case 3:
-                                            if (move.to == solutions[6][1] &&
-                                                move.from == solutions[6][0]) {
-                                              
-                                              showDialogSuccess(
-                                                sORw: 'success',
-                                                title: 'Well Done',
-                                                description:
-                                                    'you made best move here may be there are some good moves as well but only best move considered',
-                                              );
-                                             
-                                            } else {
-                                              if (nextFen != null) {
-                                                
-                                                showDialogWrong(
-                                                  sORw: 'wrong',
-                                                  title: 'Mistake',
-                                                  description:
-                                                      'may be your move is not bad  but only best move considered here ',
-                                                );
-                                              }
-                                            }
-                                            break;
+                            turn++;
+                          });
+                        }
+                      } else {
+                        if (nextFen != null) {
+                          
+                          showDialogWrong(
+                            sORw: 'wrong'.tr,
+                            title: 'Mistake',
+                            description:
+                                'may be your move is not bad  but only best move considered here ',
+                          );
+                        }
+                      }
+                      break;
+                    case 3:
+                      if (move.to == solutions[6][1] &&
+                          move.from == solutions[6][0]) {
+                        
+                        showDialogSuccess(
+                          sORw: 'success'.tr,
+                          title: 'wellDone'.tr,
+                          description:
+                              'you made best move here may be there are some good moves as well but only best move considered',
+                        );
+                       
+                      } else {
+                        if (nextFen != null) {
+                          
+                          showDialogWrong(
+                            sORw: 'wrong'.tr,
+                            title: 'Mistake',
+                            description:
+                                'may be your move is not bad  but only best move considered here ',
+                          );
+                        }
+                      }
+                      break;
             
-                                          default:
-                                        }
-                                      }
-            
+                    default:
+                  }
+                }
                },
+               //CHESS BOARD FEATURES
                 orientation:widget.isWhiteToMove ?? false ?  Color.WHITE : Color.BLACK, size: gWidth*.95,
                 lightSquareColor: PrimaryColor,  
                 darkSquareColor: SecondaryColor,     
@@ -355,7 +354,7 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
             )
           ),
           Space(spaceH: 40,),
-          //TODO:hint button
+          //HINT BUTTON 
           SizedBox(
             width: gWidth*.75,
             child: ElevatedButton(
@@ -364,14 +363,15 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
                  side: BorderSide.none,
                  shape: const StadiumBorder(),
                   ),
-               child: Text("Hint",style: TextStyle(fontSize: 20),),
+               child: Text("Hint".tr,style:const TextStyle(fontSize: 20),),
                onPressed: () {
                  setState(() {
                     QuickAlert.show(
                      context: context,
                      type: QuickAlertType.info,
                      text: widget.description,
-                     title: "Hint",
+                     title: "Hint".tr,
+                     confirmBtnText: "okay".tr,
                      confirmBtnColor: Colors.white,
                      confirmBtnTextStyle: TextStyle(color:DialogColor[1]),
                      onConfirmBtnTap: () {
@@ -379,70 +379,51 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
                         widget.puzzle = widget.rePuzzle;
                         Get.back();
                       });
-       //Navigator.pop(context);
-     },
-     //barrierColor: PrimaryColor
-      );
-                 });
+                      },
+                    );
+                  });
                },
             ),
           ),
-          Space(spaceH: 10,),
-          // Container(
-          //   width: gWidth/1.4,
-          //   height: 75,
-          //   //color: Colors.red,
-          //   child:flag ? Text(widget.description,style: TextStyle(fontSize: 15),): Text(""),
-          // ),
-          
+          Space(spaceH: 10,), 
         ],
       ),
     );
   }
 
+//CEATING DIALOG FROM SUCCESS CASE
   showDialogSuccess({sORw, title, description}) {
     QuickAlert.show(
      context: context,
      type: QuickAlertType.success,
      text: title,
      title: sORw,
+     confirmBtnText: "okay".tr,
      confirmBtnColor: Colors.white,
      confirmBtnTextStyle: TextStyle(color:DialogColor[0]),
      onConfirmBtnTap: () {
       setState(() {
-        widget.puzzle = widget.rePuzzle;
         Get.back();
       });
-       //Navigator.pop(context);
-     },
-     //barrierColor: PrimaryColor
-      );
+      },
+    );
     }
 
-  // showDialogSuccess({sORw, title, description}) {
-  //   showDialog(
-  //       barrierDismissible: false,
-  //       context: context,
-  //       builder: (_) =>AlertDialog(
-  //         title: Text("Your men"),
-
-  //        ), 
-  //       );
-  //   }
-
+//CEATING DIALOG FROM FAILD CASE
   showDialogWrong({sORw, title, description}) {
       QuickAlert.show(
         context: context,
         type: QuickAlertType.error,
         title: sORw,
-        text: "Try again ..",
+        text: "tryAgain".tr,
+        confirmBtnText: "okay".tr,
         confirmBtnColor: Colors.white,
-        confirmBtnTextStyle: TextStyle(color:DialogColor[1]),
+        confirmBtnTextStyle: TextStyle(color:DialogColor[2]),
         onConfirmBtnTap: () {
           setState(() {
+            //START PUZZLE AGAIN
             widget.puzzle = widget.rePuzzle;
             turn = 0;
-            
             Navigator.pop(context);
           });
         },
@@ -451,28 +432,6 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
 }    
 }
 
-
-//   showDialogWrong({sORw, title, description}) {
-//     showDialog(
-//         barrierDismissible: false,
-//         context: context,
-//         builder: (_) => AlertDialog(
-//           actions: [
-//             ElevatedButton(onPressed: () {
-//                   setState(() {
-//                   widget.puzzle = widget.rePuzzle;
-//                   turn = 0;
-//                   Navigator.pop(context);
-//                 });
-//             }, child: Text("Hello am i under the water "))
-//           ],
-//           title: Text("Your women"),
-
-//         ) 
-//       );
-//     }
-
-// }  
 
 
 
