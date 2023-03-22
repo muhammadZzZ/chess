@@ -109,8 +109,7 @@ flutter:
     - assets/images/champion/
     - assets/images/chess/
     - assets/images/finalEdite/
-    - assets/images/homePageImages/
- 
+    - assets/images/homePageImages/ 
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

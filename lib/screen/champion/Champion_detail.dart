@@ -282,7 +282,7 @@ ButtomArrow() {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
             ),
-            child: Icon(
+            child:const Icon(
               LineAwesomeIcons.arrow_left,
               color: Colors.white,
             ),

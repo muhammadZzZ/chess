@@ -1,10 +1,11 @@
 import 'package:chess/chess.dart' as Chess;
 import 'package:chess_vectors_flutter/chess_vectors_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:wp_chessboard/wp_chessboard.dart';
 import '../Utils/constrant.dart';
-import '../Utils/constrant.dart';
-import '../Utils/constrant.dart';
+
 
 class ChessPlayScreen extends StatefulWidget {
   bool isWhite;
@@ -29,7 +30,7 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
     chess = Chess.Chess.fromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
     update();
     }else{
-    chess = Chess.Chess.fromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1");
+    chess = Chess.Chess.fromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
     orienatation = BoardOrientation.black;
     update();
     }
@@ -103,7 +104,7 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
       [ event.from.rank, event.from.file ],
       [ event.to.rank, event.to.file ]
     ];
-
+    
     update(animated: false);
   }
 
@@ -118,7 +119,21 @@ class _ChessPlayScreenState extends State<ChessPlayScreen> {
       [ rankFrom, fileFrom ],
       [ rankTo, fileTo ]
     ];
-
+    if (chess.in_checkmate) {
+      QuickAlert.show(
+       context: context,
+       type: QuickAlertType.success,
+       text: "White Won the game",
+       title: "CheckMate",
+       confirmBtnColor: Colors.white,
+       confirmBtnTextStyle: TextStyle(color:DialogColor[0]),
+       onConfirmBtnTap: () {
+        setState(() {
+          
+        });
+       },
+      );
+    }
     update();
   }
 

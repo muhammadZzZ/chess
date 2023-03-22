@@ -1,15 +1,12 @@
 import 'dart:convert';
-
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/languages.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
-import 'package:echessapp/screen/Chess_play_screen.dart';
 import 'package:echessapp/screen/HomePage.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-
 import 'screen/LoginPage.dart';
+
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -40,7 +37,6 @@ class _RootState extends State<Root> {
   themeListener(){
     if (mounted) {
       setState(() {
-        
       });
     }
   }
@@ -60,14 +56,14 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      locale: iskurdish ? Locale("ar","IQ") : Locale("en","US"),
+      locale: iskurdish ? Locale("fa","IR") : Locale("en","US"),
       fallbackLocale: Locale('en','US'),
       translations: lang(),
       debugShowCheckedModeBanner: false,
       theme: light,
       darkTheme: dark,
       themeMode: tm.thememod,
-      home:    page,
+      home:    HomePage(),
       initialRoute: '/',
       routes: {
         '/loginpage':(context) =>  LoginPage(),

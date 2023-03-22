@@ -4,7 +4,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../Utils/constrant.dart';
 
-//the sizedBos widgets 
+//THE SIZEDBOX WIDGETS FOR HEIGH AND WIDTH 
 class Space extends StatelessWidget {
   Space({super.key, this.spaceH,this.spaceW});
   double? spaceH;
@@ -19,7 +19,7 @@ class Space extends StatelessWidget {
 }
 
 
-//The Profile Menu listtile 
+//THE PROFILE MENU LIST TILE  
 class ProfileMenuWidgets extends StatelessWidget {
   const ProfileMenuWidgets({
     super.key,
@@ -75,5 +75,13 @@ class ProfileMenuWidgets extends StatelessWidget {
             )
           : null,
     );
+  }
+}
+
+
+//CONTROLLER FOR CHANGING LANGUAGE 
+class LanguageController extends ChangeNotifier{
+  onLangaugeChanged(){
+    notifyListeners();
   }
 }
