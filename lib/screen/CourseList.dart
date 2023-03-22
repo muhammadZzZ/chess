@@ -74,7 +74,7 @@ class CourseList extends StatelessWidget {
                          
                         }catch(e){
                           
-
+                          
 
                         }
                         
