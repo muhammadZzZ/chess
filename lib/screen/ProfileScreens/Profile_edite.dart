@@ -75,8 +75,9 @@ class _ProfileEditeState extends State<ProfileEdite> {
                 IconButton(
                   splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
                   onPressed: ()=> Get..off(()=>const ProfilePage()),
-                  icon:const Icon(
-                    LineAwesomeIcons.arrow_left
+                  icon: Icon(
+                    iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
+                    color: isdarkmode ? Colors.white:Colors.black ,
                   ),
               ),
               Space(spaceW: 70,),
@@ -161,7 +162,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _city,
                         decoration: InputDecoration(
-                          label: Text("city"..tr), 
+                          label: Text("city".tr), 
                           prefixIcon: Icon(LineAwesomeIcons.city,color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -200,6 +201,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                           context: context,
                           type: QuickAlertType.confirm,
                           text: 'checkingForUpdate'.tr,
+                          title: 'sure'.tr,
                           confirmBtnText: 'y'.tr,
                           cancelBtnText: 'n'.tr,
                           onConfirmBtnTap: () async {
@@ -267,7 +269,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                                   }
                                    Get..off(()=> ProfilePage()); //push replacement
                           },
-                          confirmBtnTextStyle: TextStyle(color:DialogColor[3]),
+                          confirmBtnColor: DialogColor[3],
                           );                       
                       },
                       child: Text(

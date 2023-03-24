@@ -58,6 +58,7 @@ class lang extends Translations {
       'checkingForUpdate':'Do you want to change your information ?',
       'y':'Yes',
       'n':'No',
+      'sure':'Are you sure !?',
       //ENDS
 
       //LOGIN PAGE
@@ -245,6 +246,7 @@ class lang extends Translations {
       'checkingForUpdate':'دەتەوێت زانیاریەکانت نوێبکرێتەوە ؟',
       'y':'بەڵێ',
       'n':'نەخێر',
+      'sure':'ئایا دڵنیایت !؟',
       //ENDS
 
       //LOGIN PAGE
