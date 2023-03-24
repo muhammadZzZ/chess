@@ -1,4 +1,5 @@
 
+// ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
 import 'dart:io';
@@ -27,7 +28,7 @@ class ProfileEdite extends StatefulWidget {
 
 class _ProfileEditeState extends State<ProfileEdite> {
 
-   var PickedFile;
+  var PickedFile;
   late File imagefile;
   String imageurl = "";
   final picker =ImagePicker(); 
@@ -68,20 +69,20 @@ class _ProfileEditeState extends State<ProfileEdite> {
           children: [
             Container(
             height: gHeight*.1,
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding:const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
                 IconButton(
                   splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
-                  onPressed: ()=> Get..off(()=> ProfilePage()),
-                  icon: Icon(
+                  onPressed: ()=> Get..off(()=>const ProfilePage()),
+                  icon:const Icon(
                     LineAwesomeIcons.arrow_left
                   ),
               ),
               Space(spaceW: 70,),
               Text(
-                "Edite Profile",
-                style: TextStyle(
+                "EditProfle".tr,
+                style:const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400
                 ),
@@ -89,13 +90,14 @@ class _ProfileEditeState extends State<ProfileEdite> {
              ],
           ),
           ),
+          // ignore: avoid_unnecessary_containers
           Container(
-            //TODO:Creating Profile Screen
+            //CREATING PROFILE SCREEN
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              padding:const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 children: [
-                //TODO:create a profile circle
+                //CREATE A PROFILE CIRCLE
                 Stack(
                   children: [
                     Container(
@@ -113,9 +115,10 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       bottom: 0,
                       right: 0,
                       child: GestureDetector(
-                        //TODO: update the profile iamge 
+                        //PDATE THE PROFILE IMAGE
                         onTap: () async{
-                             PickedFile =await picker.pickImage(source: ImageSource.gallery); //TODO: pick image from storage
+                             PickedFile =await picker.pickImage(source: ImageSource.gallery);
+                             //PICK IMAGE FROM STORAGE
                             setState(() {
                               PickedFile = PickedFile;
                             });
@@ -138,7 +141,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                   ],
                   ),
                   Space(spaceH: 50),
-                  //TODO:create a textfield
+                  //CREATE A TEXTFIELD
                   Form(
                     child: Column(
                       children: [
@@ -146,7 +149,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _username,
                         decoration: InputDecoration(
-                          label: const Text("User name"), 
+                          label: Text("userName".tr), 
                           prefixIcon: Icon((LineAwesomeIcons.user),color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -158,7 +161,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _city,
                         decoration: InputDecoration(
-                          label: Text("City"), 
+                          label: Text("city"..tr), 
                           prefixIcon: Icon(LineAwesomeIcons.city,color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -170,7 +173,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                       keyboardType: TextInputType.name,
                         controller: _sex,
                         decoration: InputDecoration(
-                          label: const Text("Gender"), 
+                          label: Text("sex".tr), 
                           prefixIcon: Icon(LineAwesomeIcons.venus_mars,color: PrimaryColor,),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
                           floatingLabelStyle: TextStyle(color: PrimaryColor),
@@ -182,7 +185,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
                     ),
                   ),
                   Space(spaceH: 50,),
-                  //WTODO: Update button
+                  //UPDATE PROFLE BUTTON
                   SizedBox(
                     width: gWidth*.6,
                     child: ElevatedButton(
@@ -196,27 +199,28 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         QuickAlert.show(
                           context: context,
                           type: QuickAlertType.confirm,
-                          text: 'Do you want to logout',
-                          confirmBtnText: 'Yes',
-                          cancelBtnText: 'No',
+                          text: 'checkingForUpdate'.tr,
+                          confirmBtnText: 'y'.tr,
+                          cancelBtnText: 'n'.tr,
                           onConfirmBtnTap: () async {
-                              _username.text != "" ?
-                              username = _username.text : username = usersinfo["username"];
-                              _city.text != "" ?
-                              city = _city.text: city = usersinfo["city"];
-                              _sex.text != "" ?
-                              sex = _sex.text:sex = usersinfo["gender"];
+                            _username.text != "" ?
+                            username = _username.text : username = usersinfo["username"];
+                            _city.text != "" ?
+                            city = _city.text: city = usersinfo["city"];
+                            _sex.text != "" ?
+                            sex = _sex.text:sex = usersinfo["gender"];
 
 
                               try {
-                                  if(PickedFile != null){ //TODO: upload image to firestore storage and get the url for it
+                                  if(PickedFile != null){ 
+                                    //UPLOAD IMAGE TO FIREBASE STRORAGE AND GET THE URL FOR IT
                                     setState(() {
                                       imagefile=File(PickedFile.path);
                                     });
-                                  var imageupload = await store.child('userimages/${PickedFile.name}')
-                                    .putFile(imagefile); //TODO: put a file to userimage folder in firestore storage
-                                 
-                                  var downloadUrl = await imageupload.ref.getDownloadURL(); //TODO: download the url
+                                    //PUT A FILE TO USERNAME FOLDER IN FIREBASE STORAGE
+                                    var imageupload = await store.child('userimages/${PickedFile.name}').putFile(imagefile);
+                                    //DOWNLOAD THE URL
+                                    var downloadUrl = await imageupload.ref.getDownloadURL();
                                     setState(() {
                                       imageurl = downloadUrl;
                                     });
@@ -227,23 +231,25 @@ class _ProfileEditeState extends State<ProfileEdite> {
                                     QuickAlert.show(
                                       context: context,
                                       type: QuickAlertType.error,
-                                      title: 'error',
-                                      text: "picture couldn't upload, please try again...",
+                                      title: 'error'.tr,
+                                      text: "picUploadError".tr,
                                       confirmBtnColor: Colors.white,
-                                      confirmBtnTextStyle: TextStyle(color: Colors.black)
+                                      confirmBtnTextStyle: TextStyle(color:DialogColor[2]),
                                     );
           
                                 }
                        
                       
                                 try {
-                                    await firestoreinit.collection('users').doc(currentuser.uid).update({ //TODO:update user data
+                                  //UPDATE USER DATA
+                                    await firestoreinit.collection('users').doc(currentuser.uid).update({
                                       'username':username,
                                       'city': city,
                                       'gender':sex,
                                       'pictureurl':imageurl
                                     });
-                                await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) { //TODO: get user data
+                                    //GET USER DATA
+                                await firestoreinit.collection('users').doc(currentuser.uid).get().then((value) {
                                     usersinfo = value.data()!;
                                  return ;
                                 });
@@ -254,24 +260,19 @@ class _ProfileEditeState extends State<ProfileEdite> {
                                       context: context,
                                       type: QuickAlertType.error,
                                       title: 'Oops..',
-                                      text: "something happened! please try again...",
+                                      text: "getUpdatedDataError".tr,
                                       confirmBtnColor: Colors.white,
-                                      confirmBtnTextStyle: TextStyle(color: Colors.black)
+                                      confirmBtnTextStyle: TextStyle(color:DialogColor[2]),
                                     );
                                   }
-                        
-                        
-                       
-                                Get..off(()=> ProfilePage()); //push replacement
+                                   Get..off(()=> ProfilePage()); //push replacement
                           },
-                          confirmBtnColor: PrimaryColor,
-                          );
-                          
-                       
+                          confirmBtnTextStyle: TextStyle(color:DialogColor[3]),
+                          );                       
                       },
-                      child: const Text(
-                        "Update",
-                        style: TextStyle(
+                      child: Text(
+                        "update".tr,
+                        style:const TextStyle(
                         ),
                       ),
                     ),

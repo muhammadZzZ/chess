@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
-import 'package:echessapp/changeLan.dart';
 import 'package:echessapp/screen/Coures%20Screen/CourseList.dart';
 import 'package:echessapp/screen/ProfileScreens/Profile_Screen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ import 'champions Screen/Champion_detail.dart';
 import 'champions Screen/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
 import 'Puzzles Screens/Level_screen.dart';
-import 'chess_play_option.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -32,13 +30,13 @@ class _HomePageState extends State<HomePage> {
   
   @override
   void setState(VoidCallback fn) {
-    // TODO: implement setState
+    //implement setState
     super.setState(fn);
   }
 
   @override
   void initState() {
-    // TODO: implement initState
+    //implement initState
     super.initState();
   }
   Widget build(BuildContext context) {
@@ -167,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               //eEND OF THE CARUOSAL WIDGETS
               Space(spaceH: 15,),
               //THE BODY OF HOME PAGE SCREEN
-              //TODO: CHAMPION LIST
+              //CHAMPION LIST
               Padding(
               padding: const EdgeInsets.all(12.0),
               child: Row(
@@ -191,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                  ),
-                 Divider(thickness: 1.2,indent: 13,endIndent: 100,height: 0),
+                 Divider(thickness: 1.2,indent: 13,endIndent: 100,height: 0,color: isdarkmode ? Colors.white.withOpacity(.6) : Colors.black.withOpacity(.6)),
                  Space(spaceH: 15,),
                  Container(
                     padding: EdgeInsets.only(bottom: 10),
@@ -265,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                  ),
-                 const Divider(thickness: 1.2,indent: 13,endIndent: 100,height: 0),
+                 Divider(thickness: 1.2,indent: 13,endIndent: 100,height: 0,color: isdarkmode ? Colors.white.withOpacity(.6) : Colors.black.withOpacity(.6)),
                  Space(spaceH: 15,),
                  Container(
                   padding: EdgeInsets.symmetric(horizontal: 10),

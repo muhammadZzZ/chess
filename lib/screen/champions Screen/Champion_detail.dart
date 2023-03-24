@@ -1,9 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
 

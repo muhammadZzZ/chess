@@ -3,7 +3,6 @@ import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/languages.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
 import 'package:echessapp/screen/HomePage.dart';
-import 'package:echessapp/screen/test.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'screen/LoginPage.dart';
@@ -57,14 +56,14 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      locale: iskurdish ? Locale("fa","IR") : Locale("en","US"),
-      fallbackLocale: Locale('en','US'),
+      locale: iskurdish ? const Locale("fa","IR") :const Locale("en","US"),
+      fallbackLocale:const Locale('en','US'),
       translations: lang(),
       debugShowCheckedModeBanner: false,
       theme: light,
       darkTheme: dark,
       themeMode: tm.thememod,
-      home:    LoginPage(),
+      home:    HomePage(),
       initialRoute: '/',
       routes: {
         '/loginpage':(context) =>const LoginPage(),
