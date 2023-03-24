@@ -49,6 +49,14 @@ class lang extends Translations {
       'wellDone':'Well Done',
       //ENDS
 
+      //LOGIN PAGE
+      //START
+      'wel':'Welcome',
+      'sign':'Choose Sign in method',
+      'fb':'Facebook',
+      'google':'Google',
+      //END
+
       //CHAMPION LIST DATA 
       //START
       //Maguns Carlsen Data
@@ -215,6 +223,14 @@ class lang extends Translations {
       'success':'سەرکەوتی',
       'wellDone':'ئافەرین',
       //ENDS
+
+      //LOGIN PAGE
+      //START
+      'wel':'بەخێربێیت',
+      'sign':'رێگای چوونەژوورەوە هەلبژێرە',
+      'fb':'فەیـسبووک',
+      'google':'گووگڵ',
+      //END
 
       //CHAMPION LIST DATA 
       //START

@@ -1,240 +1,72 @@
+import 'dart:ui';
 
-
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:echessapp/Utils/constrant.dart';
-import 'package:echessapp/Firebase/authentication.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:quickalert/models/quickalert_type.dart';
-import 'package:quickalert/widgets/quickalert_dialog.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import 'HomePage.dart';
-
+import 'package:echessapp/Utils/constrant.dart';
+import 'package:echessapp/Widgets/repeated_widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
   
   @override
   Widget build(BuildContext context) {
-    Size siize=MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.all(16),
-          width: gWidth,
-          height: gHeight,
-          child: Column(
-            children: [
-              //image
-              Container(
-                width: gWidth,
-                height: gHeight/4.5,
-              ),
-              //text
-              Container(
-                margin: EdgeInsets.only(top: 10,right: 240),
-                width: gWidth/3,
-                height: gHeight/15,
-                //color: Colors.red,
-                child: FittedBox(
-                  child: Text("Welcome",style: TextStyle(fontWeight: FontWeight.bold),),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(
+            "assets/images/LoginPage/loginImage01.jpg",
+            height: gHeight,
+            fit: BoxFit.cover,
+            ),
+          Positioned(
+            top: gHeight/1.6,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              //clipBehavior: Clip.hardEdge,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 8,
+                  sigmaY: 8,
                 ),
-              ),
-              //text 
-               Container(
-                margin: const EdgeInsets.only(right: 150),
-                width: gWidth/2,
-                height: gHeight/18,
-                //color: Colors.red,
-                child: const FittedBox(
-                  child: Text("Please sign in to use Echess",style: TextStyle(fontSize: 20),),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(.15),
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: Colors.white.withOpacity(.4))
+                      ),
+                      //alignment: Alignment.center,
+                      height: gWidth/1.6,
+                      width: gWidth /1.2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Space(spaceH: 8,),
+                            Text("sign".tr,style:const TextStyle(color: Colors.white,fontSize: 20),),
+                            Space(spaceH: 8,),
+                            Divider(height: 0,thickness: .5,color: Colors.white.withOpacity(.3),),
+                            Space(spaceH: 25,),
+                            const GoogleButton(),
+                            Space(spaceH: 25,),
+                            FacebookButton(),
+                            Space(spaceH: 25,),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height:40 ,),
-              //Google Login Button
-              const LoginButton(),
-              const SizedBox(height: 25,),
-              FacebookButton(),
-              const SizedBox(height: 25,),
-           
-             
-               
-            ],
-          ),
-        )
+                ),
+            ),
+          )
+        ],
       ),
+    ),
     );
   }
 }
-
-class appleButton extends StatelessWidget {
-  const appleButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: gWidth,
-      height: gHeight/15,
-      child: ElevatedButton(
-        onPressed: () {
-         
-        },
-        style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.3)),
-          backgroundColor: MaterialStateProperty.all(Colors.black),
-          //elevation: MaterialStateProperty.all(0),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-        ),
-        child: Row(
-          children: [
-            const SizedBox(width: 30,),
-            SizedBox(width: 35,
-            height: 35,
-            child: Image.asset("assets/icons/apple.png"),
-            ),
-            const SizedBox(width: 40,),
-            const Text("Login with Apple",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-              fontWeight: FontWeight.w400
-            ),)
-          ],
-        ),
-      )
-    );
-  }
-}
-
-class FacebookButton extends StatelessWidget {
-   FacebookButton({
-    Key? key,
-  }) : super(key: key);
-  Map getuser = {};
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: gWidth,
-      height: gHeight/15,
-      child: ElevatedButton(
-        onPressed: () async{
-          try{
-
-                 final authentications authf = authentications(); //fb authentication
-                 await authf.fbauth();
-                 print("111111111111111111111111111111111111");
-                 SharedPreferences shpref = await SharedPreferences.getInstance();
-               shpref.setBool("isgoogle", false);
-                  Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
-
-          } catch(e){
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.error,
-              title: 'error',
-              text: "Please try again....",
-              confirmBtnColor: Colors.white,
-              confirmBtnTextStyle: TextStyle(color: Colors.black)
-                );
-          }
-             
-        },
-        style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.3)),
-          backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(24 ,119, 242,1)),
-          //elevation: MaterialStateProperty.all(0),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-        ),
-        child: Row(
-          children: [
-            const SizedBox(width: 30,),
-            SizedBox(width: 35,
-            height: 35,
-            child: Image.asset("assets/icons/facebook.png"),
-            ),
-            const SizedBox(width: 40,),
-            const Text("Login with Facebook",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-              fontWeight: FontWeight.w400
-            ),)
-          ],
-        ),
-      )
-    );
-  }
-}
-
-//Login Button 
-class LoginButton extends StatelessWidget {
-  const LoginButton({
-    Key? key,
-  }) : super(key: key);
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: gWidth,
-      height: gHeight/15,
-      child: ElevatedButton(
-        onPressed: () async{
-            try{
-
-               authentications authg = authentications(); //google authentication
-               await authg.gauth();
-               SharedPreferences shpref = await SharedPreferences.getInstance();
-               shpref.setBool("isgoogle", true);
-               Navigator.pushNamedAndRemoveUntil(context,'/homepage', ModalRoute.withName('/'));
-                
-            } catch(e){
-                    QuickAlert.show(
-                      context: context,
-                      type: QuickAlertType.error,
-                      title: 'error',
-                      text: "Please try again....",
-                      confirmBtnColor: Colors.white,
-                      confirmBtnTextStyle: const TextStyle(color: Colors.black)
-                );
-            }
-           
-        },
-
-        style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.3)),
-          backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 238, 238, 238)),
-          //elevation: MaterialStateProperty.all(0),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-        ),
-        child: Row(
-          children: [
-            const SizedBox(width: 30,),
-            SizedBox(width: 35,
-            height: 35,
-            child: Image.asset("assets/icons/google.png"),
-            ),
-            const SizedBox(width: 40,),
-            const Text("Login with Google",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 17,
-              fontWeight: FontWeight.w400
-            ),)
-          ],
-        ),
-      )
-    );
-  }
-}
-

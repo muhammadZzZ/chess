@@ -3,6 +3,7 @@ import 'package:echessapp/Utils/constrant.dart';
 import 'package:echessapp/languages.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
 import 'package:echessapp/screen/HomePage.dart';
+import 'package:echessapp/screen/test.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'screen/LoginPage.dart';

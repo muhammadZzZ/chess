@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:echessapp/Widgets/repeated_widgets.dart';
 import 'package:echessapp/changeLan.dart';
-import 'package:echessapp/models/Title_List_Name.dart';
-import 'package:echessapp/screen/CourseList.dart';
+import 'package:echessapp/screen/Coures%20Screen/CourseList.dart';
 import 'package:echessapp/screen/ProfileScreens/Profile_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,10 +9,10 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../root.dart';
-import 'champion/Champion_detail.dart';
-import 'champion/Champion_list_screen.dart';
+import 'champions Screen/Champion_detail.dart';
+import 'champions Screen/Champion_list_screen.dart';
 import '../Utils/constrant.dart';
-import '../Puzzle_Screens/Level_screen.dart';
+import 'Puzzles Screens/Level_screen.dart';
 import 'chess_play_option.dart';
 
 
