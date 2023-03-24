@@ -14,14 +14,12 @@ final SecondaryColor= Color.fromRGBO(238, 238, 210, 1);//rgb(238,238,210)
 final DarkThemeColor = Color.fromRGBO(49, 46, 43, 1);//rgb(49,46,43)
 final DragableColor = Color.fromRGBO(246, 246, 105, 1);//rgb(246,246,105)
 final List DialogColor = [
-  Color.fromRGBO(18, 192, 105, 1),//rgb(18,192,105) GREEN
-  Color.fromRGBO(255, 200, 71, 1),// rgb(255,200,71) YELLOW rgb(223,2,56)
-  Color.fromRGBO(223, 2, 56, 1),// rgb(223,2,56) RED
+  Color.fromRGBO(18, 192, 105, 1),//rgb(18,192,105) GREEN "Success"
+  Color.fromRGBO(255, 200, 71, 1),// rgb(255,200,71) YELLOW "Hint"
+  Color.fromRGBO(223, 2, 56, 1),// rgb(223,2,56) RED "Error"
+  Color.fromRGBO(50, 205, 187, 1),//rgb(50,205,187) Cyan "Confirm "
   ];//
 
-//text
-String userName ="Osama Hatam";
-String userEmail ="Osama.hatam01@gmail.com";
 
 
 //Images test for  carousel slider

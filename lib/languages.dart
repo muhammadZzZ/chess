@@ -27,6 +27,10 @@ class lang extends Translations {
       'theme':'Change Theme',
       'lan':'Change Language',
       'logout':'Logout',
+      'EditProfle':'Edit Profile',
+      'userName':'User name',
+      'city':'City',
+      'sex':'Gender',
       //ENDS
 
       //CHAMPION SCREEN
@@ -47,6 +51,13 @@ class lang extends Translations {
       'tryAgain':'Try Again ',
       'success':'Success',
       'wellDone':'Well Done',
+      'error':'Error',
+      'picUploadError':"picture couldn't upload, please try again...",
+      'getUpdatedDataError':"something happened! please try again...",
+      'update':'Update',
+      'checkingForUpdate':'Do you want to change your information ?',
+      'y':'Yes',
+      'n':'No',
       //ENDS
 
       //LOGIN PAGE
@@ -202,6 +213,11 @@ class lang extends Translations {
       'theme':'گۆرینی رەنگ',
       'lan':'گۆرینی زمان',
       'logout':'دەرچوون',
+      'EditProfle':'دەستکاریکرنی پرۆفایڵ',
+      'userName':'ناوی بەکارهێنەر',
+      'city':'شار',
+      'sex':'رەگەز',
+      ''
       //ENDS
 
       //CHAMPION SCREEN
@@ -222,6 +238,13 @@ class lang extends Translations {
       'tryAgain':'دووبارە هەوڵبدەرەوە',
       'success':'سەرکەوتی',
       'wellDone':'ئافەرین',
+      'error':'هەڵە',
+      'picUploadError':"وێنەکە نەتوانرا پێشانبدرێت، تکایە دووبارە هەوڵبدەرەوە ...",
+      'getUpdatedDataError':"شتێك ڕوویداوه‌! تكایە دوبارە هەوڵ بدەوە ...",
+      'update':'نوێکردنەوە',
+      'checkingForUpdate':'دەتەوێت زانیاریەکانت نوێبکرێتەوە ؟',
+      'y':'بەڵێ',
+      'n':'نەخێر',
       //ENDS
 
       //LOGIN PAGE

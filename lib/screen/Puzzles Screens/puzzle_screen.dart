@@ -49,6 +49,7 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
           onPressed: () => Get.back(),
            icon: Icon(
             iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
+            color: isdarkmode ? Colors.white:Colors.black ,
             ),
            ),
       
@@ -58,11 +59,13 @@ class _PuzzleSolveScreenState extends State<PuzzleSolveScreen> {
           Space(spaceH: 50,),
           Text(
             widget.isWhiteToMove ?? false ?  '${"FindBestMove".tr} ${'white'.tr}':'${"FindBestMove".tr} ${'black'.tr}',style:const TextStyle(fontSize: 25),),
+          Space(spaceH: 5,),
+          Divider(height: 0,color: isdarkmode ? Colors.white : Colors.black,thickness: 1.5,indent: 25,endIndent: 25,),
           Space(spaceH: 50,),
           Center(
             child:Container(
               decoration: BoxDecoration(
-                border: Border.all(width: 2),
+                border: Border.all(width: 2,color: isdarkmode ? Colors.white :Colors.black ),
                 boxShadow: [
                    BoxShadow(
                       color: Colors.black.withOpacity(.5),

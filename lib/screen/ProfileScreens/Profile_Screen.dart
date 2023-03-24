@@ -37,6 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   onPressed: ()=> Get..back(),
                   icon: Icon(
                     iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
+                    color: isdarkmode ? Colors.white:Colors.black ,
                   ),
               ),
               Space(spaceW: 115,),
