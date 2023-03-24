@@ -1,4 +1,5 @@
 import 'package:echessapp/root.dart';
+import 'package:echessapp/screen/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -34,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 IconButton(
                   splashRadius: 20,splashColor: PrimaryColor.withOpacity(.5),
-                  onPressed: ()=> Get..back(),
+                  onPressed: ()=> Get..off(()=>HomePage()),
                   icon: Icon(
                     iskurdish == true ? LineAwesomeIcons.arrow_right :LineAwesomeIcons.arrow_left,
                     color: isdarkmode ? Colors.white:Colors.black ,
