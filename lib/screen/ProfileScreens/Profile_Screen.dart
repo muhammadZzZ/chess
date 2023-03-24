@@ -63,10 +63,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 135,
                         width: 135,
                         alignment: Alignment.topCenter,
-                        child:const  CircleAvatar(
+                        child:  CircleAvatar(
                           radius: 90,
-                          backgroundImage: AssetImage("assets/images/pro.jpeg")
-                          //NetworkImage(usersinfo['pictureurl']!,
+                          backgroundImage: 
+                          NetworkImage(usersinfo['pictureurl']!,)
                           ),
                         ),
                       
@@ -95,17 +95,17 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   Space(spaceH: 20),
                   //RETURN USER SER NAME
-                  const Text(
-                    'test',
-                    //usersinfo['username']!,
+                   Text(
+                    
+                    usersinfo['username']!,
                     style: TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Space(spaceH: 5),
                   //RETURN USER EMAIL
-                  const Text(
-                    'test',
-                    //usersinfo['email']!,
+                   Text(
+                    
+                    usersinfo['email']!,
                     style: TextStyle(fontSize: 16),
                   ),
                   Space(spaceH: 30),

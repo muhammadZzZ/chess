@@ -84,7 +84,7 @@ class _RootState extends State<Root> {
       darkTheme: dark,
       themeMode: tm.thememod,
 
-      home:    HomePage(),
+      home:    page,
       initialRoute: '/',
       routes: {
         '/loginpage':(context) =>const LoginPage(),
