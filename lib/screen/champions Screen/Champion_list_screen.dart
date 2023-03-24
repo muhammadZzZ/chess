@@ -61,7 +61,7 @@ class ChampionScreen extends StatelessWidget {
                                   ),
                                   Space(spaceW: 15,),
                                   Text(
-                                    WorldChampionList[index].nameChampion,
+                                    WorldChampionList[index].nameChampion.tr,
                                     style: TextStyle(
                                       color: PrimaryColor,
                                       fontSize: 16
@@ -103,97 +103,97 @@ class ChampionScreen extends StatelessWidget {
 List<WorldChampion> WorldChampionList =[
   //Magnus Carlsen
   WorldChampion(
-    nameChampion: "MnameChampion".tr,
-    decription: "Mdecription".tr,
-    text1: "Mtext1".tr,
-    text2: "Mtext2".tr,
-    wct: "Mwct".tr,
+    nameChampion: "MnameChampion",
+    decription: "Mdecription",
+    text1: "Mtext1",
+    text2: "Mtext2",
+    wct: "Mwct",
     images: ["assets/images/champion/carlsen1m.png","assets/images/finalEdite/carlsenfinal.png","assets/images/homePageImages/carlsen1.jpeg"],
     link: "L2cbT3elGl8",
   ),
   
   //Hikaru Nakamura
   WorldChampion(
-    nameChampion:"HIKnameChampion".tr,
-    decription:"HIKdecription".tr,
-    text1:"HIKtext1".tr,
-    text2:"HIKtext2".tr,
-    wct:"HIKwct".tr,
+    nameChampion:"HIKnameChampion",
+    decription:"HIKdecription",
+    text1:"HIKtext1",
+    text2:"HIKtext2",
+    wct:"HIKwct",
     images: ["assets/images/champion/Hikaru1m.png","assets/images/finalEdite/Hikarufinal.png","assets/images/homePageImages/Hikaru1t.jpg"],
     link: "https://youtu.be/L2cbT3elGl8",
   ),
   //Wilhelm Steinitz
   WorldChampion(
-    nameChampion:"WILnameChampion".tr,
-    decription:"WILdecription".tr,
-    text1:"WILtext1".tr,
-    text2:"WILtext2".tr,
-    wct : "WILwct".tr,
+    nameChampion:"WILnameChampion",
+    decription:"WILdecription",
+    text1:"WILtext1",
+    text2:"WILtext2",
+    wct : "WILwct",
     images: ["assets/images/champion/Wilhelm1m.png","assets/images/finalEdite/Wilhelmfinal.png","assets/images/homePageImages/Wilhelm1.jpeg"],
     link: "L2cbT3elGl8",
   ),
 
   //Vladimir Kramnik
   WorldChampion(
-    nameChampion:"VLAnameChampion".tr,
-    decription:"VLAdecription".tr,
-    text1:"VLAtext1".tr,
-    text2:"VLAtext2".tr,
-    wct:"VLAwct".tr,
+    nameChampion:"VLAnameChampion",
+    decription:"VLAdecription",
+    text1:"VLAtext1",
+    text2:"VLAtext2",
+    wct:"VLAwct",
     images: ["assets/images/champion/Vladimir1m.png","assets/images/finalEdite/Vladimirfinal.png","assets/images/homePageImages/Vladimir1.jpg"],
     link: "L2cbT3elGl8",
   ),
 
   //Emanuel Lasker
   WorldChampion(
-    nameChampion:"EMMnameChampion".tr,
-    decription:"EMMdecription".tr,
-    text1:"EMMtext1".tr,
-    text2:"EMMtext2".tr,
-    wct:"EMMwct".tr,
+    nameChampion:"EMMnameChampion",
+    decription:"EMMdecription",
+    text1:"EMMtext1",
+    text2:"EMMtext2",
+    wct:"EMMwct",
     images: ["assets/images/champion/Emanuel1m.png","assets/images/finalEdite/Emanuelfinal.png","assets/images/homePageImages/Emanuel1.jpg"],
     link: "L2cbT3elGl8",
   ),
 
   //Bobby Fischer
   WorldChampion(
-    nameChampion:"BOBnameChampion".tr,
-    decription:"BOBdecription".tr,
-    text1:"BOBtext1".tr,
-    text2:"BOBtext2".tr,
-    wct:"BOBwct".tr,
+    nameChampion:"BOBnameChampion",
+    decription:"BOBdecription",
+    text1:"BOBtext1",
+    text2:"BOBtext2",
+    wct:"BOBwct",
     images: ["assets/images/champion/Bobby1m.png","assets/images/finalEdite/Bobbyfinal.jpg","assets/images/homePageImages/Bobby1.jpg"],
     link: "L2cbT3elGl8",
   ),
 
   //Boris Spassky
   WorldChampion(
-    nameChampion:"BORInameChampion".tr,
-    decription:"BORIdecription".tr,
-    text1:"BORItext1".tr,
-    text2:"BORItext2".tr,
-    wct:"BORIwct".tr,
+    nameChampion:"BORInameChampion",
+    decription:"BORIdecription",
+    text1:"BORItext1",
+    text2:"BORItext2",
+    wct:"BORIwct",
     images: ["assets/images/champion/Boris1m.png","assets/images/finalEdite/Borisfinal.png","assets/images/homePageImages/Boris1.jpg"],
     link: "L2cbT3elGl8",
   ),
   //Tigran Petrosian
   WorldChampion(
-    nameChampion:"TRInameChampion".tr,
-    decription:"TRIdecription".tr,
-    text1:"TRItext1".tr,
-    text2:"TRItext2".tr,
-    wct:"TRIwct".tr,
+    nameChampion:"TRInameChampion",
+    decription:"TRIdecription",
+    text1:"TRItext1",
+    text2:"TRItext2",
+    wct:"TRIwct",
     images: ["assets/images/champion/Tigran1m.png","assets/images/finalEdite/Tigranfinal.png","assets/images/homePageImages/Tigran1.jpg"],//C:\dev\chess\assets\images\champion\Tigran1.jpg
     link: "L2cbT3elGl8",
   ),
 
 //Viswanathan Anand
   WorldChampion(
-    nameChampion:"VISnameChampion".tr,
-    decription:"VISdecription".tr,
-    text1:"VIStext1".tr,
-    text2:"VIStext2".tr,
-    wct:"VISwct".tr,
+    nameChampion:"VISnameChampion",
+    decription:"VISdecription",
+    text1:"VIStext1",
+    text2:"VIStext2",
+    wct:"VISwct",
     images: ["assets/images/champion/Viswanathan1m.png","assets/images/finalEdite/Viswanathanfinal.png","assets/images/homePageImages/Viswanathan1t.jpg"],
     link: "https://youtu.be/L2cbT3elGl8",
   ),

@@ -238,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                                         ],
                                       ),
                                       Space(spaceH: 5,),
-                                      Text(WorldChampionList[index].nameChampion,style: TextStyle(fontSize: 12),)
+                                      Text(WorldChampionList[index].nameChampion.tr,style: TextStyle(fontSize: 12),)
                                     ],
                                   ),
                                 ),
@@ -400,7 +400,7 @@ class _HomePageState extends State<HomePage> {
 List<IconData> ListOfIcon =[
   LineAwesomeIcons.home,
   LineAwesomeIcons.book,
-  LineAwesomeIcons.chess_queen,
+  LineAwesomeIcons.trophy,
   LineAwesomeIcons.puzzle_piece,
 ];
 

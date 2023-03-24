@@ -18,7 +18,7 @@ final List DialogColor = [
   Color.fromRGBO(255, 200, 71, 1),// rgb(255,200,71) YELLOW "Hint"
   Color.fromRGBO(223, 2, 56, 1),// rgb(223,2,56) RED "Error"
   Color.fromRGBO(50, 205, 187, 1),//rgb(50,205,187) Cyan "Confirm "
-  ];//
+  ];
 
 
 

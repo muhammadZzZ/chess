@@ -126,7 +126,7 @@ class _DetailChampionState extends State<DetailChampion> {
                           Align(
                             alignment: Alignment.center,
                             child: Text(
-                              iskurdish ? "${widget.title} ${"WhoIs".tr}" : "${"WhoIs".tr} ${widget.title}",
+                              iskurdish ? "${widget.title.tr} ${"WhoIs".tr}" : "${"WhoIs".tr} ${widget.title.tr}",
                               style:const TextStyle(
                                 fontSize: 19,
                               ),
@@ -146,7 +146,7 @@ class _DetailChampionState extends State<DetailChampion> {
                             margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
-                                widget.description,
+                                widget.description.tr,
                                 style:const TextStyle(
                                   fontSize: 16
                                 ),
@@ -158,7 +158,7 @@ class _DetailChampionState extends State<DetailChampion> {
                             margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
-                                widget.text1,
+                                widget.text1.tr,
                                 style:const TextStyle(
                                   fontSize: 16
                                 ),
@@ -169,7 +169,7 @@ class _DetailChampionState extends State<DetailChampion> {
                             margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
-                                widget.text2,
+                                widget.text2.tr,
                                 style:const TextStyle(
                                   fontSize: 16
                                 ),
@@ -182,7 +182,7 @@ class _DetailChampionState extends State<DetailChampion> {
                           Column(
                             children: [
                               Text(
-                                "${"HowManyTime".tr} ${widget.title}",
+                                "${"HowManyTime".tr} ${widget.title.tr}",
                                 style:const TextStyle(
                                 fontSize: 19,
                               ),
@@ -210,7 +210,7 @@ class _DetailChampionState extends State<DetailChampion> {
                             margin:const EdgeInsets.all(8),
                             child: Flexible(
                               child: Text(
-                                widget.wct,
+                                widget.wct.tr,
                                 style:const TextStyle(
                                   fontSize: 16
                                 ),
