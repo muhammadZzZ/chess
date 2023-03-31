@@ -205,14 +205,18 @@ class _ProfileEditeState extends State<ProfileEdite> {
                           confirmBtnText: 'y'.tr,
                           cancelBtnText: 'n'.tr,
                           onConfirmBtnTap: () async {
+
+                            //CHECK IF THE TEXTFIELD HAS TEXT IN IT
+                            //START
                             _username.text != "" ?
                             username = _username.text : username = usersinfo["username"];
                             _city.text != "" ?
                             city = _city.text: city = usersinfo["city"];
                             _sex.text != "" ?
                             sex = _sex.text:sex = usersinfo["gender"];
+                            //END
 
-
+                              
                               try {
                                   if(PickedFile != null){ 
                                     //UPLOAD IMAGE TO FIREBASE STRORAGE AND GET THE URL FOR IT

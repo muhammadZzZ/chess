@@ -127,6 +127,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     title: "theme".tr,
                     icon: tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
                     Onpress: () async{
+
+                      // CHANGING THEME MODE
+                      //START
                         SharedPreferences pref = await SharedPreferences.getInstance();
                           if (tm.thememod == ThemeMode.light) {
                          tm.toggleTheme(true);
@@ -138,6 +141,8 @@ class _ProfilePageState extends State<ProfilePage> {
                          isdarkmode=false;
                        }
                         setState(() {});
+                      //END
+
                     },
                   ),
                   Space(spaceH: 10),
@@ -146,6 +151,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     title: "lan".tr,
                     icon: LineAwesomeIcons.language,
                     Onpress: () async{
+
+                      //CHANGING LANGUAGE
+                      //START
                       SharedPreferences sh = await SharedPreferences.getInstance();
                       if (Get.locale.toString() == 'fa_IR') {
                         Get.updateLocale(const Locale('en','US'));
@@ -156,7 +164,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         sh.setBool("iskurdish", true);
                         iskurdish = true;
                       }
-                      
+                      //END
                     },
                   ),
                   Space(spaceH: 10),
@@ -168,11 +176,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       title: "logout".tr,
                       icon: LineAwesomeIcons.alternate_sign_out,
                       Onpress: () async{
-                        //LOGOUT FROM GGOGLE
+                        //LOGOUT FROM FIREBASE
                         await FirebaseAuth.instance.signOut(); 
                         SharedPreferences shpref = await SharedPreferences.getInstance();
                         isgoogle = shpref.getBool("isgoogle") ?? false;
                   if(isgoogle) {
+                    //LOGOUT FROM GOOGLE
                     await GoogleSignIn().signOut();
                     usersinfo = {};
                   } else {

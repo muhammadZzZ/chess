@@ -12,28 +12,33 @@ import 'PDFView.dart';
 class CourseList extends StatelessWidget {
    CourseList({super.key});
   
+  // CREATING ISTANCE FOR FIREBASE STORAGE
   final instdatapath = FirebaseStorage.instance.ref();
+
   late ListResult listofcourses ;
   late ListResult listofimages;
-  late List<ListResult> chapnumbers= []; 
-  late ListResult chap;
-  late String img;
-  late List<String> imglist;
   
+  // GETTING ALL THE COURSE DATA AND IMAGES FROM FIREBASE STORAGE
+  //START
    Future<void>? getcourses(Reference ref)async {
-    
+  
     listofcourses = await ref.listAll();
-    
     listofimages = await storage(instdatapath.child("courseimages"));
-    
+
   }
+  //END
 
   @override
   Widget build(BuildContext context) {
+
+    // REFERENCE TO THE LOCATION OF THE FILES THAT STORED
     Reference datapath = iskurdish ? instdatapath.child("kurdishcourses"): instdatapath.child("courses");
+
     return  
        FutureBuilder(future: getcourses(datapath),
          builder:(context, snapshot) {
+
+          //IF ALL THE DATA HAS BEEN SAVED IN THE VARIABLES (listofcourses and listofimages)
           if(snapshot.connectionState == ConnectionState.done){
           return Scaffold(
           body: Padding(
@@ -61,6 +66,9 @@ class CourseList extends StatelessWidget {
                           shadowColor: const Color.fromARGB(255, 255, 255, 255),
                           child: InkWell(
                             onTap: () async{
+
+                              // GET DATA FROM FIREBASE STORAGE AND PROCESS THEM TO DISPLAY EACH OF THEM AND GET THEIR DATA TO MEMORY
+                              //START
                               try{
                                  final datapathdetail = await storage(datapath);
                               final Uint8List? pdfdata = await datapathdetail.items[index].getData(databytes);  //getting the data for pdf as bits
@@ -72,6 +80,8 @@ class CourseList extends StatelessWidget {
                           }catch(e){
 
                             }
+                            //END
+
                             },
                         child: Container(
                           padding: const EdgeInsets.all(15),
@@ -85,13 +95,18 @@ class CourseList extends StatelessWidget {
                                CircleAvatar(
                                   backgroundColor: const Color.fromARGB(255, 231, 227, 227),
                                   backgroundImage: NetworkImage(
+                                    
+                                    //REPEAT IMAGES
                                     courseimagess[index % 3]
-                                   // imglist[index]
                                   ),
                               ),
                               const SizedBox(width: 15,),
                                   Expanded(flex: 15,
-                                    child: Text(listofcourses.items[index].name.substring(0,listofcourses.items[index].name.length - 4),style: const TextStyle(fontSize: 14,
+                                    child: Text(
+
+                                      //USED TO RETURN THE PDF NAME EXCLUDING EXTENSION
+                                      listofcourses.items[index].name.substring(0,listofcourses.items[index].name.length - 4),
+                                      style: const TextStyle(fontSize: 14,
                                       fontWeight: FontWeight.bold),),
                                   ),
                               Flexible(flex: 3,child: Container(),),
@@ -110,7 +125,7 @@ class CourseList extends StatelessWidget {
           ),
         );
           }
-          //THE LOADING PAGE WHILE THE COURSE LOADING
+          // IF NOT THE LOADING PAGE WILL BE DISPLAYED WHILE THE COURSE LOADING
            return Scaffold(  
             body:  Padding(
               padding: const EdgeInsets.only(bottom:10.0),

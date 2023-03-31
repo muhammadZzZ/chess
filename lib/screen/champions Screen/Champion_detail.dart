@@ -112,7 +112,7 @@ class _DetailChampionState extends State<DetailChampion> {
                            ),
                          ),
                          Text(
-                          widget.title,
+                          widget.title.tr,
                           style: TextStyle(
                             fontSize: 22,
                             color: PrimaryColor

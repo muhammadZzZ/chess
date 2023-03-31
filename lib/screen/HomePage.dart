@@ -47,6 +47,9 @@ class _HomePageState extends State<HomePage> {
         iconSize: 30,
         splashRadius: 20,splashColor: PrimaryColor.withOpacity(.2),
         onPressed: () async{
+
+          //CHANGE THEME MODE
+          //START
            SharedPreferences pref = await SharedPreferences.getInstance();
              if (tm.thememod == ThemeMode.light) {
                 tm.toggleTheme(true);
@@ -60,6 +63,8 @@ class _HomePageState extends State<HomePage> {
                setState(() {
                 
                });
+          //END
+
         },
         icon: Icon(
           tm.thememod == ThemeMode.light? LineAwesomeIcons.sun:LineAwesomeIcons.moon,
@@ -77,7 +82,8 @@ class _HomePageState extends State<HomePage> {
           icon:  CircleAvatar(
             radius: 30,
             backgroundImage: 
-           
+            
+            // RETURN THE PROFILE PICTURE
              NetworkImage(usersinfo['pictureurl']!)
                //),
              ),
