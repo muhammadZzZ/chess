@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                                     Text("StartLear".tr,style: TextStyle(fontSize: 12,color: Colors.grey[600]),),
                                   ],
                                 ),
-                                Space(spaceW: 40,),
+                                Space(spaceW: 6,),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {currentIndex=1;});

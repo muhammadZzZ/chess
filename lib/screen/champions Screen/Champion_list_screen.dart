@@ -4,7 +4,7 @@ import 'package:echessapp/screen/champions%20Screen/Champion_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../../models/Champion_list.dart';
+import '../../models/Champion_list_model.dart';
 
 class ChampionScreen extends StatelessWidget {
   const ChampionScreen({super.key});

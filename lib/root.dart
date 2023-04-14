@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:echessapp/Utils/constrant.dart';
-import 'package:echessapp/languages.dart';
+import 'package:echessapp/Language/languages.dart';
 import 'package:echessapp/models/theme/ThemeManage.dart';
 import 'package:echessapp/screen/HomePage.dart';
 import 'package:flutter/material.dart';
